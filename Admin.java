@@ -10,6 +10,7 @@ public class Admin {
     * @generated
     */
     private Admin admin;
+    public Int idNum;
     
     
     
