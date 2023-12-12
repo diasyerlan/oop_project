@@ -1,6 +1,6 @@
 package Class Diagram;
 
-
+nj
 /**
 * @generated
 */
