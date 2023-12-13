@@ -8,7 +8,12 @@ public class KaspiPay implements paymentStrategy {
         return this.phoneNumber;
     }
     
-    private String setPhoneNumber(String phoneNumber) {
+    private void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public void pay(int sum) {
+
     }
 }
