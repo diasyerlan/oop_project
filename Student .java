@@ -1,29 +1,18 @@
 package proj
 
-nj
-/**
-* @generated
-*/
+
+
 public class Student  extends User implements CanBeResearcher {
     
-    /**
-    * @generated
-    */
+   
     private String studentName;
     
-    /**
-    * @generated
-    */
+    
     private Integer studentId;
     
-    /**
-    * @generated
-    */
     private Degree studentDegree;
     
-    /**
-    * @generated
-    */
+    
     private Integer age;
     
     /**
