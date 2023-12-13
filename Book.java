@@ -11,6 +11,8 @@ public class Book {
     */
     private string name;
     public int age;
+    
+    private string username;
     /**
     * @generated
     */
