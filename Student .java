@@ -1,4 +1,4 @@
-package Class Diagram;
+package proj
 
 nj
 /**

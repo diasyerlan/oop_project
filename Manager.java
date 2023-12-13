@@ -1,4 +1,4 @@
-package Class Diagram;
+package proj;
 
 
 /**hjjgjnn
@@ -9,7 +9,7 @@ public class Manager extends EmployeeEmployee implements manageRequest {
     /**
     * @generated
     */
-    private String ;
+    private String;
     
     
     
