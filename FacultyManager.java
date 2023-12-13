@@ -1,149 +1,88 @@
 package proj;
 
+import java.util.Queue;
 
+public class FacultyManager extends Manager {
 
- 
-
-public class FacultyManager extends ManagerManager {
-    
-    
-     
-    
     private FacultyName faculty;
-    
-    
-     
-    
-    private queue<Request> listOfRequestsFaculty;
-    
-    
-    
-    
-     
-    
-    private FacultyName getFaculty() {
-        return this.faculty;
-    }
-    
-    
-     
-    
-    private FacultyName setFaculty(FacultyName faculty) {
+    private Queue<Request> listOfRequestsFaculty;
+
+    // Constructors
+    public FacultyManager(String firstName, String lastName, String username, String email,
+                          String password, String ID, Integer salary, Integer hireDate,
+                          Integer workExperience, FacultyName faculty) {
+        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
         this.faculty = faculty;
     }
-    
-    
-     
-    
-    private queue<Request> getListOfRequestsFaculty() {
+
+    // Getters and setters
+    public FacultyName getFaculty() {
+        return this.faculty;
+    }
+
+    public void setFaculty(FacultyName faculty) {
+        this.faculty = faculty;
+    }
+
+    public Queue<Request> getListOfRequestsFaculty() {
         return this.listOfRequestsFaculty;
     }
-    
-    
-     
-    
-    private queue<Request> setListOfRequestsFaculty(queue<Request> listOfRequestsFaculty) {
+
+    public void setListOfRequestsFaculty(Queue<Request> listOfRequestsFaculty) {
         this.listOfRequestsFaculty = listOfRequestsFaculty;
     }
-    
 
-                              Operations                                  
-    
-    
-     
-    
+    // Operations
+
     public boolean deleteNews() {
-        TODO
+        // TODO: Implement deleteNews method
         return false;
     }
-    
-    
-     
-    
+
     public void manageNews() {
-        TODO
-        return null;
+        // TODO: Implement manageNews method
     }
-    
-    
-     
-    
-    public FacultyName getFaculty() {
-        TODO
-        return university.FacultyName.FIT;
+
+    public FacultyName getCurrentFaculty() {
+        // TODO: Implement getCurrentFaculty method
+        return FacultyName.FIT;
     }
-    
-    
-     
-    
+
     public void setFaculty() {
-        TODO
+        // TODO: Implement setFaculty method
+    }
+
+    public Queue<Request> getListOfRequestFaculty() {
+        // TODO: Implement getListOfRequestFaculty method
         return null;
     }
-    
-    
-     
-    
-    public queue<Request> getListOfRequestFaculty() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
+
     public void setListOfRequestFaculty() {
-        TODO
-        return null;
+        // TODO: Implement setListOfRequestFaculty method
     }
-    
-    
-     
-    
+
     public boolean createNews() {
-        TODO
+        // TODO: Implement createNews method
         return false;
     }
-    
-    
-     
-    
+
     public void updateNews() {
-        TODO
-        return null;
+        // TODO: Implement updateNews method
     }
-    
-    
-     
-    
+
     public void showNews() {
-        TODO
-        return null;
+        // TODO: Implement showNews method
     }
-    
-    
-     
-    
+
     public void printOptions() {
-        TODO
-        return null;
+        // TODO: Implement printOptions method
     }
-    
-    
-     
-    
+
     public void getMenu() {
-        TODO
-        return null;
+        // TODO: Implement getMenu method
     }
-    
-    
-     
-    
-    public void adviceStudents() {
-        TODO
-        return null;
+
+    public void adviseStudents() {
+        // TODO: Implement adviseStudents method
     }
-    
-    
 }

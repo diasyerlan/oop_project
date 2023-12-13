@@ -1,201 +1,117 @@
 package proj;
+
 import java.util.Vector;
+
 public class Book {
-    
-    
-     
 
     private String name;
-    public int age;
-    
-    private String username;
-    
-     
-    
     private Vector<String> author;
-    
-    
-     
-    
     private Integer isbncode;
-    
-    
-     
-    
     private Integer dateofPublic;
-    
-    
-     
-    
     private String languageofBook;
-    
-    
-     
-    
     private String title;
-    
-    
-    
-     
-    
     private Library library;
-    
 
-    
-    
-    
-     
-    
-    private String getName() {
-        return this.name;
-    }
-    
-    
-     
-    
-    private String setName(String name) {
+    // Constructors
+    public Book(String name, Vector<String> author, Integer isbncode, Integer dateofPublic,
+                String languageofBook, String title) {
         this.name = name;
-    }
-    
-    
-     
-    
-    private Vector<String> getAuthor() {
-        return this.author;
-    }
-    
-    
-     
-    
-    private Vector<String> setAuthor(Vector<String> author) {
         this.author = author;
-    }
-    
-    
-     
-    
-    private Integer getIsbncode() {
-        return this.isbncode;
-    }
-    
-    
-     
-    
-    private Integer setIsbncode(Integer isbncode) {
         this.isbncode = isbncode;
-    }
-    
-    
-     
-    
-    private Integer getDateofPublic() {
-        return this.dateofPublic;
-    }
-    
-    
-     
-    
-    private Integer setDateofPublic(Integer dateofPublic) {
         this.dateofPublic = dateofPublic;
-    }
-    
-    
-     
-    
-    private String getLanguageofBook() {
-        return this.languageofBook;
-    }
-    
-    
-     
-    
-    private String setLanguageofBook(String languageofBook) {
         this.languageofBook = languageofBook;
-    }
-    
-    
-     
-    
-    private String getTitle() {
-        return this.title;
-    }
-    
-    
-     
-    
-    private String setTitle(String title) {
         this.title = title;
     }
-    
 
-                              Operations                                  
-    
-    
-     
-    
-    public String getBookID() {
-        TODO
-        return "";
+    // Getters and setters
+    public String getName() {
+        return this.name;
     }
-    
-    
-     
-    
-    public void setBookID() {
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    
-     
-    
-    public String getTItle() {
-        TODO
-        return "";
-    }
-    
-    
-     
-    
-    public void setTitle() {
-        TOD
-    }
-    
-    
-     
-    
+
     public Vector<String> getAuthor() {
-        TODO
+        return this.author;
+    }
+
+    public void setAuthor(Vector<String> author) {
+        this.author = author;
+    }
+
+    public Integer getIsbncode() {
+        return this.isbncode;
+    }
+
+    public void setIsbncode(Integer isbncode) {
+        this.isbncode = isbncode;
+    }
+
+    public Integer getDateofPublic() {
+        return this.dateofPublic;
+    }
+
+    public void setDateofPublic(Integer dateofPublic) {
+        this.dateofPublic = dateofPublic;
+    }
+
+    public String getLanguageofBook() {
+        return this.languageofBook;
+    }
+
+    public void setLanguageofBook(String languageofBook) {
+        this.languageofBook = languageofBook;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    // Operations
+
+    public String getBookID() {
+        // TODO: Implement getBookID method
+        return "";
+    }
+
+    public void setBookID() {
+        // TODO: Implement setBookID method
+    }
+
+    public String getBookTitle() {
+        // TODO: Implement getBookTitle method
+        return "";
+    }
+
+    public void setBookTitle() {
+        // TODO: Implement setBookTitle method
+    }
+
+    public Vector<String> getBookAuthors() {
+        // TODO: Implement getBookAuthors method
         return null;
     }
-    
-    
-     
-    
-    public void setAuthor() {
 
+    public void setBookAuthors(Vector<String> authors) {
+        // TODO: Implement setBookAuthors method
     }
-    
-    
-     
-    
+
     public String getPageNum() {
-        TODO
+        // TODO: Implement getPageNum method
         return "";
     }
-    
-    
-     
-    
-    public void setPageNum() {
 
+    public void setPageNum() {
+        // TODO: Implement setPageNum method
     }
-    
-    
-     
-    
+
     public String toString() {
-        TODO
+        // TODO: Implement toString method
         return "";
     }
-    
-    
 }

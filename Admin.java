@@ -1,98 +1,51 @@
 package proj;
 
-
-
- 
-
 public class Admin {
-    
-    
-     
-    
-    private Admin admin;
-    
-    
-    
-    
-     
-    
-    private Admin getAdmin() {
-        return this.admin;
-    }
-    
-    
-     
-    
-    private void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
-    
 
-                              Operations                                  
-    
-    
-     
-    
+    private static Admin instance;
+
+    // Private constructor to prevent instantiation
+    private Admin() {
+        // Initialize any necessary attributes
+    }
+
+    // Singleton pattern to get the instance of Admin
+    public static Admin getInstance() {
+        if (instance == null) {
+            instance = new Admin();
+        }
+        return instance;
+    }
+
+    // Operations
+
     public void addUser() {
-        TODO
-        ;
+        // TODO: Implement addUser method
     }
-    
-    
-     
-    
+
     public void removeUser() {
-        TODO
-        ;
+        // TODO: Implement removeUser method
     }
-    
-    
-     
-    
+
     public String updateUser() {
-        TODO
+        // TODO: Implement updateUser method
         return "";
     }
-    
-    
-     
-    
+
     public String getLogFiles() {
-        TODO
+        // TODO: Implement getLogFiles method
         return "";
     }
-    
-    
-     
-    
+
     public void changeMarks() {
-        TODO
-        ;
+        // TODO: Implement changeMarks method
     }
-    
-    
-     
-    
-    public void changeAdress() {
-        TODO
-        ;
+
+    public void changeAddress() {
+        // TODO: Implement changeAddress method
     }
-    
-    
-     
-    
-    public void changeCredCard() {
-        TODO
-        ;
+
+    public void changeCreditCard() {
+        // TODO: Implement changeCreditCard method
     }
-    
-    
-     
-    
-    public Admin getInstance() {
-        TODO
-        return null;
-    }
-    
-    
 }
