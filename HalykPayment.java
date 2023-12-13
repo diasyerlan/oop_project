@@ -8,7 +8,12 @@ public class HalykPayment implements paymentStrategy {
         return this.cardNumber;
     }
     
-    private String setCardNumber(String cardNumber) {
+    private void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    @Override
+    public void pay(int sum) {
+
     }
 }
