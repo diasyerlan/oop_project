@@ -1,49 +1,65 @@
 package proj;
+import java.util.Vector;
 
 public class Librarian extends Employee implements manageRequest {
-    
-    private invalid listofBooks;
-    private String Name;
-    private Integer Age;
-    
-    private invalid getListofBooks() {
+
+    private Vector<Book> listofBooks;
+    private String name;
+    private Integer age;
+
+    public Librarian(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+    }
+
+    private Vector<Book> getListofBooks() {
         return this.listofBooks;
     }
-    
-    private invalid setListofBooks(invalid listofBooks) {
+
+    private void setListofBooks(Vector<Book> listofBooks) {
         this.listofBooks = listofBooks;
     }
-    
-    private String getName() {
-        return this.Name;
+
+    public String getName() {
+        return this.name;
     }
-    
-    private String setName(String Name) {
-        this.Name = Name;
+
+    public void setName(String Name) {
+        this.name = name;
     }
-    
-    private Integer getAge() {
-        return this.Age;
+
+    public Integer getAge() {
+        return this.age;
     }
-    
-    private Integer setAge(Integer Age) {
-        this.Age = Age;
+
+    public void setAge(Integer Age) {
+        this.age = age;
     }
 
     public boolean ApproveRequest() {
-        TODO
+
         return false;
     }
-    
+
     public void addBook() {
-        TODO
-        return null;
+
     }
-    
+
     public Book getBookID() {
-        TODO
+
         return null;
     }
-    
+
     public int hashcode() {
-     
+        return 0;
+    };
+
+    @Override
+    public void respondRequest() {
+
+    }
+
+    @Override
+    public Request getRequest() {
+        return null;
+    }
+}
