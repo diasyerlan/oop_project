@@ -340,7 +340,6 @@ public class Student  extends User implements CanBeResearcher {
     */
     public Faculty getFaculty() {
         //TODO
-        return Class Diagram.Faculty.FIT;
         return proj.Faculty.FIT;
     }
     
