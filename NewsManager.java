@@ -1,74 +1,74 @@
 package proj;
 
 
-/**
-* @generated
-*/
+
+ 
+
 public class NewsManager extends Manager {
     
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private News news;
     
     
 
-    //                          Operations                                  
+                              Operations                                  
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void addNewsArticle() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void viewNewsArticle() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void makePostInsta() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void makeStoriesInsta() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void makePostTelega() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void changeNewsArticle() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public boolean deleteNews() {
-        //TODO
+        TODO
         return false;
     }
     

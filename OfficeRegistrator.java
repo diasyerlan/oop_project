@@ -1,112 +1,112 @@
 package proj;
 
 
-/**
-* @generated
-*/
+
+ 
+
 public class OfficeRegistrator extends ManagerManager {
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private queue<Request> listOfRequestsOR;
     
     
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private queue<Request> getListOfRequestsOR() {
         return this.listOfRequestsOR;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private queue<Request> setListOfRequestsOR(queue<Request> listOfRequestsOR) {
         this.listOfRequestsOR = listOfRequestsOR;
     }
     
 
-    //                          Operations                                  
+                              Operations                                  
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public boolean addCourse() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void manageCourse() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public boolean deleteCourse() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public queue<Request> getlistOfRequestOR() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public queue<Request> setListOfRequests() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public ViewRequests getRequest() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public boolean openCourse() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void closeCourse() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void printOptions() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void getMenu() {
-        //TODO
+        TODO
         return null;
     }
     

@@ -1,104 +1,104 @@
 package proj;
 
 
-/**hjjgjnn
-* @generated
-*/
+hjjgjnn
+
+
 public class Manager extends EmployeeEmployee implements manageRequest {
     
-    /**
-    * @generated
-    */
+    
+    
+    
     private String;
     
     
     
-    /**
-    * @generated
-    */
+    
+    
+    
     private String get() {
         return this.;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     private String set(String ) {
         this. = ;
     }
     
 
-    //                          Operations                                  
+                              Operations                                  
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public boolean createSurvey() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public Request getRequest() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public boolean respondRequest() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public String manageRequest() {
-        //TODO
+        TODO
         return "";
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public boolean addTeacherToCourse() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public boolean addTeacherToSubject() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public String view_information() {
-        //TODO
+        TODO
         return "";
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public void send_notification() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+    
+    
     public String generate_report() {
-        //TODO
+        TODO
         return "";
     }
     

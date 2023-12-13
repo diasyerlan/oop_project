@@ -1,96 +1,96 @@
 package proj;
 
 
-/**
-* @generated
-*/
+
+ 
+
 public class Admin {
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private Admin admin;
     
     
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private Admin getAdmin() {
         return this.admin;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private void setAdmin(Admin admin) {
         this.admin = admin;
     }
     
 
-    //                          Operations                                  
+                              Operations                                  
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void addUser() {
-        //TODO
+        TODO
         ;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void removeUser() {
-        //TODO
+        TODO
         ;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public String updateUser() {
-        //TODO
+        TODO
         return "";
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public String getLogFiles() {
-        //TODO
+        TODO
         return "";
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void changeMarks() {
-        //TODO
+        TODO
         ;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void changeAdress() {
-        //TODO
+        TODO
         ;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void changeCredCard() {
-        //TODO
+        TODO
         ;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public Admin getInstance() {
-        //TODO
+        TODO
         return null;
     }
     

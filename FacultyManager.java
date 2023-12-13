@@ -1,147 +1,147 @@
 package proj;
 
 
-/**
-* @generated
-*/
+
+ 
+
 public class FacultyManager extends ManagerManager {
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private FacultyName faculty;
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private queue<Request> listOfRequestsFaculty;
     
     
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private FacultyName getFaculty() {
         return this.faculty;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private FacultyName setFaculty(FacultyName faculty) {
         this.faculty = faculty;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private queue<Request> getListOfRequestsFaculty() {
         return this.listOfRequestsFaculty;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     private queue<Request> setListOfRequestsFaculty(queue<Request> listOfRequestsFaculty) {
         this.listOfRequestsFaculty = listOfRequestsFaculty;
     }
     
 
-    //                          Operations                                  
+                              Operations                                  
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public boolean deleteNews() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void manageNews() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public FacultyName getFaculty() {
-        //TODO
+        TODO
         return university.FacultyName.FIT;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void setFaculty() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public queue<Request> getListOfRequestFaculty() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void setListOfRequestFaculty() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public boolean createNews() {
-        //TODO
+        TODO
         return false;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void updateNews() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void showNews() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void printOptions() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void getMenu() {
-        //TODO
+        TODO
         return null;
     }
     
-    /**
-    * @generated
-    */
+    
+     
+    
     public void adviceStudents() {
-        //TODO
+        TODO
         return null;
     }
     
