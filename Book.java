@@ -9,7 +9,7 @@ public class Book {
     /**
     * @generated
     */
-    private String name;
+    private int age;
     
     /**
     * @generated
