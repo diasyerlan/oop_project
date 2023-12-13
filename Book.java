@@ -9,8 +9,10 @@ public class Book {
     /**
     * @generated
     */
-    private String name;
+    private string name;
+    public int age;
     
+    private string username;
     /**
     * @generated
     */
