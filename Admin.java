@@ -35,7 +35,7 @@ public class Admin {
     */
     public void addUser() {
         //TODO
-        return null;
+        ;
     }
     
     /**
@@ -43,7 +43,7 @@ public class Admin {
     */
     public void removeUser() {
         //TODO
-        return null;
+        ;
     }
     
     /**
@@ -67,7 +67,7 @@ public class Admin {
     */
     public void changeMarks() {
         //TODO
-        return null;
+        ;
     }
     
     /**
@@ -75,7 +75,7 @@ public class Admin {
     */
     public void changeAdress() {
         //TODO
-        return null;
+        ;
     }
     
     /**
@@ -83,7 +83,7 @@ public class Admin {
     */
     public void changeCredCard() {
         //TODO
-        return null;
+        ;
     }
     
     /**
