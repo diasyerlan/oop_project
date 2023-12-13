@@ -23,7 +23,7 @@ public class Admin {
     /**
     * @generated
     */
-    private Admin setAdmin(Admin admin) {
+    private void setAdmin(Admin admin) {
         this.admin = admin;
     }
     
