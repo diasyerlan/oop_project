@@ -5,12 +5,12 @@ public class Cleaner extends Employee {
     private String name;
     private Integer age;
 
-    // Constructors
-    public Cleaner(String name, Integer age, String employeeId) {
-        super(employeeId);
-        this.name = name;
-        this.age = age;
+    public Cleaner(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
     }
+
+    // Constructors
+
 
     // Getters and setters
     public String getName() {

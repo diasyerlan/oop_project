@@ -4,10 +4,10 @@ public class Mark extends Teacher {
     
     private double percentage;
     private String letterMark;
-    private Real GPA;
-    private Real firstAttestation;
-    private Real secondAttestation;
-    private unreal final;
+    private double GPA;
+    private double firstAttestation;
+    private double secondAttestation;
+    private double finalScore;
     private String gradesLetters;
 
     private double getPercentage() {
@@ -18,16 +18,13 @@ public class Mark extends Teacher {
         this.percentage = percentage;
     }
 
-    private String getLetterMark() {
-        return this.letterMark;
-    }
 
-    private String setLetterMark(String letterMark) {
+    private void setLetterMark(String letterMark) {
         this.letterMark = letterMark;
     }
 
-    private Real getGPA() {
-        return this.GPA;
+    public double getGPA() {
+        return GPA;
     }
 
     private Real setGPA(Real GPA) {
@@ -50,12 +47,12 @@ public class Mark extends Teacher {
         this.secondAttestation = secondAttestation;
     }
 
-    private unreal getFinal() {
-        return this.final;
+    private double getFinalScore() {
+        return this.finalScore;
     }
 
-    private unreal setFinal(unreal final) {
-        this.final = final;
+    private void setFinal(double finalScore) {
+        this.finalScore = finalScore;
     }
 
     private String getGradesLetters() {
@@ -67,23 +64,20 @@ public class Mark extends Teacher {
     }
 
     public double getPercentage() {
-        return null;
+        return 0;
     }
 
-    public void setPercentage() {
-        return null;
-    }
 
     public String getLetterMark() {
         return "";
     }
 
-    public void setLetterMark() {
-        return null;
+    public void setLetterMark(String letterMark) {
+        this.letterMark = letterMark;
     }
 
     public double getGPA() {
-        return null;
+        return 0;
     }
 
     public void setGPA() {

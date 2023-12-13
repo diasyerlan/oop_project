@@ -43,11 +43,6 @@ public class FacultyManager extends Manager {
         // TODO: Implement manageNews method
     }
 
-    public String getCurrentFaculty() {
-        // TODO: Implement getCurrentFaculty method
-        return String.FIT;
-    }
-
     public void setFaculty() {
         // TODO: Implement setFaculty method
     }
