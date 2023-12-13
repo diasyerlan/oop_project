@@ -1,85 +1,49 @@
 package proj;
 
-
-
- 
-
 public class Cleaner extends Employee {
-    
-    
-     
-    
-    private String Name;
-    
-    
-     
-    
-    private Integer Age;
-    
-    
-    
-    
-     
-    
-    private String getName() {
-        return this.Name;
-    }
-    
-    
-     
-    
-    private String setName(String Name) {
-        this.Name = Name;
-    }
-    
-    
-     
-    
-    private Integer getAge() {
-        return this.Age;
-    }
-    
-    
-     
-    
-    private Integer setAge(Integer Age) {
-        this.Age = Age;
-    }
-    
 
-                              Operations                                  
-    
-    
-     
-    
-    public void CleanTheRestroom() {
-        TODO
-        return null;
+    private String name;
+    private Integer age;
+
+    // Constructors
+    public Cleaner(String name, Integer age, String employeeId) {
+        super(employeeId);
+        this.name = name;
+        this.age = age;
     }
-    
-    
-     
-    
-    public void CleanTheCarridors() {
-        TODO
-        return null;
+
+    // Getters and setters
+    public String getName() {
+        return this.name;
     }
-    
-    
-     
-    
-    public void CleanTheAudience() {
-        TODO
-        return null;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    
-     
-    
-    public void MakeReport() {
-        TODO
-        return null;
+
+    public Integer getAge() {
+        return this.age;
     }
-    
-    
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    // Operations
+
+    public void cleanTheRestroom() {
+        // TODO: Implement cleanTheRestroom method
+    }
+
+    public void cleanTheCorridors() {
+        // TODO: Implement cleanTheCorridors method
+    }
+
+    public void cleanTheAudience() {
+        // TODO: Implement cleanTheAudience method
+    }
+
+    public void makeReport() {
+        // TODO: Implement makeReport method
+    }
 }

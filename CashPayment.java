@@ -1,30 +1,20 @@
 package proj;
 
+public class CashPayment implements PaymentStrategy {
 
+    private boolean paidWithCash;
 
-
-
-public class CashPayment implements paymentStrategy {
-    
-    
-    
-    
-    private Boolean payedWithCash;
-    
-    
-    
-    
-    
-    
-    private Boolean getPayedWithCash() {
-        return this.payedWithCash;
+    public boolean isPaidWithCash() {
+        return this.paidWithCash;
     }
-    
-    
-    
-    
-    private Boolean setPayedWithCash(Boolean payedWithCash) {
-        this.payedWithCash = payedWithCash;
+
+    public void setPaidWithCash(boolean paidWithCash) {
+        this.paidWithCash = paidWithCash;
     }
-    
+
+    // Implement methods from the PaymentStrategy interface
+    // ...
+
+    // Additional methods related to cash payments
+    // ...
 }

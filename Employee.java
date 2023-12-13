@@ -1,122 +1,73 @@
 package proj;
 
-
-
- 
+import java.util.Vector;
 
 public class Employee extends User {
-    
-    
-     
-    
+
     private Integer salary;
-    
-    
-     
-    
-    private Integer hiredate;
-    
-    
-     
-    
+    private Integer hireDate;
     private Integer workExperience;
-    
-    
-    
-     
-    
     private Security security;
-    
-    
-     
-    
     private Message message;
-    
-    
-    
-     
-    
-    private Integer getSalary() {
-        return this.salary;
-    }
-    
-    
-     
-    
-    private Integer setSalary(Integer salary) {
+
+    // Constructors
+    public Employee(String firstName, String lastName, String username, String email,
+                    String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID);
         this.salary = salary;
-    }
-    
-    
-     
-    
-    private Integer getHiredate() {
-        return this.hiredate;
-    }
-    
-    
-     
-    
-    private Integer setHiredate(Integer hiredate) {
-        this.hiredate = hiredate;
-    }
-    
-    
-     
-    
-    private Integer getWorkExperience() {
-        return this.workExperience;
-    }
-    
-    
-     
-    
-    private Integer setWorkExperience(Integer workExperience) {
+        this.hireDate = hireDate;
         this.workExperience = workExperience;
     }
-    
 
-                              Operations                                  
-    
-    
-     
-    
+    // Getters and setters
+    public Integer getSalary() {
+        return this.salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public Integer getHireDate() {
+        return this.hireDate;
+    }
+
+    public void setHireDate(Integer hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public Integer getWorkExperience() {
+        return this.workExperience;
+    }
+
+    public void setWorkExperience(Integer workExperience) {
+        this.workExperience = workExperience;
+    }
+
+    // Operations
+
     public boolean sendMessage() {
-        TODO
+        // TODO: Implement sendMessage method
         return false;
     }
-    
-    
-     
-    
+
     public boolean viewMessage() {
-        TODO
+        // TODO: Implement viewMessage method
         return false;
     }
-    
-    
-     
-    
-    public int getSalary() {
-        TODO
+
+    public int getEmployeeSalary() {
+        // TODO: Implement getEmployeeSalary method
         return 0;
     }
-    
-    
-     
-    
-    public int getWorkExp() {
-        TODO
+
+    public int getEmployeeWorkExperience() {
+        // TODO: Implement getEmployeeWorkExperience method
         return 0;
     }
-    
-    
-     
-    
-    public Vector<Message> viewMessage() {
-        TODO
+
+    public Vector<Message> viewEmployeeMessages() {
+        // TODO: Implement viewEmployeeMessages method
         return null;
     }
-    
-    
 }
