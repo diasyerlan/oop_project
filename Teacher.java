@@ -1,243 +1,118 @@
 package proj;
 
-
-
- 
+import java.util.Vector;
 
 public class Teacher extends Employee implements CanBeResearcher {
-    
-    
-     
-    
     private TeacherType teacherType;
-    
-    
-     
-    
     private String teacherName;
-    
-    
-     
-    
     private Integer teacherId;
-    
-    
-     
-    
     private Faculty faculty;
-    
-    
-     
-    
     private Vector<Course> coursesTaken;
-    
-    
-     
-    
-    private Schedule schedule;
-    
-    
-    
-     
-    
-    private Schedule schedule;
-    
-    
-     
-    
+    private Schedule schedule1;
+    private Schedule schedule2;
     private Mark mark;
-    
-    
-    
-     
-    
+
     private TeacherType getTeacherType() {
         return this.teacherType;
     }
-    
-    
-     
-    
-    private TeacherType setTeacherType(TeacherType teacherType) {
+
+    private void setTeacherType(TeacherType teacherType) {
         this.teacherType = teacherType;
     }
-    
-    
-     
-    
+
     private String getTeacherName() {
         return this.teacherName;
     }
-    
-    
-     
-    
-    private String setTeacherName(String teacherName) {
+
+    private void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
     }
-    
-    
-     
-    
+
     private Integer getTeacherId() {
         return this.teacherId;
     }
-    
-    
-     
-    
-    private Integer setTeacherId(Integer teacherId) {
+
+    private void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
-    
-    
-     
-    
+
     private Faculty getFaculty() {
         return this.faculty;
     }
-    
-    
-     
-    
-    private Faculty setFaculty(Faculty faculty) {
+
+    private void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
-    
-    
-     
-    
+
     private Vector<Course> getCoursesTaken() {
         return this.coursesTaken;
     }
-    
-    
-     
-    
-    private Vector<Course> setCoursesTaken(Vector<Course> coursesTaken) {
+
+    private void setCoursesTaken(Vector<Course> coursesTaken) {
         this.coursesTaken = coursesTaken;
     }
-    
-    
-     
-    
-    private Schedule getSchedule() {
-        return this.schedule;
-    }
-    
-    
-     
-    
-    private Schedule setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
-    
 
-                              Operations                                  
-    
-    
-     
-    
-    public void putMark() {
-        TODO
-        return null;
+    private Schedule getSchedule1() {
+        return this.schedule1;
     }
-    
-    
-     
-    
+
+    private void setSchedule1(Schedule schedule1) {
+        this.schedule1 = schedule1;
+    }
+
+    private Schedule getSchedule2() {
+        return this.schedule2;
+    }
+
+    private void setSchedule2(Schedule schedule2) {
+        this.schedule2 = schedule2;
+    }
+
+    public void putMark() {
+
+    }
+
     public void manageCourse() {
-        TODO
-        return null;
+
     }
-    
-    
-     
-    
+
     public String infoStudent() {
-        TODO
         return "";
     }
-    
-    
-     
-    
+
     public void viewCourse() {
-        TODO
-        return null;
+
     }
-    
-    
-     
-    
+
     public void sendMessage() {
-        TODO
+
+    }
+
+    public Vector<Course> getCoursesTaken() {
         return null;
     }
-    
-    
-     
-    
-    public void putMark() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public Vector<Course> getCoursesTakem() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
+
     public String toString() {
-        TODO
         return "";
     }
-    
-    
-     
-    
+
     public boolean putFirstAttestationMark() {
-        TODO
         return false;
     }
-    
-    
-     
-    
+
     public boolean putSecondAttestation() {
-        TODO
         return false;
     }
-    
-    
-     
-    
+
     public boolean putFinalAttestationMark() {
-        TODO
         return false;
     }
-    
-    
-     
-    
+
     public Vector<Lesson> getSchedule() {
-        TODO
         return null;
     }
-    
-    
-     
-    
+
     public boolean equals() {
-        TODO
         return false;
     }
-    
-    
 }
