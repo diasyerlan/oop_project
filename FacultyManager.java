@@ -4,23 +4,23 @@ import java.util.Queue;
 
 public class FacultyManager extends Manager {
 
-    private FacultyName faculty;
+    private String faculty;
     private Queue<Request> listOfRequestsFaculty;
 
     // Constructors
     public FacultyManager(String firstName, String lastName, String username, String email,
                           String password, String ID, Integer salary, Integer hireDate,
-                          Integer workExperience, FacultyName faculty) {
+                          Integer workExperience, String faculty) {
         super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
         this.faculty = faculty;
     }
 
     // Getters and setters
-    public FacultyName getFaculty() {
+    public String getFaculty() {
         return this.faculty;
     }
 
-    public void setFaculty(FacultyName faculty) {
+    public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
 
@@ -43,9 +43,9 @@ public class FacultyManager extends Manager {
         // TODO: Implement manageNews method
     }
 
-    public FacultyName getCurrentFaculty() {
+    public String getCurrentFaculty() {
         // TODO: Implement getCurrentFaculty method
-        return FacultyName.FIT;
+        return String.FIT;
     }
 
     public void setFaculty() {
