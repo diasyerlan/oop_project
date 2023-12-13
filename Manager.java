@@ -1,7 +1,7 @@
 package Class Diagram;
 
 
-/**
+/**hjjgjnn
 * @generated
 */
 public class Manager extends EmployeeEmployee implements manageRequest {
