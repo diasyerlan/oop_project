@@ -1,18 +1,14 @@
 package proj;
-
-
-
- 
-
+import java.util.Vector;
 public class Book {
     
     
      
-    
+
     private String name;
     public int age;
     
-    private string username;
+    private String username;
     
      
     
@@ -44,10 +40,7 @@ public class Book {
     
     private Library library;
     
-    
-     
-    
-    private Library ;
+
     
     
     
@@ -149,8 +142,6 @@ public class Book {
      
     
     public void setBookID() {
-        TODO
-        return null;
     }
     
     
@@ -165,8 +156,7 @@ public class Book {
      
     
     public void setTitle() {
-        TODO
-        return null;
+        TOD
     }
     
     
@@ -181,8 +171,7 @@ public class Book {
      
     
     public void setAuthor() {
-        TODO
-        return null;
+
     }
     
     
@@ -197,8 +186,7 @@ public class Book {
      
     
     public void setPageNum() {
-        TODO
-        return null;
+      
     }
     
     
