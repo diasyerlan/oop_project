@@ -1,7 +1,7 @@
 package proj;
 
-public class Mark extends Teacher {
-    
+public class Mark{
+
     private double percentage;
     private String letterMark;
     private double GPA;
@@ -10,66 +10,18 @@ public class Mark extends Teacher {
     private double finalScore;
     private String gradesLetters;
 
-    private double getPercentage() {
+    // Getters and setters
+
+    public double getPercentage() {
         return this.percentage;
     }
 
-    private double setPercentage(double percentage) {
+    public void setPercentage(double percentage) {
         this.percentage = percentage;
     }
 
-
-    private void setLetterMark(String letterMark) {
-        this.letterMark = letterMark;
-    }
-
-    public double getGPA() {
-        return GPA;
-    }
-
-    private Real setGPA(Real GPA) {
-        this.GPA = GPA;
-    }
-
-    private Real getFirstAttestation() {
-        return this.firstAttestation;
-    }
-
-    private Real setFirstAttestation(Real firstAttestation) {
-        this.firstAttestation = firstAttestation;
-    }
-
-    private Real getSecondAttestation() {
-        return this.secondAttestation;
-    }
-
-    private Real setSecondAttestation(Real secondAttestation) {
-        this.secondAttestation = secondAttestation;
-    }
-
-    private double getFinalScore() {
-        return this.finalScore;
-    }
-
-    private void setFinal(double finalScore) {
-        this.finalScore = finalScore;
-    }
-
-    private String getGradesLetters() {
-        return this.gradesLetters;
-    }
-
-    private String setGradesLetters(String gradesLetters) {
-        this.gradesLetters = gradesLetters;
-    }
-
-    public double getPercentage() {
-        return 0;
-    }
-
-
     public String getLetterMark() {
-        return "";
+        return this.letterMark;
     }
 
     public void setLetterMark(String letterMark) {
@@ -77,38 +29,55 @@ public class Mark extends Teacher {
     }
 
     public double getGPA() {
-        return 0;
+        return this.GPA;
     }
 
-    public void setGPA() {
-        return null;
+    public void setGPA(double GPA) {
+        this.GPA = GPA;
     }
 
-    public double getFirstAtt() {
-        return null;
+    public double getFirstAttestation() {
+        return this.firstAttestation;
     }
 
-    public void setFitstAtt() {
-        return null;
+    public void setFirstAttestation(double firstAttestation) {
+        this.firstAttestation = firstAttestation;
     }
 
-    public double getSecondAtt() {
-        return null;
+    public double getSecondAttestation() {
+        return this.secondAttestation;
     }
 
-    public void setSecondAtt() {
-        return null;
+    public void setSecondAttestation(double secondAttestation) {
+        this.secondAttestation = secondAttestation;
     }
 
-    public double getFinalExam() {
-        return null;
+    public double getFinalScore() {
+        return this.finalScore;
     }
 
-    public void setFinal() {
-        return null;
+    public void setFinalScore(double finalScore) {
+        this.finalScore = finalScore;
     }
 
-    public String toSttring() {
+    public String getGradesLetters() {
+        return this.gradesLetters;
+    }
+
+    public void setGradesLetters(String gradesLetters) {
+        this.gradesLetters = gradesLetters;
+    }
+
+    // Additional methods
+
+    public double calculateFinalExamScore() {
+        // TODO: Implement the logic to calculate the final exam score
+        return 0.0;
+    }
+
+    @Override
+    public String toString() {
+        // TODO: Implement the logic to represent the object as a string
         return "";
     }
 }

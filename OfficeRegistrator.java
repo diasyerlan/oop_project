@@ -1,164 +1,66 @@
 package proj;
 
+import java.util.Queue;
 
+public class OfficeRegistrator extends Manager {
 
- 
-
-public class OfficeRegistrator extends ManagerManager {
-    
-    
-     
-    
-    private queue<Request> listOfRequestsOR;
-    
-    
-    
-    
-     
-    
-    private queue<Request> getListOfRequestsOR() {
-        return this.listOfRequestsOR;
-    }
-    
-    
-     
-    
-    private queue<Request> setListOfRequestsOR(queue<Request> listOfRequestsOR) {
-        this.listOfRequestsOR = listOfRequestsOR;
-    }
-    
-
-                              Operations                                  
-    
-    
-     
-    
-    public boolean addCourse() {
-        TODO
-        return false;
-    }
-    
-    
-     
-    
-    public void manageCourse() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public boolean deleteCourse() {
-        TODO
-        return false;
-    }
-    
-    
-     
-    
-    public queue<Request> getlistOfRequestOR() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public queue<Request> setListOfRequests() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public ViewRequests getRequest() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public boolean openCourse() {
-        TODO
-        return false;
-    }
-    
-    
-     
-    
-    public void closeCourse() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void printOptions() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void getMenu() {
-        TODO
-        return null;
-public class OfficeRegistrator extends ManagerManager {
-    
     private Queue<Request> listOfRequestsOR;
-    
+
+    public OfficeRegistrator(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+    }
+
     private Queue<Request> getListOfRequestsOR() {
         return this.listOfRequestsOR;
     }
-    
+
     private void setListOfRequestsOR(Queue<Request> listOfRequestsOR) {
         this.listOfRequestsOR = listOfRequestsOR;
     }
-    public boolean addCourse() {
-        return false;
-    }
-    
-    public void manageCourse() {
-        
-    }
-    
-    public boolean deleteCourse() {
-        return false;
-    }
-    
-    public Queue<Request> getlistOfRequestOR() {
-        return null;
-    }
-    
-    public Queue<Request> setListOfRequests() {
-        return null;
-    }
-    
-    public ViewRequests getRequest() {
-      
-        return null;
-    }
-    
-    public boolean openCourse() {
-       
-        return false;
-    }
-    
-    public void closeCourse() {
-        
-    }
-    
-    public void printOptions() {
-        
-    }
-    
-    public void getMenu() {
-        // TODO
 
+    public boolean addCourse() {
+        // TODO: Implement logic for adding a course
+        return false;
+    }
+
+    public void manageCourse() {
+        // TODO: Implement logic for managing a course
+    }
+
+    public boolean deleteCourse() {
+        // TODO: Implement logic for deleting a course
+        return false;
+    }
+
+    public Queue<Request> getlistOfRequestOR() {
+        // TODO: Implement logic to get the list of requests
+        return null;
+    }
+
+    public Queue<Request> setListOfRequests() {
+        // TODO: Implement logic to set the list of requests
+        return null;
+    }
+
+    public Request getRequest() {
+        // TODO: Implement logic to get a request
+        return null;
+    }
+
+    public boolean openCourse() {
+        // TODO: Implement logic for opening a course
+        return false;
+    }
+
+    public void closeCourse() {
+        // TODO: Implement logic for closing a course
+    }
+
+    public void printOptions() {
+        // TODO: Implement logic for printing options
+    }
+
+    public void getMenu() {
+        // TODO: Implement logic for getting the menu
     }
 }

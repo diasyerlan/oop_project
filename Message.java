@@ -1,82 +1,68 @@
 package proj;
 
 public class Message {
-    
-    private Integer Date;
-    private String Content;
+
+    private Integer date;
+    private String content;
     private Employee receiver;
-    private Employee employee;
-    private Employee employee2;
+    private Employee sender; // Renamed from employee to sender
+    private Employee ccEmployee; // Added ccEmployee as an additional recipient
 
-    private Integer getDate() {
-        return this.Date;
+    // Getters and setters
+
+    public Integer getDate() {
+        return this.date;
     }
 
-    private Integer setDate(Integer Date) {
-        this.Date = Date;
-    }
-
-    private String getContent() {
-        return this.Content;
-    }
-
-    private String setContent(String Content) {
-        this.Content = Content;
-    }
-
-    private Employee getReceiver() {
-        return this.receiver;
-    }
-
-    private Employee setReceiver(Employee receiver) {
-        this.receiver = receiver;
-    }
-
-    private Employee getEmployee() {
-        return this.employee;
-    }
-
-    private Employee setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public int getDate() {
-        TODO
-        return 0;
-    }
-
-    public void setDate() {
-        TODO
-        return null;
+    public void setDate(Integer date) {
+        this.date = date;
     }
 
     public String getContent() {
-        TODO
-        return "";
+        return this.content;
     }
 
-    public void setContent() {
-        TODO
-        return null;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Employee getReceiver() {
-        TODO
-        return null;
+        return this.receiver;
     }
 
-    public void setReceiver() {
-        TODO
-        return null;
+    public void setReceiver(Employee receiver) {
+        this.receiver = receiver;
     }
 
-    public Employee setEmployee() {
-        TODO
-        return null;
+    public Employee getSender() {
+        return this.sender;
     }
 
-    public void setEmployee() {
-        TODO
-        return null;
+    public void setSender(Employee sender) {
+        this.sender = sender;
+    }
+
+    public Employee getCcEmployee() {
+        return this.ccEmployee;
+    }
+
+    public void setCcEmployee(Employee ccEmployee) {
+        this.ccEmployee = ccEmployee;
+    }
+
+    // Additional methods
+
+    public void sendMessage() {
+        // TODO: Implement the logic to send the message
+    }
+
+    public void forwardMessage(Employee newReceiver) {
+        // TODO: Implement the logic to forward the message to a new receiver
+    }
+
+    @Override
+    public String toString() {
+        // TODO: Implement the logic to represent the object as a string
+        return "";
     }
 }

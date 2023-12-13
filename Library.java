@@ -1,15 +1,14 @@
 package proj;
 
 public class Library {
-    
-    private Book Book;
+
     private Book book;
-    
-    private Book getBook() {
-        return this.Book;
+
+    public Book getBook() {
+        return this.book;
     }
-    
-    private void setBook(Book Book) {
+
+    public void setBook(Book book) {
         this.book = book;
     }
 }

@@ -1,117 +1,42 @@
 package proj;
 
-
-
- 
-
 public class Report {
-    
-    
-     
-    
-    private String title;
-    
-    
-     
-    
-    private User author;
-    
-    
-     
-    
-    private String content;
-    
-    
-    
-    
-     
-    
 
-public class Report {
- 
     private String title;
-   
     private User author;
-    
     private String content;
-    
+
     public String getTitle() {
         return this.title;
     }
-    
-    
-     
-    
-    public String setTitle(String title) {
+
+    public void setTitle(String title) {
         this.title = title;
     }
-    
-    
-     
-    
+
     public User getAuthor() {
         return this.author;
     }
-    
-    
-     
-    
-    public User setAuthor(User author) {
+
+    public void setAuthor(User author) {
         this.author = author;
     }
-    
-    
-     
-    
-    private String getContent() {
+
+    public String getContent() {
         return this.content;
     }
-    
-    
-     
-    
-    private String setContent(String content) {
+
+    public void setContent(String content) {
         this.content = content;
     }
-    
 
-                              Operations                                  
-    
-    
-     
-    
-    public void addContent() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void viewReport() {
-        TODO
+    // Operations
 
-    public String setTitle(String title) {
-        this.title = title;
-    }
-    public User getAuthor() {
-        return this.author;
-    }
-    public User setAuthor(User author) {
-        this.author = author;
-    }
-    private String getContent() {
-        return this.content;
-    }
-    private String setContent(String content) {
-        this.content = content;
-    }
     public void addContent() {
-        return null;
+        // TODO: Implement logic for adding content to the report
     }
+
     public void viewReport() {
-        return null;
+        // TODO: Implement logic for viewing the report
     }
-    
-    
 }
