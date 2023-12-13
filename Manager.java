@@ -1,6 +1,6 @@
 package proj;
 
-public class Manager extends EmployeeEmployee implements manageRequest {
+public class Manager extends Employee {
     
     private String;
     
