@@ -1,276 +1,97 @@
 package proj;
 
-
-
- 
+import java.util.Vector;
 
 public class Subject {
-    
-    
-     
-    
+
     private String subjectName;
-    
-    
-     
-    
     private String startTime;
-    
-    
-     
-    
     private String endTime;
-    
-    
-     
-    
     private LessonType subjectType;
-    
-    
-     
-    
     private Teacher teacher;
-    
-    
-     
-    
-    private WeekDay weekDay;
-    
-    
-     
-    
     private Integer duration;
-    
-    
-     
-    
     private Semester semester;
-    
-    
-    
-     
-    
     private Schedule schedule;
-    
-    
-    
-     
-    
-    private String getSubjectName() {
+
+    public String getSubjectName() {
         return this.subjectName;
     }
-    
-    
-     
-    
-    private String setSubjectName(String subjectName) {
+
+    public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
-    
-    
-     
-    
-    private String getStartTime() {
+
+    public String getStartTime() {
         return this.startTime;
     }
-    
-    
-     
-    
-    private String setStartTime(String startTime) {
+
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
-    
-    
-     
-    
-    private String getEndTime() {
+
+    public String getEndTime() {
         return this.endTime;
     }
-    
-    
-     
-    
-    private String setEndTime(String endTime) {
+
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-    
-    
-     
-    
-    private LessonType getSubjectType() {
+
+    public LessonType getSubjectType() {
         return this.subjectType;
     }
-    
-    
-     
-    
-    private LessonType setSubjectType(LessonType subjectType) {
+
+    public void setSubjectType(LessonType subjectType) {
         this.subjectType = subjectType;
     }
-    
-    
-     
-    
-    private Teacher getTeacher() {
+
+    public Teacher getTeacher() {
         return this.teacher;
     }
-    
-    
-     
-    
-    private Teacher setTeacher(Teacher teacher) {
+
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-    
-    
-     
-    
-    private WeekDay getWeekDay() {
-        return this.weekDay;
-    }
-    
-    
-     
-    
-    private WeekDay setWeekDay(WeekDay weekDay) {
-        this.weekDay = weekDay;
-    }
-    
-    
-     
-    
-    private Integer getDuration() {
+
+
+    public Integer getDuration() {
         return this.duration;
     }
-    
-    
-     
-    
-    private Integer setDuration(Integer duration) {
+
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
-    
-    
-     
-    
-    private Semester getSemester() {
+
+    public Semester getSemester() {
         return this.semester;
     }
-    
-    
-     
-    
-    private Semester setSemester(Semester semester) {
+
+    public void setSemester(Semester semester) {
         this.semester = semester;
     }
-    
 
-                              Operations                                  
-    
-    
-     
-    
+    // Operations (methods)
+
     public Vector<Student> getStudents() {
-        TODO
+        // TODO: Implement your method
         return null;
     }
-    
-    
-     
-    
+
     public Vector<Lesson> getLessons() {
-        TODO
+        // TODO: Implement your method
         return null;
     }
-    
-    
-     
-    
-    public Vector<Student> getLessons() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
+
     public Vector<Lesson> addLesson() {
-        TODO
+        // TODO: Implement your method
         return null;
     }
-    
-    
-     
-    
-    public String getSubjectName() {
-        TODO
-        return "";
-    }
-    
-    
-     
-    
-    public Semester getSemester() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void setSemester() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void setLEssons() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void setCourseName() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public String getStartTime() {
-        TODO
-        return "";
-    }
-    
-    
-     
-    
-    public String getEndTime() {
-        TODO
-        return "";
-    }
-    
-    
-     
-    
-    public void setEndTime() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
+
+    // Add other methods as needed
+
+    @Override
     public String toString() {
-        TODO
+        // TODO: Implement your method
         return "";
     }
-    
-    
 }

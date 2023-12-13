@@ -7,56 +7,56 @@ public class Request {
     private String problem;
     private Date date;
 
-    private User getUser() {
+    public User getUser() {
         return this.user;
     }
 
-    private void setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    private String getProblem() {
+    public String getProblem() {
         return this.problem;
     }
 
-    private void setProblem(String problem) {
+    public void setProblem(String problem) {
         this.problem = problem;
     }
 
-    private Date getDate() {
+    public Date getDate() {
         return this.date;
     }
 
-    private void setDate(Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
     // Operations
 
-    public User getUser() {
+    public User getCurrentUser() {
         // TODO: Implement logic for getting user
         return null;
     }
 
-    public void setUser() {
+    public void setCurrentUser() {
         // TODO: Implement logic for setting user
     }
 
-    public String getProblem() {
+    public String getProblemDescription() {
         // TODO: Implement logic for getting problem
         return "";
     }
 
-    public void setProblem() {
+    public void setProblemDescription() {
         // TODO: Implement logic for setting problem
     }
 
-    public Date getDate() {
+    public Date getRequestDate() {
         // TODO: Implement logic for getting date
         return new Date();
     }
 
-    public void setdate() {
+    public void setRequestDate() {
         // TODO: Implement logic for setting date
     }
 }

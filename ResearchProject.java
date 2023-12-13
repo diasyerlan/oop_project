@@ -1,83 +1,35 @@
 package proj;
 
-
-
- 
+import java.util.List;
 
 public class ResearchProject {
-    
-    
-     
-    
+
     private String topic;
-    
-    
-     
-    
     private String content;
-    
-    
-     
-    
-    private Vector<ResearchPaper> papers;
-    
-    
-    
-     
-    
+    private List<ResearchPaper> papers;
     private Researcher researcher;
-    
-    
-     
-    
-    private Researcher researcher;
-    
-    
-     
-    
-    private ResearchPaper researchPaper;
-    
-    
-    
-     
-    
+
     public String getTopic() {
         return this.topic;
     }
-    
-    
-     
-    
-    public String setTopic(String topic) {
+
+    public void setTopic(String topic) {
         this.topic = topic;
     }
-    
-    
-     
-    
+
     public String getContent() {
         return this.content;
     }
-    
-    
-     
-    
-    public String setContent(String content) {
+
+    public void setContent(String content) {
         this.content = content;
     }
-    
-    
-     
-    
-    public Vector<ResearchPaper> getPapers() {
+
+    public List<ResearchPaper> getPapers() {
         return this.papers;
     }
-    
-    
-     
-    
-    public Vector<ResearchPaper> setPapers(Vector<ResearchPaper> papers) {
+
+    public void setPapers(List<ResearchPaper> papers) {
         this.papers = papers;
     }
-    
 }

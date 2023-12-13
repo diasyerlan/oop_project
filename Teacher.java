@@ -1,243 +1,116 @@
 package proj;
 
-
-
- 
+import java.util.Vector;
 
 public class Teacher extends Employee implements CanBeResearcher {
-    
-    
-     
-    
+
     private TeacherType teacherType;
-    
-    
-     
-    
     private String teacherName;
-    
-    
-     
-    
     private Integer teacherId;
-    
-    
-     
-    
     private Faculty faculty;
-    
-    
-     
-    
     private Vector<Course> coursesTaken;
-    
-    
-     
-    
     private Schedule schedule;
-    
-    
-    
-     
-    
-    private Schedule schedule;
-    
-    
-     
-    
     private Mark mark;
-    
-    
-    
-     
-    
-    private TeacherType getTeacherType() {
+
+    public Teacher(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+    }
+
+    public TeacherType getTeacherType() {
         return this.teacherType;
     }
-    
-    
-     
-    
-    private TeacherType setTeacherType(TeacherType teacherType) {
+
+    public void setTeacherType(TeacherType teacherType) {
         this.teacherType = teacherType;
     }
-    
-    
-     
-    
-    private String getTeacherName() {
+
+    public String getTeacherName() {
         return this.teacherName;
     }
-    
-    
-     
-    
-    private String setTeacherName(String teacherName) {
+
+    public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
     }
-    
-    
-     
-    
-    private Integer getTeacherId() {
+
+    public Integer getTeacherId() {
         return this.teacherId;
     }
-    
-    
-     
-    
-    private Integer setTeacherId(Integer teacherId) {
+
+    public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
-    
-    
-     
-    
-    private Faculty getFaculty() {
+
+    public Faculty getFaculty() {
         return this.faculty;
     }
-    
-    
-     
-    
-    private Faculty setFaculty(Faculty faculty) {
+
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
-    
-    
-     
-    
-    private Vector<Course> getCoursesTaken() {
+
+    public Vector<Course> getCoursesTaken() {
         return this.coursesTaken;
     }
-    
-    
-     
-    
-    private Vector<Course> setCoursesTaken(Vector<Course> coursesTaken) {
+
+    public void setCoursesTaken(Vector<Course> coursesTaken) {
         this.coursesTaken = coursesTaken;
     }
-    
-    
-     
-    
-    private Schedule getSchedule() {
-        return this.schedule;
-    }
-    
-    
-     
-    
-    private Schedule setSchedule(Schedule schedule) {
+
+
+    public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
     }
-    
 
-                              Operations                                  
-    
-    
-     
-    
+    // Operations (methods)
+
     public void putMark() {
-        TODO
-        return null;
+        // TODO: Implement your method
     }
-    
-    
-     
-    
+
     public void manageCourse() {
-        TODO
-        return null;
+        // TODO: Implement your method
     }
-    
-    
-     
-    
+
     public String infoStudent() {
-        TODO
+        // TODO: Implement your method
         return "";
     }
-    
-    
-     
-    
+
     public void viewCourse() {
-        TODO
-        return null;
+        // TODO: Implement your method
     }
-    
-    
-     
-    
-    public void sendMessage() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public void putMark() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
-    public Vector<Course> getCoursesTakem() {
-        TODO
-        return null;
-    }
-    
-    
-     
-    
+
+    // Additional methods and toString()...
+
+    @Override
     public String toString() {
-        TODO
+        // TODO: Implement your method
         return "";
     }
-    
-    
-     
-    
+
     public boolean putFirstAttestationMark() {
-        TODO
+        // TODO: Implement your method
         return false;
     }
-    
-    
-     
-    
+
     public boolean putSecondAttestation() {
-        TODO
+        // TODO: Implement your method
         return false;
     }
-    
-    
-     
-    
+
     public boolean putFinalAttestationMark() {
-        TODO
+        // TODO: Implement your method
         return false;
     }
-    
-    
-     
-    
+
     public Vector<Lesson> getSchedule() {
-        TODO
+        // TODO: Implement your method
         return null;
     }
-    
-    
-     
-    
-    public boolean equals() {
-        TODO
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO: Implement your method
         return false;
     }
-    
-    
 }
