@@ -8,10 +8,18 @@ public class User {
     private String email;
     private String password;
     private String ID;
-    private News news;
+    private String position;
     private WSP wsp;
 
     // Constructors
+    public User() {
+        this.firstName = "";
+        lastName = "";
+        username = "";
+        email = "";
+        password = "";
+        ID = "";
+    }
     public User(String firstName, String lastName, String username, String email, String password, String ID) {
         this.firstName = firstName;
         this.lastName = lastName;

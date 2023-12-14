@@ -1,27 +1,36 @@
 package proj;
 
+import java.util.Scanner;
 import java.util.Vector;
 
 public class Student extends User implements CanBeResearcher {
 
-    private String studentName;
-    private Integer studentId;
     private Degree studentDegree;
-    private Integer age;
     private double gpa;
     private Integer course;
     private Faculty faculty;
     private String specialization;
     private Vector<Book> booksTaken;
     private Schedule schedule;
-    private Boolean paymentStrategy;
+    private paymentStrategy paymentStrategy;
     private StudentOrganization studentOrganization;
     private Transcript transcript;
-    private paymentStrategy paymentStrategy2;
-    private Schedule schedule2; // Corrected
 
-    public Student(String firstName, String lastName, String username, String email, String password, String ID) {
+    public Student(String firstName, String lastName, String username, String email, String password, String ID, Degree studentDegree,
+                   double gpa, int course, Faculty faculty, String specialization, Vector<Book> booksTaken, Schedule schedule,
+                   paymentStrategy paymentStrategy, StudentOrganization studentOrganization, Transcript transcript) {
         super(firstName, lastName, username, email, password, ID);
+        this.studentDegree = studentDegree;
+        this.gpa = gpa;
+        this.course = course;
+        this.faculty = faculty;
+        this.specialization = specialization;
+        this.booksTaken = booksTaken;
+        this.schedule = schedule;
+        this.paymentStrategy = paymentStrategy;
+        this.studentOrganization = studentOrganization;
+        this.transcript = transcript;
+
     }
 
     private String getStudentName() {

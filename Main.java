@@ -29,10 +29,13 @@ public class Main {
             System.out.println("1 - Add User");
             System.out.println("2 - Remove User");
             System.out.println("3 - Update User");
-            System.out.println("4 - change Address");
-            System.out.println("5 - change Credit Card name");
+            System.out.println("4 - Change Address");
+            System.out.println("5 - Change Credit Card name");
 
             System.out.println("Type the appropriate number to take action: ");
+            int selected = scanner.nextInt();
+
+
         }
     }
 }
