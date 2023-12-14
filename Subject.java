@@ -77,15 +77,7 @@ public class Subject {
         return null;
     }
 
-    public Vector<Lesson> getLessons() {
-        // TODO: Implement your method
-        return null;
-    }
 
-    public Vector<Lesson> addLesson() {
-        // TODO: Implement your method
-        return null;
-    }
 
     // Add other methods as needed
 

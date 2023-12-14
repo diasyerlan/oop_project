@@ -11,4 +11,24 @@ public class ResearcherDecorator implements Researcher {
     public void setResearcher(CanBeResearcher researcher) {
         this.researcher = researcher;
     }
+
+    @Override
+    public void superviseStudents() {
+
+    }
+
+    @Override
+    public void conductResearch() {
+
+    }
+
+    @Override
+    public void presentResearchPaper() {
+
+    }
+
+    @Override
+    public void publicResearchPaper() {
+
+    }
 }

@@ -103,10 +103,6 @@ public class Teacher extends Employee implements CanBeResearcher {
         return false;
     }
 
-    public Vector<Lesson> getSchedule() {
-        // TODO: Implement your method
-        return null;
-    }
 
     @Override
     public boolean equals(Object obj) {
