@@ -4,8 +4,8 @@ public class Admin {
 
     private static Admin instance;
     private Vector<User> userList;
-    private String username = "Admin";
-    private String password = "12345";
+    public String username = "Admin";
+    public String password = "12345";
 
     // Private constructor to prevent instantiation
     private Admin() {
