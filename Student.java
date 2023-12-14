@@ -34,21 +34,7 @@ public class Student extends User implements CanBeResearcher {
 
     }
 
-    private String getStudentName() {
-        return this.studentName;
-    }
 
-    private void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    private Integer getStudentId() {
-        return this.studentId;
-    }
-
-    private void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
 
     private Degree getStudentDegree() {
         return this.studentDegree;
@@ -58,13 +44,6 @@ public class Student extends User implements CanBeResearcher {
         this.studentDegree = studentDegree;
     }
 
-    private Integer getAge() {
-        return this.age;
-    }
-
-    private void setAge(Integer age) {
-        this.age = age;
-    }
 
     private double getGpa() {
         return this.gpa;
@@ -114,13 +93,7 @@ public class Student extends User implements CanBeResearcher {
         this.schedule = schedule;
     }
 
-    private Boolean getPaymentStrategy() {
-        return this.paymentStrategy;
-    }
 
-    private void setPaymentStrategy(Boolean paymentStrategy) {
-        this.paymentStrategy = paymentStrategy;
-    }
 
     // Operations (methods)
 

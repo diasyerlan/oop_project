@@ -6,7 +6,7 @@ public class Admin {
 
     private static Admin instance;
     Scanner scanner = new Scanner(System.in);
-    private Vector<User> userList;
+    private Vector<User> userList = new Vector<>();
     public String username = "Admin";
     public String password = "12345";
 
@@ -90,6 +90,8 @@ public class Admin {
 
         userList.add(new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
                 course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript()));
+
+        System.out.println("Student added successfully!");
 
     }
 

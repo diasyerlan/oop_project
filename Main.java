@@ -34,7 +34,7 @@ public class Main {
 
             System.out.println("Type the appropriate number to take action: ");
             int selected = scanner.nextInt();
-
+            if(selected == 1) admin.addUser();
 
         }
     }
