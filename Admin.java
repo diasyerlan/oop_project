@@ -15,6 +15,11 @@ public class Admin {
         // Initialize any necessary attributes
     }
 
+    String firstname, lastname, userName, passWord, id, email, specialization;
+    int course;
+    double gpa;
+    Degree degree;
+    Faculty faculty;
     // Singleton pattern to get the instance of Admin
     public static Admin getInstance() {
         if (instance == null) {
@@ -26,22 +31,22 @@ public class Admin {
     public void mainQuestions() {
         System.out.println("Print descriptions of Student");
         System.out.println("First name: ");
-        String firstname = scanner.nextLine();
+         firstname = scanner.nextLine();
 
         System.out.println("Last name: ");
-        String lastname = scanner.nextLine();
+         lastname = scanner.nextLine();
 
         System.out.println("Username: ");
-        String username = scanner.nextLine();
+         userName = scanner.nextLine();
 
         System.out.println("Email: ");
-        String email = scanner.nextLine();
+         email = scanner.nextLine();
 
         System.out.println("Password: ");
-        String password = scanner.nextLine();
+         passWord = scanner.nextLine();
 
         System.out.println("ID number: ");
-        String id = scanner.nextLine();
+         id = scanner.nextLine();
     }
 
     // Operations
@@ -55,14 +60,36 @@ public class Admin {
         if(position.equals("Student")) {
             mainQuestions();
 
-            System.out.println("Student degree: ");
-            String degree = scanner.nextLine();
+            System.out.println("Student Degree");
+            String deg = scanner.nextLine();
+            degree = Degree.PHD;
+            if(deg.equals("Bachelor"))  degree = Degree.BACHELOR;
+            else if(deg.equals("Master")) degree = Degree.MASTER;
+
+            System.out.println("GPA: ");
+            gpa = scanner.nextDouble();
+
+            System.out.println("Course: ");
+            course = scanner.nextInt();
+
+            System.out.println("Faculty: ");
+            String facul = scanner.nextLine();
+            faculty = Faculty.BS;
+            if(facul.equals("FIT")) faculty = Faculty.FIT;
+            else if(facul.equals("KMA")) faculty = Faculty.KMA;
+            else if(facul.equals("SPE")) faculty = Faculty.SPE;
+            else if(facul.equals("ISE")) faculty = Faculty.ISE;
+            else if(facul.equals("SG")) faculty = Faculty.SG;
+
+
+            System.out.println("specialization: ");
+            specialization = scanner.nextLine();
 
         }
 
-        if(position.equals("Student"))  newUser = new Student(firstname, lastname, username, email, password, id,)
 
-        userList.add();
+        userList.add(new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
+                course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay()));
 
     }
 

@@ -5,7 +5,7 @@ import java.util.Vector;
 public class Schedule {
 
     // Replace "invalid" with the appropriate data type or use a comment to indicate the intention.
-
+    public Schedule(){};
     private String ID;
     private Vector<Subject> listOfSubjects;
 

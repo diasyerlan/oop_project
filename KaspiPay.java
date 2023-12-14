@@ -1,9 +1,11 @@
 package proj;
 
 public class KaspiPay implements paymentStrategy {
-    
+
     private String phoneNumber;
-    
+    public KaspiPay() {
+        phoneNumber = "";
+    }
     private String getPhoneNumber() {
         return this.phoneNumber;
     }
