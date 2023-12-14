@@ -1,22 +1,15 @@
 package proj;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Transcript {
 
-    private Map<Semester, Map<Course, Mark>> transcript;
-    private Student student;
-    private Course course;
-    private Semester semester;
+    public Map<Semester, Map<Course, Mark>> transcript;
 
-    public Map<Semester, Map<Course, Mark>> getTranscript() {
-        return this.transcript;
-    }
-
-    public void setTranscript(Map<Semester, Map<Course, Mark>> transcript) {
-        this.transcript = transcript;
-    }
-
+public Transcript() {
+        transcript = new HashMap<>();
+}
     // Operations
 
     @Override

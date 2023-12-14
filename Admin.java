@@ -89,7 +89,7 @@ public class Admin {
 
 
         userList.add(new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
-                course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay()));
+                course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript()));
 
     }
 

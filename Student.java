@@ -16,6 +16,7 @@ public class Student extends User implements CanBeResearcher {
     private StudentOrganization studentOrganization;
     private Transcript transcript;
 
+
     public Student(String firstName, String lastName, String username, String email, String password, String ID, Degree studentDegree,
                    double gpa, int course, Faculty faculty, String specialization, Vector<Book> booksTaken, Schedule schedule,
                    paymentStrategy paymentStrategy, StudentOrganization studentOrganization, Transcript transcript) {

@@ -6,8 +6,10 @@ public class StudentOrganization {
     
     private String name;
     private Vector<Student> members;
-    private Student student;
-    
+    public StudentOrganization() {
+        name = "";
+        members = new Vector<>();
+    }
     private String getName() {
         return this.name;
     }
