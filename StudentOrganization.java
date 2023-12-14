@@ -1,5 +1,4 @@
 package proj;
-<<<<<<< HEAD
 
 import java.util.Vector;
 
@@ -29,7 +28,6 @@ public class StudentOrganization {
 
     // TODO: Implement your methods
 
-=======
 public class StudentOrganization {
     
     private String name;
@@ -73,7 +71,7 @@ public class StudentOrganization {
     }
     
     public Vector<Student> getOrganizationMembers() {
-    	 return members != null ? members.size() : 0;
+        return null;
     }
->>>>>>> 7102faecff0029c32debbe45de8dbd1879cb28e6
+    }
 }
