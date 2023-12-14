@@ -25,8 +25,14 @@ public class Main {
                 else {
                     System.out.println("Incorrect uername or password. Try again:");
                 }
-
             }
+            System.out.println("1 - Add User");
+            System.out.println("2 - Remove User");
+            System.out.println("3 - Update User");
+            System.out.println("4 - change Address");
+            System.out.println("5 - change Credit Card name");
+
+            System.out.println("Type the appropriate number to take action: ");
         }
     }
 }
