@@ -13,7 +13,7 @@ public class Mark{
     // Getters and setters
 
     public double getPercentage() {
-        return this.percentage;
+        return percentage;
     }
 
     public void setPercentage(double percentage) {
@@ -21,7 +21,7 @@ public class Mark{
     }
 
     public String getLetterMark() {
-        return this.letterMark;
+        return letterMark;
     }
 
     public void setLetterMark(String letterMark) {
@@ -29,7 +29,7 @@ public class Mark{
     }
 
     public double getGPA() {
-        return this.GPA;
+        return GPA;
     }
 
     public void setGPA(double GPA) {
@@ -37,7 +37,7 @@ public class Mark{
     }
 
     public double getFirstAttestation() {
-        return this.firstAttestation;
+        return firstAttestation;
     }
 
     public void setFirstAttestation(double firstAttestation) {
@@ -45,7 +45,7 @@ public class Mark{
     }
 
     public double getSecondAttestation() {
-        return this.secondAttestation;
+        return secondAttestation;
     }
 
     public void setSecondAttestation(double secondAttestation) {
@@ -53,7 +53,7 @@ public class Mark{
     }
 
     public double getFinalScore() {
-        return this.finalScore;
+        return finalScore;
     }
 
     public void setFinalScore(double finalScore) {
@@ -61,7 +61,7 @@ public class Mark{
     }
 
     public String getGradesLetters() {
-        return this.gradesLetters;
+        return gradesLetters;
     }
 
     public void setGradesLetters(String gradesLetters) {
@@ -71,13 +71,21 @@ public class Mark{
     // Additional methods
 
     public double calculateFinalExamScore() {
-        // TODO: Implement the logic to calculate the final exam score
-        return 0.0;
+
+        double finalScore = firstAttestation + secondAttestation;
+        return finalScore;
     }
 
     @Override
     public String toString() {
-        // TODO: Implement the logic to represent the object as a string
-        return "";
+        return "Mark{" +
+                "percentage=" + percentage +
+                ", letterMark='" + letterMark + '\'' +
+                ", GPA=" + GPA +
+                ", firstAttestation=" + firstAttestation +
+                ", secondAttestation=" + secondAttestation +
+                ", finalScore=" + finalScore +
+                ", gradesLetters='" + gradesLetters + '\'' +
+                '}';
     }
 }

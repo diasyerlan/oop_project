@@ -1,5 +1,7 @@
 package proj;
 
-public enum Degree {
+import java.io.Serializable;
+
+public enum Degree implements Serializable {
 	BACHELOR, PHD, MASTER
 }

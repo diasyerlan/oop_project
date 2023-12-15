@@ -1,6 +1,8 @@
 package proj;
 
-public class KaspiPay implements paymentStrategy {
+import java.io.Serializable;
+
+public class KaspiPay implements paymentStrategy, Serializable {
 
     private String phoneNumber;
     public KaspiPay() {
@@ -9,13 +11,17 @@ public class KaspiPay implements paymentStrategy {
     private String getPhoneNumber() {
         return this.phoneNumber;
     }
-    
+
     private void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     @Override
     public void pay(int sum) {
+        System.out.println("Payment of " + sum + " KZT made using KaspiPay for phone number " + phoneNumber);
+    }
 
+    public String toString() {
+        return "Kaspi";
     }
 }

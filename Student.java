@@ -1,9 +1,10 @@
 package proj;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class Student extends User implements CanBeResearcher {
+public class Student extends User implements CanBeResearcher, Serializable {
 
     private Degree studentDegree;
     private double gpa;
@@ -110,7 +111,20 @@ public class Student extends User implements CanBeResearcher {
 
     @Override
     public String toString() {
-        // TODO: Implement toString
-        return "";
+        return String.format("Student %s %s (ID: %s)%n" +
+                        "  Degree: %s%n" +
+                        "  GPA: %.2f%n" +
+                        "  Course: %d%n" +
+                        "  Faculty: %s%n" +
+                        "  Specialization: %s%n" +
+                        "  Books Taken: %s%n" +
+                        "  Schedule: %s%n" +
+                        "  Payment Strategy: %s%n" +
+                        "  Student Organization: %s%n" +
+                        "  Transcript: %s",
+                getFirstName(), getLastName(), getID(),
+                studentDegree, gpa, course, faculty, specialization,
+                booksTaken, schedule, paymentStrategy, studentOrganization, transcript);
     }
+
 }

@@ -1,8 +1,9 @@
 package proj;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Admin admin = Admin.getInstance();
 
@@ -34,7 +35,14 @@ public class Main {
 
             System.out.println("Type the appropriate number to take action: ");
             int selected = scanner.nextInt();
+            scanner.nextLine();
             if(selected == 1) admin.addUser();
+            else if(selected == 2) {
+                System.out.println("Enter the ID of user you want to remove:");
+                String id = scanner.nextLine();
+                admin.removeUser(id);
+                admin.closeStreams();
+            }
 
         }
     }

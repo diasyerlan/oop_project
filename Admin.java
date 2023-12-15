@@ -1,7 +1,8 @@
 package proj;
+import java.io.*;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.Scanner;
+
 public class Admin {
 
     private static Admin instance;
@@ -10,18 +11,34 @@ public class Admin {
     public String username = "Admin";
     public String password = "12345";
 
+    private File file = new File("Users.txt");
+    FileInputStream fis = new FileInputStream(file);
+    ObjectInputStream ois = new ObjectInputStream(fis);
+    private FileOutputStream fos;
+    private ObjectOutputStream oos;
+
     // Private constructor to prevent instantiation
-    private Admin() {
-        // Initialize any necessary attributes
+    private Admin() throws IOException {
+        // Check if the file already exists
+        if (file.exists()) {
+            // If the file exists, open it for appending
+            fos = new FileOutputStream(file, true);
+        } else {
+            // If the file doesn't exist, create a new one
+            fos = new FileOutputStream(file);
+        }
+
+        // Create the ObjectOutputStream
+        oos = new ObjectOutputStream(fos);
     }
 
-    String firstname, lastname, userName, passWord, id, email, specialization;
+    String firstname, lastname, userName, passWord, id, email, specialization, facul;
     int course;
     double gpa;
     Degree degree;
     Faculty faculty;
     // Singleton pattern to get the instance of Admin
-    public static Admin getInstance() {
+    public static Admin getInstance() throws IOException {
         if (instance == null) {
             instance = new Admin();
         }
@@ -51,7 +68,7 @@ public class Admin {
 
     // Operations
 
-    public void addUser() {
+    public void addUser() throws IOException {
         System.out.println("You are going to add a new user to the System. Please write the descriptions of ther user.");
         System.out.println("Whom do you want to add?");
 
@@ -71,15 +88,19 @@ public class Admin {
 
             System.out.println("Course: ");
             course = scanner.nextInt();
+            scanner.nextLine();  // Consume the newline character
+
 
             System.out.println("Faculty: ");
-            String facul = scanner.nextLine();
+            facul = scanner.nextLine();
             faculty = Faculty.BS;
-            if(facul.equals("FIT")) faculty = Faculty.FIT;
-            else if(facul.equals("KMA")) faculty = Faculty.KMA;
-            else if(facul.equals("SPE")) faculty = Faculty.SPE;
-            else if(facul.equals("ISE")) faculty = Faculty.ISE;
-            else if(facul.equals("SG")) faculty = Faculty.SG;
+            switch (facul) {
+                case "FIT" -> faculty = Faculty.FIT;
+                case "KMA" -> faculty = Faculty.KMA;
+                case "SPE" -> faculty = Faculty.SPE;
+                case "ISE" -> faculty = Faculty.ISE;
+                case "SG" -> faculty = Faculty.SG;
+            }
 
 
             System.out.println("specialization: ");
@@ -88,15 +109,45 @@ public class Admin {
         }
 
 
-        userList.add(new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
-                course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript()));
+        User newUser = new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
+                course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript());
+        oos.writeObject(newUser);
+
 
         System.out.println("Student added successfully!");
+        System.out.println(newUser.toString());
 
     }
 
-    public void removeUser() {
-        // TODO: Implement removeUser method
+    public void removeUser(String userID) throws IOException {
+        try {
+            try {
+                while (true) {
+                    User user = (User) ois.readObject();
+                    userList.add(user);
+                }
+            } catch (ClassNotFoundException | IOException e) {
+                // EOFException indicates end of file reached
+                // ClassNotFoundException may occur if the object read is not of type User
+            }
+            boolean userRemoved = false;
+            for (User user : userList) {
+                if (user.getID().equals(userID)) {
+                    userList.remove(user);
+                    userRemoved = true;
+                    break;
+                }
+            }
+            if (!userRemoved) {
+                System.out.println("User with ID " + userID + " not found.");
+                return;
+            }
+            for (User user : userList) oos.writeObject(user);
+            System.out.println("User with ID " + userID + " removed successfully.");
+        }
+        catch (IOException e) {
+            e.printStackTrace();  // Handle the exception appropriately
+        }
     }
 
     public String updateUser() {
@@ -119,5 +170,10 @@ public class Admin {
 
     public void changeCreditCard() {
         // TODO: Implement changeCreditCard method
+    }
+    public void closeStreams() throws IOException {
+        // Close the streams when they are no longer needed
+        oos.close();
+        fos.close();
     }
 }

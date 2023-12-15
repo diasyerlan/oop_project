@@ -1,9 +1,10 @@
 package proj;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Transcript {
+public class Transcript implements Serializable {
 
     public Map<Semester, Map<Course, Mark>> transcript;
 

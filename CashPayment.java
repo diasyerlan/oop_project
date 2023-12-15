@@ -14,12 +14,7 @@ public class CashPayment implements paymentStrategy {
 
     @Override
     public void pay(int sum) {
-
+        System.out.println("Payment of " + sum + " KZT made in cash.");
+        setPaidWithCash(true);
     }
-
-    // Implement methods from the PaymentStrategy interface
-    // ...
-
-    // Additional methods related to cash payments
-    // ...
 }
