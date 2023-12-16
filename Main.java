@@ -27,6 +27,7 @@ public class Main {
                     System.out.println("Incorrect uername or password. Try again:");
                 }
             }
+            System.out.println("0 - Show all users");
             System.out.println("1 - Add User");
             System.out.println("2 - Remove User");
             System.out.println("3 - Update User");
