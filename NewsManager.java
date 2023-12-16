@@ -1,12 +1,13 @@
 package proj;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class NewsManager extends Manager {
     private News news;
 
-    public NewsManager(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
-        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+    public NewsManager(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID, hireDate, workExperience);
     }
 
     // Constructors

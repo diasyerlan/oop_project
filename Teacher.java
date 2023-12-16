@@ -1,19 +1,23 @@
 package proj;
 
+import java.util.Date;
 import java.util.Vector;
 
 public class Teacher extends Employee implements CanBeResearcher {
+    private static final long serialVersionUID = 1L;
 
     private TeacherType teacherType;
-    private String teacherName;
-    private Integer teacherId;
     private Faculty faculty;
     private Vector<Course> coursesTaken;
     private Schedule schedule;
-    private Mark mark;
 
-    public Teacher(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
-        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+    public Teacher(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience, TeacherType teacherType,
+                   Faculty faculty, Vector<Course> coursesTaken, Schedule schedule) {
+        super(firstName, lastName, username, email, password, ID, hireDate, workExperience);
+        this.teacherType = teacherType;
+        this.faculty = faculty;
+        this.coursesTaken = coursesTaken;
+        this.schedule = schedule;
     }
 
     public TeacherType getTeacherType() {
@@ -24,21 +28,6 @@ public class Teacher extends Employee implements CanBeResearcher {
         this.teacherType = teacherType;
     }
 
-    public String getTeacherName() {
-        return this.teacherName;
-    }
-
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
-
-    public Integer getTeacherId() {
-        return this.teacherId;
-    }
-
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
-    }
 
     public Faculty getFaculty() {
         return this.faculty;
@@ -84,8 +73,13 @@ public class Teacher extends Employee implements CanBeResearcher {
 
     @Override
     public String toString() {
-        // TODO: Implement your method
-        return "";
+        return String.format("Teacher %s %s (ID: %s)%n" +
+                        "  Username: %s%n" +
+                        "  Email: %s%n" +
+                        "  Hire Date: %s%n" +
+                        "  Work Experience: %d years",
+                getFirstName(), getLastName(), getID(),
+                getUsername(), getEmail(), getHireDate(), getWorkExperience());
     }
 
     public boolean putFirstAttestationMark() {

@@ -1,8 +1,9 @@
 package proj;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class Course {
+public class Course implements Serializable {
 
     private String courseName;
     private Integer creditsNumber;
@@ -10,11 +11,14 @@ public class Course {
     private Vector<Teacher> listOfInstructors;
     private String courseCode;
     private Integer maxStudentNumber;
-    private Transcript transcript;
 
     // Constructors, getters, and setters for the class attributes
 
     // Constructors
+
+//    public Course(String courseName) {
+//        if(courseName.equals())
+//    }
     public Course(String courseName, Integer creditsNumber, String courseCode, Integer maxStudentNumber) {
         this.courseName = courseName;
         this.creditsNumber = creditsNumber;

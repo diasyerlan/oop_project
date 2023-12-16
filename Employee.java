@@ -1,38 +1,30 @@
 package proj;
 
+import java.util.Date;
 import java.util.Vector;
 
 public class Employee extends User {
 
-    private Integer salary;
-    private Integer hireDate;
+    private Date hireDate;
     private Integer workExperience;
     private Security security;
     private Message message;
 
     // Constructors
     public Employee(String firstName, String lastName, String username, String email,
-                    String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
+                    String password, String ID, Date hireDate, Integer workExperience) {
         super(firstName, lastName, username, email, password, ID);
-        this.salary = salary;
         this.hireDate = hireDate;
         this.workExperience = workExperience;
     }
 
     // Getters and setters
-    public Integer getSalary() {
-        return this.salary;
-    }
 
-    public void setSalary(Integer salary) {
-        this.salary = salary;
-    }
-
-    public Integer getHireDate() {
+    public Date getHireDate() {
         return this.hireDate;
     }
 
-    public void setHireDate(Integer hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 

@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         Admin admin = Admin.getInstance();
 
@@ -41,7 +41,9 @@ public class Main {
                 System.out.println("Enter the ID of user you want to remove:");
                 String id = scanner.nextLine();
                 admin.removeUser(id);
-                admin.closeStreams();
+            }
+            else if(selected == 0) {
+                admin.readAllUsers();
             }
 
         }

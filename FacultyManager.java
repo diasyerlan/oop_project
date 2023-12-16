@@ -1,5 +1,6 @@
 package proj;
 
+import java.util.Date;
 import java.util.Queue;
 
 public class FacultyManager extends Manager {
@@ -9,9 +10,9 @@ public class FacultyManager extends Manager {
 
     // Constructors
     public FacultyManager(String firstName, String lastName, String username, String email,
-                          String password, String ID, Integer salary, Integer hireDate,
+                          String password, String ID, Date hireDate,
                           Integer workExperience, String faculty) {
-        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+        super(firstName, lastName, username, email, password, ID, hireDate, workExperience);
         this.faculty = faculty;
     }
 

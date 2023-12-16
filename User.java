@@ -1,25 +1,19 @@
 package proj;
 
-public class User {
+import java.io.Serializable;
 
-    private String firstName;
-    private String lastName;
+public class User implements Serializable {
+
+    public String firstName;
+    public String lastName;
     private String username;
     private String email;
     private String password;
-    private String ID;
-    private String position;
-    private WSP wsp;
+    public String ID;
+
 
     // Constructors
-    public User() {
-        this.firstName = "";
-        lastName = "";
-        username = "";
-        email = "";
-        password = "";
-        ID = "";
-    }
+
     public User(String firstName, String lastName, String username, String email, String password, String ID) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,6 +23,8 @@ public class User {
         this.ID = ID;
     }
 
+    public User(){
+    }
     // Getters and setters
     public String getFirstName() {
         return this.firstName;

@@ -1,10 +1,14 @@
 package proj;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class Student extends User implements CanBeResearcher, Serializable {
+public class Student extends User implements CanBeResearcher {
+    private static final long serialVersionUID = 1L;
 
     private Degree studentDegree;
     private double gpa;
@@ -17,6 +21,19 @@ public class Student extends User implements CanBeResearcher, Serializable {
     private StudentOrganization studentOrganization;
     private Transcript transcript;
 
+    public Student(){
+        super("", "", "", "", "", "");
+        studentDegree = Degree.BACHELOR;
+        gpa = 0;
+        course = 1;
+        faculty = Faculty.BS;
+        specialization = "";
+        booksTaken = new Vector<>();
+        schedule = new Schedule();
+        paymentStrategy = new KaspiPay();
+        studentOrganization = new StudentOrganization();
+        transcript = new Transcript();
+    }
 
     public Student(String firstName, String lastName, String username, String email, String password, String ID, Degree studentDegree,
                    double gpa, int course, Faculty faculty, String specialization, Vector<Book> booksTaken, Schedule schedule,
@@ -34,7 +51,6 @@ public class Student extends User implements CanBeResearcher, Serializable {
         this.transcript = transcript;
 
     }
-
 
 
     private Degree getStudentDegree() {
@@ -112,6 +128,7 @@ public class Student extends User implements CanBeResearcher, Serializable {
     @Override
     public String toString() {
         return String.format("Student %s %s (ID: %s)%n" +
+                        "  Password: %s%n" +
                         "  Degree: %s%n" +
                         "  GPA: %.2f%n" +
                         "  Course: %d%n" +
@@ -122,7 +139,7 @@ public class Student extends User implements CanBeResearcher, Serializable {
                         "  Payment Strategy: %s%n" +
                         "  Student Organization: %s%n" +
                         "  Transcript: %s",
-                getFirstName(), getLastName(), getID(),
+                firstName, lastName, ID, getPassword(),
                 studentDegree, gpa, course, faculty, specialization,
                 booksTaken, schedule, paymentStrategy, studentOrganization, transcript);
     }

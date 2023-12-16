@@ -1,28 +1,14 @@
 package proj;
 
+import java.util.Date;
+
 public class Security extends Employee {
+    private static final long serialVersionUID = 1L;
 
-    private String Name;
-    private Integer Age;
 
-    public Security(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
-        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
-    }
 
-    private String getName() {
-        return this.Name;
-    }
-
-    private void setName(String Name) {
-        this.Name = Name;
-    }
-
-    private Integer getAge() {
-        return this.Age;
-    }
-
-    private void setAge(Integer Age) {
-        this.Age = Age;
+    public Security(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID,hireDate, workExperience);
     }
 
     // Operations
@@ -48,5 +34,12 @@ public class Security extends Employee {
 
     public void callForHelp() {
         // TODO: Implement the logic for calling for help
+    }
+    public String toString() {
+        return String.format("Security %s %s (ID: %s)%n" +
+                        "  Hire Date: %s%n" +
+                        "  Work Experience: %d years%n",
+                getFirstName(), getLastName(), getID(),
+                getHireDate(), getWorkExperience());
     }
 }

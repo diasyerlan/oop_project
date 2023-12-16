@@ -1,35 +1,16 @@
 package proj;
 
+import java.util.Date;
+
 public class Cleaner extends Employee {
+    private static final long serialVersionUID = 1L;
 
-    private String name;
-    private Integer age;
 
-    public Cleaner(String firstName, String lastName, String username, String email, String password, String ID, Integer salary, Integer hireDate, Integer workExperience) {
-        super(firstName, lastName, username, email, password, ID, salary, hireDate, workExperience);
+    public Cleaner(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience) {
+        super(firstName, lastName, username, email, password, ID,hireDate, workExperience);
     }
 
-    // Constructors
-
-
-    // Getters and setters
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return this.age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    // Operations
+    // Constructo
 
     public void cleanTheRestroom() {
         // TODO: Implement cleanTheRestroom method
@@ -45,5 +26,12 @@ public class Cleaner extends Employee {
 
     public void makeReport() {
         // TODO: Implement makeReport method
+    }
+    public String toString() {
+        return String.format("Security %s %s (ID: %s)%n" +
+                        "  Hire Date: %s%n" +
+                        "  Work Experience: %d years%n",
+                getFirstName(), getLastName(), getID(),
+                getHireDate(), getWorkExperience());
     }
 }
