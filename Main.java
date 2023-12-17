@@ -31,8 +31,6 @@ public class Main {
             System.out.println("1 - Add User");
             System.out.println("2 - Remove User");
             System.out.println("3 - Update User");
-            System.out.println("4 - Change Address");
-            System.out.println("5 - Change Credit Card name");
 
             System.out.println("Type the appropriate number to take action: ");
             int selected = scanner.nextInt();
@@ -43,9 +41,17 @@ public class Main {
                 String id = scanner.nextLine();
                 admin.removeUser(id);
             }
+            else if(selected == 3) {
+                while (true) {
+                    System.out.println("Enter the ID of user you want to update:");
+                    String id = scanner.nextLine();
+                    if(admin.updateUser(id)) break;
+                }
+            }
             else if(selected == 0) {
                 admin.readAllUsers();
             }
+
 
         }
     }

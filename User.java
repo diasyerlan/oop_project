@@ -3,6 +3,8 @@ package proj;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    private static final long serialVersionUID = -7570589153079397503L;
+
 
     public String firstName;
     public String lastName;
@@ -24,6 +26,14 @@ public class User implements Serializable {
     }
 
     public User(){
+    }
+    public static void updateUser() {
+        System.out.println("1 - Change firstname");
+        System.out.println("2 - Change lastname");
+        System.out.println("3 - Change username");
+        System.out.println("4 - Change email");
+        System.out.println("5 - Change password");
+        System.out.println("6 - Change ID");
     }
     // Getters and setters
     public String getFirstName() {

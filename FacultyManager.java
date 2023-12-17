@@ -4,24 +4,24 @@ import java.util.Date;
 import java.util.Queue;
 
 public class FacultyManager extends Manager {
-
-    private String faculty;
+    private static final long serialVersionUID = -1475904321287980890L;
+    private Faculty faculty;
     private Queue<Request> listOfRequestsFaculty;
 
     // Constructors
     public FacultyManager(String firstName, String lastName, String username, String email,
                           String password, String ID, Date hireDate,
-                          Integer workExperience, String faculty) {
+                          Integer workExperience, Faculty faculty) {
         super(firstName, lastName, username, email, password, ID, hireDate, workExperience);
         this.faculty = faculty;
     }
 
     // Getters and setters
-    public String getFaculty() {
+    public Faculty getFaculty() {
         return this.faculty;
     }
 
-    public void setFaculty(String faculty) {
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
 
@@ -80,5 +80,13 @@ public class FacultyManager extends Manager {
 
     public void adviseStudents() {
         // TODO: Implement adviseStudents method
+    }
+    public String toString() {
+        return String.format("Faculty Manager %s %s (ID: %s)%n" +
+                        "  Hire Date: %s%n" +
+                        "  Work Experience: %d years%n" +
+                        "  Faculty: %s%n",
+                getFirstName(), getLastName(), getID(),
+                getHireDate(), getWorkExperience(), getFaculty());
     }
 }

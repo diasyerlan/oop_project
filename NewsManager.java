@@ -44,4 +44,12 @@ public class NewsManager extends Manager {
         this.news = null;
         return true;
     }
+    public String toString() {
+        return String.format("News Manager %s %s (ID: %s)%n" +
+                        "  Hire Date: %s%n" +
+                        "  Work Experience: %d years%n" +
+                        "  Faculty: %s%n",
+                getFirstName(), getLastName(), getID(),
+                getHireDate(), getWorkExperience());
+    }
 }

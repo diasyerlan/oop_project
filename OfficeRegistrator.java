@@ -64,4 +64,12 @@ public class OfficeRegistrator extends Manager {
     public void getMenu() {
         // TODO: Implement logic for getting the menu
     }
+    public String toString() {
+        return String.format("Office Registrar %s %s (ID: %s)%n" +
+                        "  Hire Date: %s%n" +
+                        "  Work Experience: %d years%n" +
+                        "  Faculty: %s%n",
+                getFirstName(), getLastName(), getID(),
+                getHireDate(), getWorkExperience());
+    }
 }

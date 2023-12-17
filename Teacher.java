@@ -19,7 +19,12 @@ public class Teacher extends Employee implements CanBeResearcher {
         this.coursesTaken = coursesTaken;
         this.schedule = schedule;
     }
+    public static void updateTeacher() {
+        System.out.println("6 - Change Teacher Type");
+        System.out.println("7 - Change Faculty");
+        System.out.println("8 - Change Courses Taken");
 
+    }
     public TeacherType getTeacherType() {
         return this.teacherType;
     }

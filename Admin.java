@@ -1,4 +1,5 @@
 package proj;
+import javax.swing.text.Style;
 import java.io.*;
 import java.util.*;
 
@@ -73,7 +74,7 @@ public class Admin {
     public void addUser() throws IOException {
 
         System.out.println("You are going to add a new user to the System. Please write the descriptions of ther user.");
-        System.out.println("Whom do you want to add? Choose between these: Student, Teacher, Librarian, Cleaner, Security");
+        System.out.println("Whom do you want to add? Choose between these: Student, Teacher, Librarian, Cleaner, Security, Manager");
 
         while (true) {
             String position = scanner.nextLine();
@@ -154,13 +155,37 @@ public class Admin {
                 Serialization.write(userList, "Users.txt");
                 break;
 
-            } else if (position.equals("Librarian") || position.equals("Security") || position.equals("Cleaner")) {
+            } else if (position.equals("Librarian") || position.equals("Security") || position.equals("Cleaner") || position.equals("Manager")) {
                 commonQuestions();
                 commonEmployeeQuestions();
                 if (position.equals("Librarian"))
                     newUser = new Librarian(firstname, lastname, username, email, passWord, id, hireDate, workExp);
                 else if (position.equals("Security"))
                     newUser = new Security(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+                else if (position.equals("Manager")) {
+                    System.out.println("Choose the type of Manager: ");
+                    System.out.println("1 - News Manager");
+                    System.out.println("2 - Office Registrar");
+                    System.out.println("3 - Faculty Manager");
+                    int variant = scanner.nextInt();
+                    scanner.nextLine();
+                    if(variant == 1) newUser = new NewsManager(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+                    else if(variant == 2) newUser = new OfficeRegistrator(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+                    else {
+                        System.out.println("Faculty. Choose Faculty between these: (FIT, BS, KMA, SPE, ISE, SG)");
+                        String facul = scanner.nextLine();
+                        Faculty faculty = Faculty.BS;
+                        switch (facul) {
+                            case "FIT" -> faculty = Faculty.FIT;
+                            case "KMA" -> faculty = Faculty.KMA;
+                            case "SPE" -> faculty = Faculty.SPE;
+                            case "ISE" -> faculty = Faculty.ISE;
+                            case "SG" -> faculty = Faculty.SG;
+                        }
+                        newUser = new FacultyManager(firstname, lastname, username, email, passWord, id, hireDate, workExp, faculty);
+                    }
+
+                }
                 else newUser = new Cleaner(firstname, lastname, username, email, passWord, id, hireDate, workExp);
                 break;
             } else System.out.println("Wrong type of user! Try again: ");
@@ -181,18 +206,151 @@ public class Admin {
     public void removeUser(String userID) throws IOException, ClassNotFoundException {
         List<User> usersToRemove = new ArrayList<>();
         for(User user : userList) {
-            if(user.getID().equals(userID)) {
+            String user_id = user.getID();
+            if (user_id != null && user_id.equals(userID)) {
                 usersToRemove.add(user);
             }
         }
         userList.removeAll(usersToRemove);
         Serialization.write(userList, "Users.txt");
+        System.out.println("User with ID" + userID + " is removed!" );
     }
 
 
-    public String updateUser() {
-        // TODO: Implement updateUser method
-        return "";
+
+    public boolean updateUser(String userID) throws IOException {
+        User toUpdate = null;
+        for(User user: userList) {
+            String user_id = user.getID();
+            if (user_id != null && user_id.equals(userID)) {
+                toUpdate = user;
+            }
+        }
+
+        if (toUpdate == null) {
+            System.out.println("User not found. Try again!");
+            return false;
+        } else {
+            System.out.println(toUpdate.toString());
+            User.updateUser();
+            if (toUpdate instanceof Student) Student.updateUser();
+            else if (toUpdate instanceof Employee) Employee.updateEmployee();
+            int variant = scanner.nextInt();
+            scanner.nextLine();
+            if(variant == 1) {
+                System.out.println("Type the updated name: ");
+                String newName = scanner.nextLine();
+                toUpdate.setFirstName(newName);
+                System.out.println("The firstname of User changed successfully!");
+            } else if (variant == 2) {
+                System.out.println("Type the updated lastname: ");
+                String newName = scanner.nextLine();
+                toUpdate.setLastName(newName);
+                System.out.println("The lastname of User changed successfully!");
+            }
+            else if (variant == 3) {
+                System.out.println("Type the updated username: ");
+                String newName = scanner.nextLine();
+                toUpdate.setUsername(newName);
+                System.out.println("The username of User changed successfully!");
+            } else if (variant == 4) {
+                System.out.println("Type the updated email: ");
+                String newName = scanner.nextLine();
+                toUpdate.setEmail(newName);
+                System.out.println("The email of User changed successfully!");
+            } else if (variant == 5) {
+                System.out.println("Type the updated password: ");
+                String newName = scanner.nextLine();
+                toUpdate.setPassword(newName);
+                System.out.println("The password of User changed successfully!");
+            } else if (variant == 6) {
+                System.out.println("Type the updated ID: ");
+                String newName = scanner.nextLine();
+                toUpdate.setID(newName);
+                System.out.println("The ID of User changed successfully!");
+            }
+            if (toUpdate instanceof Student) {
+                Student.updateUser();
+                if (variant == 7) {
+                    System.out.println("Type the updated Student Degree: ");
+                    String deg = scanner.nextLine();
+                    Degree degree = Degree.PHD;
+                    if (deg.equals("Bachelor")) degree = Degree.BACHELOR;
+                    else if (deg.equals("Master")) degree = Degree.MASTER;
+                    ((Student) toUpdate).setStudentDegree(degree);
+                    System.out.println("The Degree of Student changed successfully!");
+                }
+                else if(variant == 8) {
+                    System.out.println("Type the updated GPA: ");
+                    Double newGpa = scanner.nextDouble();
+                    ((Student) toUpdate).setGpa(newGpa);
+                    System.out.println("The GPA of Student changed successfully!");
+                }
+                else if(variant == 9) {
+                    System.out.println("Type the updated Course: ");
+                    int newCourse = scanner.nextInt();
+                    scanner.nextInt();
+                    ((Student) toUpdate).setCourse(newCourse);
+                    System.out.println("The Course of Student changed successfully!");
+                }
+                else if(variant == 10) {
+                    System.out.println("Type the updated Faculty: ");
+                    String newfac = scanner.nextLine();
+                    Faculty faculty = Faculty.BS;
+                    switch (newfac) {
+                        case "FIT" -> faculty = Faculty.FIT;
+                        case "KMA" -> faculty = Faculty.KMA;
+                        case "SPE" -> faculty = Faculty.SPE;
+                        case "ISE" -> faculty = Faculty.ISE;
+                        case "SG" -> faculty = Faculty.SG;
+                    }
+                    ((Student) toUpdate).setFaculty(faculty);
+                    System.out.println("The Faculty of Student changed successfully!");
+                } else if(variant == 11) {
+                    System.out.println("Type the updated Course: ");
+                    String newSpec = scanner.nextLine();
+                    ((Student) toUpdate).setSpecialization(newSpec);
+                    System.out.println("The Specialization of Student changed successfully!");
+                } else if(variant == 12) {
+                    System.out.println("Type the updated last Payment method. Choose between Kaspi, Halyk, Cash ");
+                    String newpay = scanner.nextLine();
+                    new KaspiPay();
+                    paymentStrategy pay = switch (newpay) {
+                        case "Kaspi" -> new KaspiPay();
+                        case "Halyk" -> new HalykPayment();
+                        case "Cash" -> new CashPayment();
+                        default -> new KaspiPay();
+                    };
+                    ((Student) toUpdate).setPaymentMethod(pay);
+                    System.out.println("The Last Payment method of Student changed successfully!");
+                }
+
+            } else if (toUpdate instanceof Employee) {
+                Employee.updateUser();
+                if (variant == 7) {
+                    System.out.println("Type the updated employee hire date. Format yy/mm/dd: ");
+                    String date = scanner.nextLine();
+                    StringTokenizer tokenizer = new StringTokenizer(date, "/");
+                    Vector<Integer> dates = new Vector();
+                    while (tokenizer.hasMoreTokens()) dates.add(Integer.parseInt(tokenizer.nextToken()));
+                    hireDate = new Date(dates.get(0), dates.get(1), dates.get(2));
+                    ((Employee) toUpdate).setHireDate(hireDate);
+                    System.out.println("The Hire Date of employee changed successfully!");
+                }
+                else if(variant == 9) {
+                    System.out.println("Type the updated work experience: ");
+                    int workExp = scanner.nextInt();
+                    scanner.nextLine();
+                    ((Employee) toUpdate).setWorkExperience(workExp);
+                    System.out.println("The GPA of Student changed successfully!");
+                }
+            }
+            Serialization.write(userList,"Users.txt");
+            System.out.println(toUpdate.toString());
+            return true;
+        }
+
+
     }
 
     public String getLogFiles() {

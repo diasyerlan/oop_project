@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Vector;
 
 public class Employee extends User {
-
+    private static final long serialVersionUID = 5958066297683139454L;
     private Date hireDate;
     private Integer workExperience;
     private Security security;
@@ -37,7 +37,11 @@ public class Employee extends User {
     }
 
     // Operations
+    public static void updateEmployee() {
+        System.out.println("7 - Change Hire Date");
+        System.out.println("8 - Change Work Experience");
 
+    }
     public boolean sendMessage() {
         // TODO: Implement sendMessage method
         return false;

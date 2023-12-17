@@ -51,30 +51,38 @@ public class Student extends User implements CanBeResearcher {
         this.transcript = transcript;
 
     }
+    public static void updateStudent() {
+        System.out.println("7 - Change Student Degree");
+        System.out.println("8 - Change GPA");
+        System.out.println("9 - Change Course");
+        System.out.println("10 - Change faculty");
+        System.out.println("11 - Change Specialization");
+        System.out.println("12 - Change paymentStrategy");
 
+    }
 
-    private Degree getStudentDegree() {
+    public Degree getStudentDegree() {
         return this.studentDegree;
     }
 
-    private void setStudentDegree(Degree studentDegree) {
+    public void setStudentDegree(Degree studentDegree) {
         this.studentDegree = studentDegree;
     }
 
 
-    private double getGpa() {
+    public double getGpa() {
         return this.gpa;
     }
 
-    private void setGpa(double gpa) {
+    public void setGpa(double gpa) {
         this.gpa = gpa;
     }
 
-    private Integer getCourse() {
+    public Integer getCourse() {
         return this.course;
     }
 
-    private void setCourse(Integer course) {
+    public void setCourse(Integer course) {
         this.course = course;
     }
 
@@ -82,34 +90,39 @@ public class Student extends User implements CanBeResearcher {
         return this.faculty;
     }
 
-    private void setFaculty(Faculty faculty) {
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
 
-    private String getSpecialization() {
+    public String getSpecialization() {
         return this.specialization;
     }
 
-    private void setSpecialization(String specialization) {
+    public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
 
-    private Vector<Book> getBooksTaken() {
+    public Vector<Book> getBooksTaken() {
         return this.booksTaken;
     }
 
-    private void setBooksTaken(Vector<Book> booksTaken) {
+    public void setBooksTaken(Vector<Book> booksTaken) {
         this.booksTaken = booksTaken;
     }
 
-    private Schedule getSchedule() {
+    public Schedule getSchedule() {
         return this.schedule;
     }
 
-    private void setSchedule(Schedule schedule) {
+    public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
     }
-
+    public paymentStrategy getPaymentMethod() {
+        return this.paymentStrategy;
+    }
+    public void setPaymentMethod(paymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
 
 
     // Operations (methods)

@@ -16,4 +16,9 @@ public class HalykPayment implements paymentStrategy {
     public void pay(int sum) {
         System.out.println("Payment of " + sum + " KZT made using HalykPayment for card number " + cardNumber);
     }
+
+    public String toString() {
+        return "Halyk";
+    }
+
 }

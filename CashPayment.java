@@ -17,4 +17,9 @@ public class CashPayment implements paymentStrategy {
         System.out.println("Payment of " + sum + " KZT made in cash.");
         setPaidWithCash(true);
     }
+
+    public String toString() {
+        return "Cash";
+    }
+
 }
