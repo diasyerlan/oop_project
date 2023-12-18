@@ -1,10 +1,10 @@
 package proj;
 
 import java.io.Serializable;
-import java.util.Scanner;
 import java.util.Vector;
 
 public class Student extends User implements CanBeResearcher, Serializable {
+    
 
     private Degree studentDegree;
     private double gpa;
