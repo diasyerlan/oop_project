@@ -333,8 +333,89 @@ public class Main {
                         System.out.println("1 - Put marks");
                         System.out.println("2 - view Schedule");
                         System.out.println("3 - View courses taken");
-                        System.out.println("1 - View requests");
-                        System.out.println("2 - Organize workshops");
+
+                        int selected = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if(selected == 0) {
+                            System.out.println("Write down the ID of the Student you want to get info:");
+                            String id = scanner.nextLine();
+                            boolean found = false;
+                            for(User u: Data.userList) {
+                                if (u.ID.equals(id)) {
+                                    System.out.println(u.toString());
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if(!found) System.out.println("No student found with such ID");
+                        } else if (selected == 1) {
+                            Mark  mark = new Mark();
+                            System.out.println("You are going to put marks for semester for the Student. Type the course Code you want to choosee: ");
+                            for(Course c : ((Teacher) foundUser).coursesTaken) {
+                                System.out.println(c.getCourseCode() + " - " + c.getCourseName());
+                            }
+                            String code = scanner.nextLine();
+                            Double a;
+                            for(Course c : ((Teacher) foundUser).coursesTaken) {
+                                if(c.getCourseCode().equals(code)) {
+                                    System.out.println("You selected the subject " + c.getCourseName());
+                                    System.out.println("Write the Student ID to put marks");
+                                    String id = scanner.nextLine();
+                                    for(User u: Data.userList) {
+                                        if(u.ID.equals(id) && u instanceof Student) {
+                                            for(Course co : ((Student) u).getCourses()) {
+                                                if(code.equals(co.getCourseCode())) {
+                                                    System.out.println("Choose for what you are going to set points: ");
+                                                    System.out.println("0 - First Attestation");
+                                                    System.out.println("1 - Second Attestation");
+                                                    System.out.println("2 - Final score");
+                                                    int cho = scanner.nextInt();
+                                                    scanner.nextLine();
+                                                    System.out.println("Write the first attestation point for " + u.getFirstName() + " " + u.getLastName() + " for subject " + co.getCourseName());
+                                                    if (cho == 0) {
+                                                        System.out.println("Enter first attestation score:");
+                                                        a = scanner.nextDouble();
+                                                        mark.setFirstAttestation(a);
+                                                    } else if (cho == 1) {
+                                                        System.out.println("Enter second attestation score:");
+                                                        a = scanner.nextDouble();
+                                                        mark.setSecondAttestation(a);
+                                                    } else if (cho == 2) {
+                                                        System.out.println("Enter final score:");
+                                                        a = scanner.nextDouble();
+                                                        mark.setFinalScore(a);
+                                                    }
+
+                                                    for (Map.Entry<Integer, HashMap<Course, Mark>> entry : ((Student) u).subjects.transcript.entrySet()) {
+                                                        HashMap<Course, Mark> courseMap = entry.getValue();
+                                                        for (Map.Entry<Course, Mark> courseEntry : courseMap.entrySet()) {
+                                                            Course course = courseEntry.getKey();
+                                                            if (course.getCourseCode().equals(code)) {
+                                                                System.out.println("Updating transcript for course: " + course.getCourseName());
+                                                                courseMap.put(course, mark);
+                                                            }
+                                                        }
+                                                    }
+
+// Move serialization outside the loop
+                                                    Serialization.write(Data.userList, "Users.txt");
+
+                                                    break;
+                                                }
+                                            }
+                                            break;
+
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            Serialization.write(Data.userList, "Users.txt");
+                            System.out.println("The Mark is set successfully!");
+                        }
+
+
                     } else {
                         System.out.println("Incorrect uername or password. Try again:");
                     }

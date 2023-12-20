@@ -19,7 +19,7 @@ public class Student extends User implements CanBeResearcher {
     private paymentStrategy paymentStrategy;
     private StudentOrganization studentOrganization;
     private Transcript transcript;
-    private Transcript subjects;
+    public Transcript subjects;
     public Term term;
     public String phoneNumber;
     public String creditCard;
@@ -59,12 +59,11 @@ public class Student extends User implements CanBeResearcher {
         this.subjects = new Transcript();
         this.phoneNumber = phoneNumber;
         this.creditCard = creditCard;
-
     }
 
     public static void updateStudent() {
         System.out.println("7 - Change Student Degree");
-        System.out.println("8 - Change GPA");
+        System.out.println("8 - Change GPzA");
         System.out.println("9 - Change Course");
         System.out.println("10 - Change faculty");
         System.out.println("11 - Change Specialization");
@@ -89,6 +88,18 @@ public class Student extends User implements CanBeResearcher {
             ans.append('\n');
         }
         return ans.toString();
+    }
+    public Vector<Course> getCourses() {
+        Vector<Course> vec = new Vector<>();
+        for (Map.Entry<Integer, HashMap<Course, Mark>> entry : subjects.transcript.entrySet()) {
+            HashMap<Course, Mark> courseMap = entry.getValue();
+
+            for (Map.Entry<Course, Mark> courseEntry : courseMap.entrySet()) {
+                Course course = courseEntry.getKey();
+                vec.add(course);
+            }
+        }
+        return vec;
     }
 // Hashmap<Int, vector<Course>> subjects
 
@@ -218,14 +229,17 @@ public class Student extends User implements CanBeResearcher {
         Collection<HashMap<Course, Mark>> coursesAndMarks = subjects.transcript.values();// Hashmap<S, Hasmap<C, M>>
         for(int i : semesters) {
             if(i % 2 == 1) System.out.println("Semester " + i + ": FALL");
-            System.out.println("Subject Code | " + "  Subject Name   | " + "Marks");
+            System.out.println("Subject Code | " + "  Subject Name   | " + "Attestation 1 " + "|" + " Attestation 2" + " | " + "Final score" + " | " + "Mark" );
             for(HashMap<Course, Mark> h : coursesAndMarks) {
-                for(Course c : h.keySet()) {
+                for(Map.Entry<Course, Mark> entry : h.entrySet()) {
+                    Course c = entry.getKey();
+                    Mark m = entry.getValue();
+
                     System.out.print( "   " + c.getCourseCode() + "    |  " + c.getCourseName());
                     for(int j = 0; j < (12-c.getCourseName().length()); j++) {
                         System.out.print(" ");
                     }
-                    System.out.println("    | " + c.getMark());
+                    System.out.println("    |      " + m.getFirstAttestation() + "      |    " + m.getSecondAttestation() + "        |     " + m.getFinalScore());
                 }
             }
         }

@@ -3,7 +3,7 @@ package proj;
 import java.util.Vector;
 
 public class Data {
-    public Vector<User> userList = Serialization.read("Database/Users.txt");
+    public static Vector<User> userList = Serialization.read("Database/Users.txt");
     public static Vector<Course> courses = Serialization.read("Courses.txt");
     public static Vector<Pair> requestedReg = Serialization.read("Database/RegisterRequests.txt");
     public static Vector<Book> books = Serialization.read("Database/LibraryBooks.txt");

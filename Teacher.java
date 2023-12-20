@@ -8,7 +8,7 @@ public class Teacher extends Employee implements CanBeResearcher {
 
     private TeacherType teacherType;
     private Faculty faculty;
-    private Vector<Course> coursesTaken;
+    public Vector<Course> coursesTaken;
     private Schedule schedule;
 
     public Teacher(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience, TeacherType teacherType,
@@ -42,8 +42,10 @@ public class Teacher extends Employee implements CanBeResearcher {
         this.faculty = faculty;
     }
 
-    public Vector<Course> getCoursesTaken() {
-        return this.coursesTaken;
+    public String getCoursesTaken() {
+        String ans = "";
+        for(Course c : coursesTaken) ans += c.getCourseName() + ", ";
+        return ans;
     }
 
     public void setCoursesTaken(Vector<Course> coursesTaken) {
@@ -75,7 +77,6 @@ public class Teacher extends Employee implements CanBeResearcher {
     }
 
     // Additional methods and toString()...
-
     @Override
     public String toString() {
         return String.format("Teacher %s %s (ID: %s)%n" +
@@ -83,9 +84,10 @@ public class Teacher extends Employee implements CanBeResearcher {
                         "  Password: %s%n" +
                         "  Email: %s%n" +
                         "  Hire Date: %s%n" +
-                        "  Work Experience: %d years",
+                        "  Work Experience: %d%n years" +
+                        "  Courses taken: %s",
                 getFirstName(), getLastName(), getID(),
-                getUsername(), getPassword(), getEmail(), getHireDate(), getWorkExperience());
+                getUsername(), getPassword(), getEmail(), getHireDate(), getWorkExperience(), getCoursesTaken());
     }
 
     public boolean putFirstAttestationMark() {

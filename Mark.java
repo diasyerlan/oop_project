@@ -1,6 +1,8 @@
 package proj;
 
-public class Mark{
+import java.io.Serializable;
+
+public class Mark implements Serializable {
 
     private double percentage;
     private String letterMark;
@@ -9,6 +11,16 @@ public class Mark{
     private double secondAttestation;
     private double finalScore;
     private String gradesLetters;
+    public Mark(double firstAttestation, double secondAttestation, double finalScore) {
+        this.firstAttestation = firstAttestation;
+        this.secondAttestation = secondAttestation;
+        this.finalScore = finalScore;
+    }
+    public Mark() {
+        this.firstAttestation =  0;
+        this.secondAttestation = 0;
+        this.finalScore = 0;
+    }
 
     // Getters and setters
 
