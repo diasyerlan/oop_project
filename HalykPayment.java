@@ -3,9 +3,14 @@ package proj;
 public class HalykPayment implements paymentStrategy {
 
     private String cardNumber;
-
     private String getCardNumber() {
         return this.cardNumber;
+    }
+    public HalykPayment(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+    public HalykPayment() {
+        this.cardNumber = "";
     }
 
     private void setCardNumber(String cardNumber) {

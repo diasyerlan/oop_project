@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
-public class Librarian extends Employee implements manageRequest {
+public class Librarian extends Employee{
     private static final long serialVersionUID = 5821103428083893929L;
 
     private Vector<Workshops> workshops;
@@ -33,14 +33,22 @@ public class Librarian extends Employee implements manageRequest {
         return 0;
     };
 
-    @Override
-    public void respondRequest() {
 
-    }
 
-    @Override
-    public Request getRequest() {
-        return null;
+
+    public String getRequests() {
+        System.out.println("Here are the requests: ");
+        String respond = "";
+        for(Pair<Vector<String>, String> p : Data.requestedBooks) {
+            respond += "The student ID is " + p.second + '\n';
+            respond += "Requested Books: \n";
+            for(String s : p.first) {
+                respond += s + '\n';
+            }
+            respond += '\n';
+
+        }
+        return respond;
     }
 
     public String toString() {

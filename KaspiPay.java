@@ -3,8 +3,11 @@ package proj;
 import java.io.Serializable;
 
 public class KaspiPay implements paymentStrategy, Serializable {
-
+    private static final long serialVersionUID = 6955694358215306790L;
     private String phoneNumber;
+    public KaspiPay(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
     public KaspiPay() {
         phoneNumber = "";
     }

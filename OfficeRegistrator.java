@@ -1,10 +1,9 @@
 package proj;
 
-import java.util.Date;
-import java.util.Queue;
+import java.util.*;
 
 public class OfficeRegistrator extends Manager {
-
+    private static final long serialVersionUID = -304638397009552931L;
     private Queue<Request> listOfRequestsOR;
 
     public OfficeRegistrator(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience) {
@@ -64,12 +63,27 @@ public class OfficeRegistrator extends Manager {
     public void getMenu() {
         // TODO: Implement logic for getting the menu
     }
+    public int setCourses(Student student, int semester) {
+        System.out.println("You are going to set a list of Courses for a Student");
+        if(student.term == Term.FALL) semester = student.getCourse()*2-1;
+        else semester = student.getCourse()*2;
+        System.out.println("Set courses for " + Integer.toString( semester)+ " semester");
+
+        System.out.println("Please, write the courses by coma: ");
+        return semester;
+    }
+    public void addTranscript(Student s) {
+        System.out.println("Here you can add a transcript for a semester: ");
+
+    }
+
     public String toString() {
         return String.format("Office Registrar %s %s (ID: %s)%n" +
                         "  Hire Date: %s%n" +
                         "  Work Experience: %d years%n" +
-                        "  Faculty: %s%n",
+                        "  Username: %s" +
+                        "  Password: %s",
                 getFirstName(), getLastName(), getID(),
-                getHireDate(), getWorkExperience());
+                getHireDate(), getWorkExperience(), getUsername(), getPassword());
     }
 }

@@ -4,17 +4,23 @@ import java.io.Serializable;
 import java.util.Vector;
 
 public class StudentOrganization implements Serializable {
-    
+    private static final long serialVersionUID = -8802658280658679084L;
+
     private String name;
+    private int number;
     private Vector<Student> members;
     public StudentOrganization() {
         name = "";
         members = new Vector<>();
     }
+    public StudentOrganization(String name, int number) {
+        this.name = name;
+        this.number = number;
+    }
     private String getName() {
         return this.name;
     }
-    
+
     public void setName(String name) {
         if (name != null && !name.trim().isEmpty()) {
             this.name = name;
@@ -50,5 +56,13 @@ public class StudentOrganization implements Serializable {
     public Vector<Student> getOrganizationMembers() {
         return null;
     }
+
+    public int getNumber() {
+        return number;
     }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+}
 

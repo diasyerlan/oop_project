@@ -1,5 +1,4 @@
 package proj;
-import javax.swing.text.Style;
 import java.io.*;
 import java.util.*;
 
@@ -10,7 +9,7 @@ public class Admin {
     public String password = "12345";
     User newUser = new User();
     Data data = new Data();
-    public static Vector<User> userList = Serialization.read("Users.txt");
+    public static Vector<User> userList = Serialization.read("Database/Users.txt");
 
     // Private constructor to prevent instantiation
     private Admin(){
@@ -109,8 +108,23 @@ public class Admin {
 
                 System.out.println("specialization: ");
                 String specialization = scanner.nextLine();
+
+                System.out.println("Term: ");
+                String ter = scanner.nextLine();
+                Term term = Term.FALL;
+                switch (ter) {
+                    case "Fall" -> term = Term.FALL;
+                    case "Spring" -> term = Term.SPRING;
+
+                }
+                System.out.println("Phone Number: ");
+                String phoneNumber = scanner.nextLine();
+
+                System.out.println("Credit Card number: ");
+                String creditCard = scanner.nextLine();
+
                 newUser = new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
-                        course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript());
+                        course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript(), term, phoneNumber, creditCard);
                 break;
             } else if (position.equals("Teacher")) {
                 commonQuestions();
@@ -151,17 +165,17 @@ public class Admin {
                     }
                 }
 
-                newUser = new Teacher(firstname, lastname, username, email, passWord, id, hireDate, workExp, teacherType, faculty, coursesSetting, new Schedule());
-                Serialization.write(userList, "Users.txt");
+                newUser = new Teacher(firstname, lastname, userName, email, passWord, id, hireDate, workExp, teacherType, faculty, coursesSetting, new Schedule());
+                Serialization.write(userList, "Database/Users.txt");
                 break;
 
             } else if (position.equals("Librarian") || position.equals("Security") || position.equals("Cleaner") || position.equals("Manager")) {
                 commonQuestions();
                 commonEmployeeQuestions();
                 if (position.equals("Librarian"))
-                    newUser = new Librarian(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+                    newUser = new Librarian(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                 else if (position.equals("Security"))
-                    newUser = new Security(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+                    newUser = new Security(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                 else if (position.equals("Manager")) {
                     System.out.println("Choose the type of Manager: ");
                     System.out.println("1 - News Manager");
@@ -169,8 +183,8 @@ public class Admin {
                     System.out.println("3 - Faculty Manager");
                     int variant = scanner.nextInt();
                     scanner.nextLine();
-                    if(variant == 1) newUser = new NewsManager(firstname, lastname, username, email, passWord, id, hireDate, workExp);
-                    else if(variant == 2) newUser = new OfficeRegistrator(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+                    if(variant == 1) newUser = new NewsManager(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
+                    else if(variant == 2) newUser = new OfficeRegistrator(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                     else {
                         System.out.println("Faculty. Choose Faculty between these: (FIT, BS, KMA, SPE, ISE, SG)");
                         String facul = scanner.nextLine();
@@ -182,11 +196,11 @@ public class Admin {
                             case "ISE" -> faculty = Faculty.ISE;
                             case "SG" -> faculty = Faculty.SG;
                         }
-                        newUser = new FacultyManager(firstname, lastname, username, email, passWord, id, hireDate, workExp, faculty);
+                        newUser = new FacultyManager(firstname, lastname, userName, email, passWord, id, hireDate, workExp, faculty);
                     }
-
                 }
-                else newUser = new Cleaner(firstname, lastname, username, email, passWord, id, hireDate, workExp);
+
+                else newUser = new Cleaner(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                 break;
             } else System.out.println("Wrong type of user! Try again: ");
 
@@ -194,11 +208,11 @@ public class Admin {
 
             if(userList == null) userList = new Vector<>();
         userList.add(newUser);
-        Serialization.write(userList, "Users.txt");
+        Serialization.write(userList, "Database/Users.txt");
 
 
         System.out.println("User added successfully!");
-        userList = Serialization.read("Users.txt");
+        userList = Serialization.read("Database/Users.txt");
         System.out.println(userList.lastElement().toString());
 
     }
@@ -212,7 +226,7 @@ public class Admin {
             }
         }
         userList.removeAll(usersToRemove);
-        Serialization.write(userList, "Users.txt");
+        Serialization.write(userList, "Database/Users.txt");
         System.out.println("User with ID" + userID + " is removed!" );
     }
 
@@ -345,7 +359,7 @@ public class Admin {
                     System.out.println("The GPA of Student changed successfully!");
                 }
             }
-            Serialization.write(userList,"Users.txt");
+            Serialization.write(userList, "Database/Users.txt");
             System.out.println(toUpdate.toString());
             return true;
         }

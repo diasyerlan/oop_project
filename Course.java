@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.Vector;
 
 public class Course implements Serializable {
-
+private static final long serialVersionUID = 8391106857665650604L;
     private String courseName;
     private Integer creditsNumber;
     private Vector<Course> prerequisites;
     private Vector<Teacher> listOfInstructors;
     private String courseCode;
     private Integer maxStudentNumber;
+    private Mark mark;
 
     // Constructors, getters, and setters for the class attributes
 
@@ -26,6 +27,7 @@ public class Course implements Serializable {
         this.maxStudentNumber = maxStudentNumber;
         this.prerequisites = new Vector<>();
         this.listOfInstructors = new Vector<>();
+        this.mark = null;
         // Initialize other attributes as needed
     }
 
@@ -85,6 +87,14 @@ public class Course implements Serializable {
     public String toString() {
         // TODO: Implement toString method
         return "";
+    }
+
+    public Mark getMark() {
+        return mark;
+    }
+
+    public void setMark(Mark mark) {
+        this.mark = mark;
     }
 
     // TODO: Implement other methods

@@ -11,6 +11,7 @@ public class Employee extends User {
     private Message message;
 
     // Constructors
+    public Employee(){}
     public Employee(String firstName, String lastName, String username, String email,
                     String password, String ID, Date hireDate, Integer workExperience) {
         super(firstName, lastName, username, email, password, ID);

@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 
 public class Student extends User implements CanBeResearcher {
     private static final long serialVersionUID = 1L;
@@ -20,6 +19,10 @@ public class Student extends User implements CanBeResearcher {
     private paymentStrategy paymentStrategy;
     private StudentOrganization studentOrganization;
     private Transcript transcript;
+    private Transcript subjects;
+    public Term term;
+    public String phoneNumber;
+    public String creditCard;
 
     public Student(){
         super("", "", "", "", "", "");
@@ -33,11 +36,14 @@ public class Student extends User implements CanBeResearcher {
         paymentStrategy = new KaspiPay();
         studentOrganization = new StudentOrganization();
         transcript = new Transcript();
+        term = Term.SPRING;
+        phoneNumber = "";
+        creditCard = "";
     }
 
     public Student(String firstName, String lastName, String username, String email, String password, String ID, Degree studentDegree,
                    double gpa, int course, Faculty faculty, String specialization, Vector<Book> booksTaken, Schedule schedule,
-                   paymentStrategy paymentStrategy, StudentOrganization studentOrganization, Transcript transcript) {
+                   paymentStrategy paymentStrategy, StudentOrganization studentOrganization, Transcript transcript, Term term, String phoneNumber, String creditCard) {
         super(firstName, lastName, username, email, password, ID);
         this.studentDegree = studentDegree;
         this.gpa = gpa;
@@ -49,8 +55,13 @@ public class Student extends User implements CanBeResearcher {
         this.paymentStrategy = paymentStrategy;
         this.studentOrganization = studentOrganization;
         this.transcript = transcript;
+        this.term = term;
+        this.subjects = new Transcript();
+        this.phoneNumber = phoneNumber;
+        this.creditCard = creditCard;
 
     }
+
     public static void updateStudent() {
         System.out.println("7 - Change Student Degree");
         System.out.println("8 - Change GPA");
@@ -59,6 +70,40 @@ public class Student extends User implements CanBeResearcher {
         System.out.println("11 - Change Specialization");
         System.out.println("12 - Change paymentStrategy");
 
+    }
+    String ans = "";
+    public String printAllCourses() {
+        StringBuilder ans = new StringBuilder();
+
+        for (Map.Entry<Integer, HashMap<Course, Mark>> entry : subjects.transcript.entrySet()) {
+            int semester = entry.getKey();
+            HashMap<Course, Mark> courseMap = entry.getValue();
+
+            ans.append("Semester ").append(semester).append(": ");
+
+                for (Map.Entry<Course, Mark> courseEntry : courseMap.entrySet()) {
+                    Course course = courseEntry.getKey();
+                    ans.append(course.getCourseName()).append(", ");
+                }
+
+            ans.append('\n');
+        }
+        return ans.toString();
+    }
+// Hashmap<Int, vector<Course>> subjects
+
+    public void addSubjects(int semester, Course course) {
+
+        HashMap<Course, Mark> semesterCoursesandMarks = subjects.transcript.get(semester);//HashMap<Integer, HashMap<Course, Mark>>
+
+        // If the semesterCourses is null, create a new Vector
+        if (semesterCoursesandMarks == null) {
+            semesterCoursesandMarks = new HashMap<>();
+        }
+        semesterCoursesandMarks.put(course, null);
+        subjects.transcript.put(semester,semesterCoursesandMarks);
+
+        // Add the course to the semesterCourses Vecto
     }
 
     public Degree getStudentDegree() {
@@ -141,6 +186,7 @@ public class Student extends User implements CanBeResearcher {
     @Override
     public String toString() {
         return String.format("Student %s %s (ID: %s)%n" +
+                        "  Username: %s%n" +
                         "  Password: %s%n" +
                         "  Degree: %s%n" +
                         "  GPA: %.2f%n" +
@@ -151,10 +197,56 @@ public class Student extends User implements CanBeResearcher {
                         "  Schedule: %s%n" +
                         "  Payment Strategy: %s%n" +
                         "  Student Organization: %s%n" +
-                        "  Transcript: %s",
-                firstName, lastName, ID, getPassword(),
+                        "  Transcript: %s" +
+                        "  Term: %s%n" +
+                        "  Courses: %s%n",
+
+
+                firstName, lastName, ID, getUsername(), getPassword(),
                 studentDegree, gpa, course, faculty, specialization,
-                booksTaken, schedule, paymentStrategy, studentOrganization, transcript);
+                booksTaken, schedule, paymentStrategy, studentOrganization, transcript, term, printAllCourses());
+    }
+
+    public void viewTranscript() {
+        System.out.println("ID: " + ID);
+        System.out.println("Student: " + firstName + " " + lastName);
+        System.out.println("Speciality: " + getSpecialization());
+        System.out.println("Study year: " + getCourse());
+        System.out.println("_________________");
+
+        Collection<Integer> semesters = subjects.transcript.keySet();
+        Collection<HashMap<Course, Mark>> coursesAndMarks = subjects.transcript.values();// Hashmap<S, Hasmap<C, M>>
+        for(int i : semesters) {
+            if(i % 2 == 1) System.out.println("Semester " + i + ": FALL");
+            System.out.println("Subject Code | " + "  Subject Name   | " + "Marks");
+            for(HashMap<Course, Mark> h : coursesAndMarks) {
+                for(Course c : h.keySet()) {
+                    System.out.print( "   " + c.getCourseCode() + "    |  " + c.getCourseName());
+                    for(int j = 0; j < (12-c.getCourseName().length()); j++) {
+                        System.out.print(" ");
+                    }
+                    System.out.println("    | " + c.getMark());
+                }
+            }
+        }
+
+    }
+    public void senRequestforBooks() {
+    }
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // Cast the object to the correct type
+        Student other = (Student) obj;
+
+        // Perform field-by-field comparison using Objects.equals
+        return Objects.equals(this.getUsername(), other.getUsername()) && Objects.equals(this.getPassword(), other.getPassword());
     }
 
 }

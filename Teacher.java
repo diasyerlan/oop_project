@@ -80,11 +80,12 @@ public class Teacher extends Employee implements CanBeResearcher {
     public String toString() {
         return String.format("Teacher %s %s (ID: %s)%n" +
                         "  Username: %s%n" +
+                        "  Password: %s%n" +
                         "  Email: %s%n" +
                         "  Hire Date: %s%n" +
                         "  Work Experience: %d years",
                 getFirstName(), getLastName(), getID(),
-                getUsername(), getEmail(), getHireDate(), getWorkExperience());
+                getUsername(), getPassword(), getEmail(), getHireDate(), getWorkExperience());
     }
 
     public boolean putFirstAttestationMark() {

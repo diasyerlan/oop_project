@@ -47,8 +47,7 @@ public class NewsManager extends Manager {
     public String toString() {
         return String.format("News Manager %s %s (ID: %s)%n" +
                         "  Hire Date: %s%n" +
-                        "  Work Experience: %d years%n" +
-                        "  Faculty: %s%n",
+                        "  Work Experience: %d years%n",
                 getFirstName(), getLastName(), getID(),
                 getHireDate(), getWorkExperience());
     }
