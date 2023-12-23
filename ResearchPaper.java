@@ -1,23 +1,15 @@
 package proj;
 
+import java.util.Date;
+import java.util.Vector;
+
 public class ResearchPaper {
     private String title;
-    private String content;
-    private ResearchProject researchProject;
+    private Vector<String> authors;
+    private String abstractText;
+    private Vector<String> citations;
+    private Vector<String> keywords;
+    private int year;
 
-    public String getTitle() {
-        return this.title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return this.content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

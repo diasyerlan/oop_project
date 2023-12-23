@@ -2,7 +2,7 @@ package proj;
 
 import java.util.*;
 
-public class OfficeRegistrator extends Manager {
+public class OfficeRegistrator extends Manager  {
     private static final long serialVersionUID = -304638397009552931L;
     private Queue<Request> listOfRequestsOR;
 

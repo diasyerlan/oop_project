@@ -1,6 +1,7 @@
 package proj;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Vector;
 
 public class Librarian extends Employee{
@@ -39,10 +40,10 @@ public class Librarian extends Employee{
     public String getRequests() {
         System.out.println("Here are the requests: ");
         String respond = "";
-        for(Pair<Vector<String>, String> p : Data.requestedBooks) {
-            respond += "The student ID is " + p.second + '\n';
+        for(Map.Entry<Vector<String>, String> entry : Data.requestedBooks.entrySet()) {
+            respond += "The student ID is " + entry.getValue() + '\n';
             respond += "Requested Books: \n";
-            for(String s : p.first) {
+            for(String s : entry.getKey()) {
                 respond += s + '\n';
             }
             respond += '\n';

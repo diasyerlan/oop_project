@@ -64,13 +64,16 @@ public class Test {
 //            System.out.println(b.getName());
 //        }
 
-        Vector<StudentOrganization> vec = new Vector<>();
-        vec.add(new StudentOrganization("OSIT", 1));
-        vec.add(new StudentOrganization("ArtHouse", 2));
-        vec.add(new StudentOrganization("Enactus", 3));
-        vec.add(new StudentOrganization("StudEx", 4));
-        vec.add(new StudentOrganization("BCL", 5));
-        Serialization.write(vec, "Database/StudentOrganizations.txt");
+//        Vector<StudentOrganization> vec = new Vector<>();
+//        vec.add(new StudentOrganization("OSIT", 1));
+//        vec.add(new StudentOrganization("ArtHouse", 2));
+//        vec.add(new StudentOrganization("Enactus", 3));
+//        vec.add(new StudentOrganization("StudEx", 4));
+//        vec.add(new StudentOrganization("BCL", 5));
+//        Serialization.write(vec, "Database/StudentOrganizations.txt");
+        for(CanBeResearcher researcher : Data.researchers) {
+            System.out.println(researcher.getID());
+        }
     }
 
 }

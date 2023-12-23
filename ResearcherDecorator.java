@@ -1,34 +1,46 @@
 package proj;
 
-public class ResearcherDecorator implements Researcher {
+import java.util.Vector;
 
+public class ResearcherDecorator implements CanBeResearcher {
     private CanBeResearcher researcher;
-
-    public CanBeResearcher getResearcher() {
-        return this.researcher;
+    private int h_index;
+    private Vector<ResearchProject> researchProjects;
+    private Vector<ResearchPaper> researchPapers;
+    public ResearcherDecorator(CanBeResearcher r) {
+        this.researcher = r;
+        h_index = 0;
     }
 
-    public void setResearcher(CanBeResearcher researcher) {
-        this.researcher = researcher;
+
+    @Override
+    public String getFirstName() {
+        return researcher.getFirstName();
     }
 
     @Override
-    public void superviseStudents() {
-
+    public String getLastName() {
+        return researcher.getLastName();
     }
 
     @Override
-    public void conductResearch() {
-
+    public String getUsername() {
+        return researcher.getUsername();
     }
 
     @Override
-    public void presentResearchPaper() {
-
+    public String getEmail() {
+        return researcher.getEmail();
     }
 
     @Override
-    public void publicResearchPaper() {
+    public String getPassword() {
+        return researcher.getPassword();
+    }
 
+    @Override
+    public String getID() {
+        return researcher.getID();
     }
 }
+

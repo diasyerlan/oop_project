@@ -1,50 +1,67 @@
 package proj;
+import java.io.Serializable;
 import java.util.Vector;
-public class ResearchProject {
+public class ResearchProject implements Serializable {
+    private static final long serialVersionUID = -6947764470146079755L;
     private String topic;
-    private String content;
-    private Vector<ResearchPaper> papers;
-    private Researcher researcher;
-    private ResearchPaper researchPaper;
+    private int projectNumber; // Unique identifier for each research project
+    private CanBeResearcher leadResearcher;
+    private String fundingSource;
+    private int durationMonth;
+    private String methodology;
+    public ResearchProject(String topic, CanBeResearcher leadResearcher, String fundingSource, int durationMonth, String methodology, int n) {
+        this.projectNumber = n;
+        this.topic = topic;
+        this.leadResearcher = leadResearcher;
+        this.fundingSource = fundingSource;
+        this.durationMonth = durationMonth;
+        this.methodology = methodology;
+    }
     public String getTopic() {
         return this.topic;
     }
     public void setTopic(String topic) {
         this.topic = topic;
     }
-    public String getContent() {
-        return this.content;
-    }
-    public void setContent(String content) {
-        this.content = content;
-    }
-    public Vector<ResearchPaper> getPapers() {
-        return this.papers;
-    }
-    public void setPapers(Vector<ResearchPaper> papers) {
-        this.papers = papers;
+
+
+    public CanBeResearcher getLeadResearcher() {
+        return leadResearcher;
     }
 
-    public void addResearchPaper(ResearchPaper researchPaper) {
-        if (this.papers == null) {
-            this.papers = new Vector<>();
-        }
-        this.papers.add(researchPaper);
+    public void setLeadResearcher(Researcher leadResearcher) {
+        this.leadResearcher = leadResearcher;
     }
 
-    public void displayProjectDetails() {
-        System.out.println("Research Project Details:");
-        System.out.println("Topic: " + topic);
-        System.out.println("Content: " + content);
-
-        if (papers != null && !papers.isEmpty()) {
-            System.out.println("Research Papers:");
-            for (ResearchPaper paper : papers) {
-                System.out.println("- " + paper.getTitle());
-            }
-        } else {
-            System.out.println("No research papers available.");
-        }
+    public String getFundingSource() {
+        return fundingSource;
     }
 
+    public void setFundingSource(String fundingSource) {
+        this.fundingSource = fundingSource;
+    }
+
+    public int getDurationMonth() {
+        return durationMonth;
+    }
+
+    public void setDurationMonth(int durationMonth) {
+        this.durationMonth = durationMonth;
+    }
+
+    public String getMethodology() {
+        return methodology;
+    }
+
+    public void setMethodology(String methodology) {
+        this.methodology = methodology;
+    }
+
+    public int getProjectNumber() {
+        return projectNumber;
+    }
+
+    public void setProjectNumber(int projectNumber) {
+        this.projectNumber = projectNumber;
+    }
 }

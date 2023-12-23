@@ -3,7 +3,7 @@ package proj;
 import java.io.Serializable;
 
 public class Mark implements Serializable {
-
+    private static final long serialVersionUID = -6224020856388248737L;
     private double percentage;
     private String letterMark;
     private double GPA;
@@ -15,14 +15,32 @@ public class Mark implements Serializable {
         this.firstAttestation = firstAttestation;
         this.secondAttestation = secondAttestation;
         this.finalScore = finalScore;
+        if(getFirstAttestation()!= 0 && getSecondAttestation()!= 0 && getFinalScore() != 0) {
+            letterMark = letterMarkCalculation();
+        } else letterMark = "";
     }
     public Mark() {
         this.firstAttestation =  0;
         this.secondAttestation = 0;
         this.finalScore = 0;
+        this.letterMark = "";
     }
 
-    // Getters and setters
+    public String letterMarkCalculation() {
+        double total = getFirstAttestation() + getSecondAttestation() + getFinalScore();
+        if(total >= 95) return "A";
+        else if(total >= 90 && total <= 94) return "A-";
+        else if(total >= 87 && total <= 89) return "B+";
+        else if(total >= 83 && total <= 86) return "B";
+        else if(total >= 80 && total <= 82) return "B-";
+        else if(total >= 77 && total <= 79) return "C+";
+        else if(total >= 73 && total <= 76) return "C";
+        else if(total >= 70 && total <= 72) return "C-";
+        else if(total >= 65 && total <= 69) return "D+";
+        else if(total >= 60 && total <= 64) return "D";
+        else if(total <= 59) return "F";
+        return "";
+    }
 
     public double getPercentage() {
         return percentage;

@@ -124,7 +124,7 @@ public class Admin {
                 String creditCard = scanner.nextLine();
 
                 newUser = new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
-                        course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), new Transcript(), term, phoneNumber, creditCard);
+                        course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), term, phoneNumber, creditCard);
                 break;
             } else if (position.equals("Teacher")) {
                 commonQuestions();
