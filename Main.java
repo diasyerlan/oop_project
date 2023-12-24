@@ -8,6 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Admin admin = Admin.getInstance();
 
+
         System.out.println("Select the system language(kz, en, rus):");
         String language = scanner.nextLine();
         if (language.equals("en")) {
@@ -239,20 +240,39 @@ public class Main {
                                         scanner.nextLine();
                                         if(Data.researchProjects == null) Data.researchProjects = new LinkedHashMap<>();
                                         if (s == 1) {
-                                            if (Data.researchProjects.isEmpty())
-                                                System.out.println("No Research projects yet!");
-                                            else {
-                                                for (Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
-                                                    if (entry.getKey().equals(researcher)) {
-                                                        Vector<ResearchProject> r = entry.getValue();
-                                                        List<Integer> projectNames = r.stream()
-                                                                .map(ResearchProject::getProjectNumber)
-                                                                .collect(Collectors.toList());
-                                                        System.out.println(projectNames);
-                                                        break;
-                                                    }
-                                                }
+                                            Researcher.printResearchProjects(researcher);
+                                        } else if (s == 2) {
+                                            Researcher.printResearchPaper(researcher);
+                                        } else if (s == 3) {
+                                            System.out.println("1 - Sort by Publication Date");
+                                            System.out.println("2 - Sort by citations");
+                                            System.out.println("3 - Sort by article length");
+                                            System.out.println("4 - Sort by authors number");
+                                            System.out.println("5 - Sort by title alphabetically");
+                                            System.out.println("6 - Sort by keywords number");
+                                            System.out.println("7 - Sort by abstract length");
+
+                                            Vector<ResearchPaper> allPapers = Data.getAllResearchPapers(researcher);
+                                            String n = scanner.nextLine();
+                                            if(n.equals("1")) {
+                                                Researcher.printPapers(Comp.dateComparator, allPapers);
+                                            } else if (n.equals("2")) {
+                                                Researcher.printPapers(Comp.citationComparator, allPapers);
+                                            } else if (n.equals("3")) {
+                                                Researcher.printPapers(Comp.articleLengthComparator, allPapers);
+                                            } else if (n.equals("4")) {
+                                                Researcher.printPapers(Comp.authorsNumComparator, allPapers);
+                                            } else if (n.equals("5")) {
+                                                Researcher.printPapers(Comp.titleComparator, allPapers);
+                                            } else if (n.equals("6")) {
+                                                Researcher.printPapers(Comp.keywordsNumComparator, allPapers);
+                                            } else if (n.equals("7")) {
+                                                Researcher.printPapers(Comp.abstractLengthComparator, allPapers);
                                             }
+
+                                        } else if (s == 4) {
+                                            System.out.println("Your h-index is " + Researcher.calculateH_index(researcher));
+
                                         } else if (s == 5) {
                                             System.out.println("You are going to add Research Projects");
                                             System.out.println("Write the Research Topic: ");
@@ -267,62 +287,94 @@ public class Main {
                                             String methodology = scanner.nextLine();
                                             while (true) {
                                                 boolean isFound = false;
-                                                int lastestNum = 1;
-                                                for(Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
+                                                int lastestNum = 0;
+                                                for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()){
                                                     if (entry.getKey().getID().equals(researcher.getID())) {
-                                                        Vector<ResearchProject> r = entry.getValue();
-                                                        if(r.isEmpty()) break;
-                                                        for(ResearchProject re : r) {
-                                                            lastestNum = re.getProjectNumber();
+                                                        if(entry.getValue().isEmpty()) break;
+                                                        for (Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
+                                                            lastestNum = entry1.getKey().getProjectNumber();
                                                         }
-                                                        break;
+//
                                                     }
+                                                    break;
                                                 }
-                                                for (Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
+                                                for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()){
                                                     if (entry.getKey().getID().equals(researcher.getID())) {
-                                                        Vector<ResearchProject> r = entry.getValue();
-                                                        r.add(new ResearchProject(topic, researcher, fundingSource, duration, methodology, lastestNum+1));
+                                                        entry.getValue().put(new ResearchProject(topic, researcher, fundingSource, duration, methodology, lastestNum+1), new Vector<>());
                                                         isFound = true;
                                                         break;
                                                     }
-
                                                 }
-                                                if (!isFound) Data.researchProjects.put( researcher, new Vector<>());
+//                                                for (Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
+//                                                    if (entry.getKey().getID().equals(researcher.getID())) {
+//                                                        Vector<ResearchProject> r = entry.getValue();
+//                                                        r.add(new ResearchProject(topic, researcher, fundingSource, duration, methodology, lastestNum+1));
+//                                                        isFound = true;
+//                                                        break;
+//                                                    }
+//
+//                                                }
+                                                if (!isFound) Data.researchProjects.put( researcher, new LinkedHashMap<>());
                                                 else break;
                                             }
                                             System.out.println("The project is added successfully!");
-                                            Serialization.write(Data.researchProjects, "Database/ResearchProjects.txt");
                                         } else if (s == 6) {
                                             System.out.println("You are going to add research papers for your projects. Select for which project you want to add: ");
-                                            for (Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
+                                            for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()){
                                                 if (entry.getKey().getID().equals(researcher.getID())) {
-                                                    Vector<ResearchProject> r = entry.getValue();
-                                                    for(ResearchProject re: r) {
-                                                        System.out.println(re.getProjectNumber() + " - " + re.getTopic());
+                                                    for(Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
+                                                        System.out.println(entry1.getKey().getProjectNumber() + " - " + entry1.getKey().getTopic());
                                                     }
-                                                    break;
                                                 }
                                             }
                                             int q = scanner.nextInt();
                                             scanner.nextLine();
-                                            for (Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
+                                            for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()) {
                                                 if (entry.getKey().getID().equals(researcher.getID())) {
-                                                    Vector<ResearchProject> r = entry.getValue();
-                                                    for(ResearchProject re: r) {
-                                                        if(re.getProjectNumber() == q) {
+                                                    for(Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
+                                                        if(entry1.getKey().getProjectNumber() == q) {
                                                             System.out.println("Now add descriptions for your Research Paper: ");
                                                             System.out.println("Add Title:");
                                                             String title = scanner.nextLine();
 
-                                                            System.out.println("Type authors: ");
+                                                            System.out.println("Type an article(content):");
+                                                            String article = scanner.nextLine();
+
+                                                            System.out.println("Type authors by coma: ");
+                                                            String author = scanner.nextLine();
+                                                            StringTokenizer tokenizer = new StringTokenizer(author, ", ");
+                                                            Vector<String> authors = new Vector();
+                                                            while (tokenizer.hasMoreTokens()) authors.add(tokenizer.nextToken());
+
+                                                            System.out.println("Write an abstract: ");
+                                                            String abctract = scanner.nextLine();
+
+                                                            System.out.println("Write citations: ");
+                                                            String citation = scanner.nextLine();
+                                                            StringTokenizer tokenizer1 = new StringTokenizer(citation, ". ");
+                                                            Vector<String> citations = new Vector();
+                                                            while (tokenizer1.hasMoreTokens()) citations.add(tokenizer1.nextToken());
+
+                                                            System.out.println("Write keywords: ");
+                                                            String keyword = scanner.nextLine();
+                                                            StringTokenizer tokenizer2 = new StringTokenizer(keyword, ", ");
+                                                            Vector<String> keywords = new Vector();
+                                                            while (tokenizer2.hasMoreTokens()) keywords.add(tokenizer2.nextToken());
+
+                                                            System.out.println("Type year published: ");
+                                                            int year = scanner.nextInt();
+                                                            scanner.nextLine();
+                                                            Vector<ResearchPaper> vector = entry.getValue().computeIfAbsent(entry1.getKey(), k -> new Vector<>());
+                                                            vector.add(new ResearchPaper(title, article, authors, abctract, citations, keywords, year));
+                                                            System.out.println("Research Paper added successfully!");
+                                                            break;
                                                         }
-                                                        break;
                                                     }
                                                     break;
                                                 }
                                             }
                                         }
-
+                                        Serialization.write(Data.researchProjects, "Database/ResearchProjects.txt");
                                     }
                                 }
                             }

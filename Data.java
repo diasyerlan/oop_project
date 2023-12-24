@@ -1,9 +1,6 @@
 package proj;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
 public class Data {
     public static Vector<User> userList = Serialization.read("Database/Users.txt");
@@ -17,7 +14,22 @@ public class Data {
     public static HashMap<StudentOrganization,Vector<Student>> OrganizationMembers = Serialization.read("Database/OrganizationMembers.txt", "");
     public static HashMap<Integer, paymentStrategy> semesterPayed = Serialization.read("Database/Payment.txt", "");
     public static Vector<Researcher> researchers = Serialization.read("Database/Researchers.txt");
-    public static LinkedHashMap<CanBeResearcher, Vector<ResearchProject>> researchProjects = Serialization.read("Database/ResearchProjects.txt", 5);
+    public static HashMap<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> researchProjects = Serialization.read("Database/ResearchProjects.txt", 5);
+    public static Vector<ResearchPaper> getAllResearchPapers(CanBeResearcher researcher)
+    {
+        Vector<ResearchPaper> allPapers = new Vector<>();
+        for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()) {
+            if (entry.getKey().equals(researcher)) {
+                for (Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
+                    for(ResearchPaper r : entry1.getValue()) {
+                        allPapers.add(r);
+                    }
+                }
+                break;
+            }
+        }
+        return allPapers;
+    }
     Vector<Teacher> teachers = new Vector<>();
 
     // Constructor or method to initialize teachers
