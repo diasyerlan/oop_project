@@ -143,14 +143,14 @@ public class Admin {
                 newUser = new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
                         course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), term, phoneNumber, creditCard);
                 break;
-            } else if (position.equals("Teacher")) {
+            } else if (position.equals("Teacher") || position.equals("Оқытушы") || position.equals("Преподаватель")) {
                 commonQuestions();
                 commonEmployeeQuestions();
                 System.out.println(words.get(90));
                 String teacherTyp = reader.readLine();
                 TeacherType teacherType = TeacherType.ASSISTANT;
                 switch (teacherTyp) {
-                    case "Professor" -> teacherType = TeacherType.PROFESSOR;
+                    case "Professor"  -> teacherType = TeacherType.PROFESSOR;
                     case "Assistant" -> teacherType = TeacherType.ASSISTANT;
                     case "Tutor" -> teacherType = TeacherType.TUTOR;
                     case "Lecturer" -> teacherType = TeacherType.LECTURER;
