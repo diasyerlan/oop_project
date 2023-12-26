@@ -130,6 +130,9 @@ public class LanguageMessages {
         enMessages.put(123, "The Hire Date of employee changed successfully!");
         enMessages.put(124, "Type the updated work experience: ");
         enMessages.put(125, "The GPA of Student changed successfully!");
+        enMessages.put(126, "7 - Change Hire Date");
+        enMessages.put(127, "8 - Change Work Experience");
+
 
 
 
@@ -259,6 +262,9 @@ public class LanguageMessages {
         kzMessages.put(123, "Жұмысқа орналасу күні сәтті өзгертілді!");
         kzMessages.put(124, "Жұмыс төлектерін жаңарту үшін жазыңыз: ");
         kzMessages.put(125, "Студенттің жұмыс төлектері сәтті өзгертілді!");
+        kzMessages.put(126, "7 - Жұмысқа орналасу күнін өзгерту");
+        kzMessages.put(127, "8 - Жұмыс төлектерін өзгерту");
+
 
 
 
@@ -387,6 +393,8 @@ public class LanguageMessages {
         ruMessages.put(123, "Дата приема на работу сотрудника изменена успешно!");
         ruMessages.put(124, "Введите обновленный опыт работы: ");
         ruMessages.put(125, "Опыт работы сотрудника изменен успешно!");
+        ruMessages.put(126, "7 - Изменить дату приема на работу");
+        ruMessages.put(127, "8 - Изменить трудовой стаж");
         // Add more Russian messages as needed
 
         messages.put("en", enMessages);
