@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Data {
     public static Vector<User> userList = Serialization.read("Database/Users.txt");
-    public static Vector<Course> courses = Serialization.read("Courses.txt");
+    public static Vector<Course> courses = Serialization.read("Database/Courses.txt");
     public static HashMap<Student, Boolean> requestedReg = Serialization.read("Database/RegisterRequests.txt", "");
     public static Vector<Book> books = Serialization.read("Database/LibraryBooks.txt");
     public static HashMap<Vector<String>, String> requestedBooks = Serialization.read("Database/LibrarianRequests.txt", "");
@@ -30,6 +30,14 @@ public class Data {
         }
         return allPapers;
     }
+    public static HashMap<User, CanBeResearcher> supervisors = Serialization.read("Database/Supervisors.txt", "");
+    public static HashMap<FacultyManager,HashMap<Student, HashMap<String, UrgencyLevel>>> complaints = Serialization.read("Database/TeacherComplaints.txt", "");
+    public static HashMap<Teacher, Vector<String>> messageToTeacher = Serialization.read("Database/MessageToTeacher.txt", "");
+    public static HashMap<Librarian, Vector<String>> messageToLibrarian = Serialization.read("Database/MessageToLibrarian.txt", "");
+    public static HashMap<OfficeRegistrator, Vector<String>> messageToOR = Serialization.read("Database/MessageToOR.txt", "");
+    public static HashMap<FacultyManager, Vector<String>> messageToDean = Serialization.read("Database/MessageToDean.txt", "");
+    public static HashMap<NewsManager, Vector<String>> messageToNewsManager = Serialization.read("Database/MessageToNewsManager.txt", "");
+
     Vector<Teacher> teachers = new Vector<>();
 
     // Constructor or method to initialize teachers

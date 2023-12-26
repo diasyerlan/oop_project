@@ -38,6 +38,11 @@ public class Researcher extends ResearcherDecorator implements Serializable {
         return super.getID();
     }
 
+    @Override
+    public Degree getDegree() {
+        return super.getDegree();
+    }
+
     public void superviseStudents() {
     };
     public static void printResearchProjects(CanBeResearcher researcher) {
@@ -73,7 +78,7 @@ public class Researcher extends ResearcherDecorator implements Serializable {
         Vector <ResearchPaper> papers = Data.getAllResearchPapers(researcher);
         Collections.sort(papers, Comparator.comparingInt(ResearchPaper :: getCitationNum).reversed());
         int i = 1, h_index = 0;
-        while(papers.elementAt(i-1).getCitationNum() >= i || i < papers.size()) {
+        while(i <= papers.size()) {
             h_index = papers.elementAt(i-1).getCitationNum();
             i++;
         }

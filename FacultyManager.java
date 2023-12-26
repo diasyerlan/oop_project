@@ -1,6 +1,7 @@
 package proj;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Queue;
 
 public class FacultyManager extends Manager {
@@ -88,5 +89,20 @@ public class FacultyManager extends Manager {
                         "  Faculty: %s%n",
                 getFirstName(), getLastName(), getID(),
                 getHireDate(), getWorkExperience(), getFaculty());
+    }
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // Cast the object to the correct type
+        FacultyManager other = (FacultyManager) obj;
+
+        // Perform field-by-field comparison using Objects.equals
+        return Objects.equals(this.getUsername(), other.getUsername()) && Objects.equals(this.getPassword(), other.getPassword());
     }
 }

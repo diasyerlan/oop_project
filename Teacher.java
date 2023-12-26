@@ -1,9 +1,10 @@
 package proj;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Vector;
 
-public class Teacher extends Employee implements CanBeResearcher {
+public class Teacher extends Employee{
     private static final long serialVersionUID = 1L;
 
     private TeacherType teacherType;
@@ -108,7 +109,18 @@ public class Teacher extends Employee implements CanBeResearcher {
 
     @Override
     public boolean equals(Object obj) {
-        // TODO: Implement your method
-        return false;
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // Cast the object to the correct type
+        Teacher other = (Teacher) obj;
+
+        // Perform field-by-field comparison using Objects.equals
+        return Objects.equals(this.getUsername(), other.getUsername()) && Objects.equals(this.getPassword(), other.getPassword());
     }
 }

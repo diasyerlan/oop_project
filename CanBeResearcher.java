@@ -10,7 +10,7 @@ public interface CanBeResearcher extends Serializable {
     String getEmail();
     String getPassword();
     String getID();
-
+    Degree getDegree();
 
     //void display();
 }

@@ -43,12 +43,10 @@ public class ResearcherDecorator implements CanBeResearcher {
         return researcher.getID();
     }
 
-    public int getH_index() {
-        return h_index;
+    @Override
+    public Degree getDegree() {
+        return researcher.getDegree();
     }
 
-    public void setH_index(int h_index) {
-        this.h_index = h_index;
-    }
 }
 

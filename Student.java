@@ -5,9 +5,8 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
-public class Student extends User implements CanBeResearcher {
+public class Student extends User{
     private static final long serialVersionUID = 1L;
-    public boolean isResearher = false;
     private Degree studentDegree;
     private double gpa;
     private Integer course;
@@ -155,7 +154,7 @@ public class Student extends User implements CanBeResearcher {
         this.course = course;
     }
 
-    private Faculty getFaculty() {
+    public Faculty getFaculty() {
         return this.faculty;
     }
 

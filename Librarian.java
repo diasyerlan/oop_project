@@ -2,11 +2,11 @@ package proj;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Vector;
 
 public class Librarian extends Employee{
     private static final long serialVersionUID = 5821103428083893929L;
-
     private Vector<Workshops> workshops;
 
     public Librarian(String firstName, String lastName, String username, String email, String password, String ID, Date hireDate, Integer workExperience) {
@@ -58,5 +58,20 @@ public class Librarian extends Employee{
                         "  Work Experience: %d years%n",
                 getFirstName(), getLastName(), getID(),
                 getHireDate(), getWorkExperience());
+    }
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // Cast the object to the correct type
+        Librarian other = (Librarian) obj;
+
+        // Perform field-by-field comparison using Objects.equals
+        return Objects.equals(this.getUsername(), other.getUsername()) && Objects.equals(this.getPassword(), other.getPassword());
     }
 }

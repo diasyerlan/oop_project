@@ -1,6 +1,8 @@
 package proj;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class Test {
@@ -71,9 +73,22 @@ public class Test {
 //        vec.add(new StudentOrganization("StudEx", 4));
 //        vec.add(new StudentOrganization("BCL", 5));
 //        Serialization.write(vec, "Database/StudentOrganizations.txt");
-        for(CanBeResearcher researcher : Data.researchers) {
-            System.out.println(researcher.getID());
-        }
+//        for(CanBeResearcher researcher : Data.researchers) {
+//            System.out.println(researcher.getID());
+//        }
+//        for(Map.Entry<FacultyManager, HashMap<Student, HashMap<String,>>> entry : Data.complaints.entrySet()) {
+//            System.out.println("done1");
+//                for(Map.Entry<Student, Vector<String>> entry1 : entry.getValue().entrySet()) {
+//
+//                    System.out.println(entry1.getKey().firstName);
+//                    System.out.println("Student " + entry1.getKey().getID() + ": " + entry1.getKey().getFirstName() + " " + entry1.getKey().getLastName());
+//                    for(String s: entry1.getValue()) {
+//                        System.out.println(s);
+//                    }
+//                    System.out.println("_________________");
+//                }
+//
+//        }
     }
 
 }

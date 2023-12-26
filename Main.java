@@ -8,13 +8,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Admin admin = Admin.getInstance();
 
-
         System.out.println("Select the system language(kz, en, rus):");
         String language = scanner.nextLine();
         if (language.equals("en")) {
             System.out.println("Welcome to Virtual University System! Please sign in:");
 
             while (true) {
+                Serialization.read("Database/Users.txt");
                 System.out.print("Username: ");
                 String username = scanner.nextLine();
 
@@ -67,11 +67,7 @@ public class Main {
                         System.out.println("5 - View Books Taken");
                         System.out.println("6 - View Student Organizations you are in");
                         System.out.println("7 - Pay Student Fee");
-                        if (!((Student) foundUser).isResearher) System.out.println("8 - Become a Researcher");
-                        else System.out.println("8 - Go to Researcher menu");
-                        if (((Student) foundUser).getStudentDegree() == Degree.MASTER || ((Student) foundUser).getStudentDegree() == Degree.PHD) {
-                            System.out.println("9 - View Supervisors");
-                        }
+                        Storage.menuAdding(foundUser, 8);
 
                         System.out.println("Type the appropriate number to take action: ");
                         int selected = scanner.nextInt();
@@ -224,374 +220,325 @@ public class Main {
                             Data.semesterPayed.put(semester, transaction);
                             Serialization.write(Data.semesterPayed, "Database/Payment.txt");
                         } else if (selected == 8) {
-                            if (((Student) foundUser).isResearher) {
-                                System.out.println("ghgh");
-                                for (CanBeResearcher researcher : Data.researchers) {
-                                    if (researcher.getID().equals(foundUser.getID())) {
-                                        System.out.println("This is your researcher menu!");
-                                        System.out.println("1 - View all Research projects");
-                                        System.out.println("2 - View all Research papers");
-                                        System.out.println("3 - Print all Research papers");
-                                        System.out.println("4 - Calculate h-index");
-                                        System.out.println("5 - Add research project");
-                                        System.out.println("6 - Add research papers");
-
-                                        int s = scanner.nextInt();
-                                        scanner.nextLine();
-                                        if(Data.researchProjects == null) Data.researchProjects = new LinkedHashMap<>();
-                                        if (s == 1) {
-                                            Researcher.printResearchProjects(researcher);
-                                        } else if (s == 2) {
-                                            Researcher.printResearchPaper(researcher);
-                                        } else if (s == 3) {
-                                            System.out.println("1 - Sort by Publication Date");
-                                            System.out.println("2 - Sort by citations");
-                                            System.out.println("3 - Sort by article length");
-                                            System.out.println("4 - Sort by authors number");
-                                            System.out.println("5 - Sort by title alphabetically");
-                                            System.out.println("6 - Sort by keywords number");
-                                            System.out.println("7 - Sort by abstract length");
-
-                                            Vector<ResearchPaper> allPapers = Data.getAllResearchPapers(researcher);
-                                            String n = scanner.nextLine();
-                                            if(n.equals("1")) {
-                                                Researcher.printPapers(Comp.dateComparator, allPapers);
-                                            } else if (n.equals("2")) {
-                                                Researcher.printPapers(Comp.citationComparator, allPapers);
-                                            } else if (n.equals("3")) {
-                                                Researcher.printPapers(Comp.articleLengthComparator, allPapers);
-                                            } else if (n.equals("4")) {
-                                                Researcher.printPapers(Comp.authorsNumComparator, allPapers);
-                                            } else if (n.equals("5")) {
-                                                Researcher.printPapers(Comp.titleComparator, allPapers);
-                                            } else if (n.equals("6")) {
-                                                Researcher.printPapers(Comp.keywordsNumComparator, allPapers);
-                                            } else if (n.equals("7")) {
-                                                Researcher.printPapers(Comp.abstractLengthComparator, allPapers);
-                                            }
-
-                                        } else if (s == 4) {
-                                            System.out.println("Your h-index is " + Researcher.calculateH_index(researcher));
-
-                                        } else if (s == 5) {
-                                            System.out.println("You are going to add Research Projects");
-                                            System.out.println("Write the Research Topic: ");
-                                            String topic = scanner.nextLine();
-
-                                            System.out.println("Write the Research Funding Source of the research project: ");
-                                            String fundingSource = scanner.nextLine();
-                                            System.out.println("Write the duration of Research in months: ");
-                                            int duration = scanner.nextInt();
-                                            scanner.nextLine();
-                                            System.out.println("Write what Methodology you used: ");
-                                            String methodology = scanner.nextLine();
-                                            while (true) {
-                                                boolean isFound = false;
-                                                int lastestNum = 0;
-                                                for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()){
-                                                    if (entry.getKey().getID().equals(researcher.getID())) {
-                                                        if(entry.getValue().isEmpty()) break;
-                                                        for (Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
-                                                            lastestNum = entry1.getKey().getProjectNumber();
-                                                        }
-//
-                                                    }
-                                                    break;
-                                                }
-                                                for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()){
-                                                    if (entry.getKey().getID().equals(researcher.getID())) {
-                                                        entry.getValue().put(new ResearchProject(topic, researcher, fundingSource, duration, methodology, lastestNum+1), new Vector<>());
-                                                        isFound = true;
-                                                        break;
-                                                    }
-                                                }
-//                                                for (Map.Entry<CanBeResearcher, Vector<ResearchProject>> entry : Data.researchProjects.entrySet()) {
-//                                                    if (entry.getKey().getID().equals(researcher.getID())) {
-//                                                        Vector<ResearchProject> r = entry.getValue();
-//                                                        r.add(new ResearchProject(topic, researcher, fundingSource, duration, methodology, lastestNum+1));
-//                                                        isFound = true;
-//                                                        break;
-//                                                    }
-//
-//                                                }
-                                                if (!isFound) Data.researchProjects.put( researcher, new LinkedHashMap<>());
-                                                else break;
-                                            }
-                                            System.out.println("The project is added successfully!");
-                                        } else if (s == 6) {
-                                            System.out.println("You are going to add research papers for your projects. Select for which project you want to add: ");
-                                            for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()){
-                                                if (entry.getKey().getID().equals(researcher.getID())) {
-                                                    for(Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
-                                                        System.out.println(entry1.getKey().getProjectNumber() + " - " + entry1.getKey().getTopic());
-                                                    }
-                                                }
-                                            }
-                                            int q = scanner.nextInt();
-                                            scanner.nextLine();
-                                            for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()) {
-                                                if (entry.getKey().getID().equals(researcher.getID())) {
-                                                    for(Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
-                                                        if(entry1.getKey().getProjectNumber() == q) {
-                                                            System.out.println("Now add descriptions for your Research Paper: ");
-                                                            System.out.println("Add Title:");
-                                                            String title = scanner.nextLine();
-
-                                                            System.out.println("Type an article(content):");
-                                                            String article = scanner.nextLine();
-
-                                                            System.out.println("Type authors by coma: ");
-                                                            String author = scanner.nextLine();
-                                                            StringTokenizer tokenizer = new StringTokenizer(author, ", ");
-                                                            Vector<String> authors = new Vector();
-                                                            while (tokenizer.hasMoreTokens()) authors.add(tokenizer.nextToken());
-
-                                                            System.out.println("Write an abstract: ");
-                                                            String abctract = scanner.nextLine();
-
-                                                            System.out.println("Write citations: ");
-                                                            String citation = scanner.nextLine();
-                                                            StringTokenizer tokenizer1 = new StringTokenizer(citation, ". ");
-                                                            Vector<String> citations = new Vector();
-                                                            while (tokenizer1.hasMoreTokens()) citations.add(tokenizer1.nextToken());
-
-                                                            System.out.println("Write keywords: ");
-                                                            String keyword = scanner.nextLine();
-                                                            StringTokenizer tokenizer2 = new StringTokenizer(keyword, ", ");
-                                                            Vector<String> keywords = new Vector();
-                                                            while (tokenizer2.hasMoreTokens()) keywords.add(tokenizer2.nextToken());
-
-                                                            System.out.println("Type year published: ");
-                                                            int year = scanner.nextInt();
-                                                            scanner.nextLine();
-                                                            Vector<ResearchPaper> vector = entry.getValue().computeIfAbsent(entry1.getKey(), k -> new Vector<>());
-                                                            vector.add(new ResearchPaper(title, article, authors, abctract, citations, keywords, year));
-                                                            System.out.println("Research Paper added successfully!");
-                                                            break;
-                                                        }
-                                                    }
-                                                    break;
-                                                }
-                                            }
-                                        }
-                                        Serialization.write(Data.researchProjects, "Database/ResearchProjects.txt");
-                                    }
-                                }
-                            }
-                            else {
-                                System.out.println("Congrats, you are a Researcher now!");
-                                if(Data.researchers == null) Data.researchers = new Vector<>();
-                                Data.researchers.add(new Researcher((Student) foundUser));
-                                for(User u : Data.userList) {
-                                    if(u instanceof Student && u.getID().equals(foundUser.getID())) {
-                                        ((Student) u).isResearher = true;
-                                    }
-                                }
-                            }
+                            Storage.researcherDef(foundUser);
                         } else if ((((Student) foundUser).getStudentDegree() == Degree.PHD || ((Student) foundUser).getStudentDegree() == Degree.MASTER) && selected == 9) {
 
                         }
-                        Serialization.write(Data.userList, "Database/Researchers.txt");
-                        Serialization.write(Data.userList, "Database/Users.txt");
-                    }
 
-                } else if (foundUser instanceof OfficeRegistrator) {
-                    System.out.println("0 - add courses for Student");
-                    System.out.println("Type the appropriate number to take action: ");
-                    int selected = scanner.nextInt();
-                    scanner.nextLine();
-                    if (selected == 0) {
-                        System.out.println("Type the ID of the Student: ");
-                        while (true) {
-                            String id = scanner.nextLine();
-                            Student foundStudent = null;
-                            for (User user : Admin.userList) {
-                                if (user.getUsername() == null) break;
-                                if (user.getID().equals(id) && user instanceof Student) {
-                                    foundStudent = (Student) user;
+                    }
+                    else if (foundUser instanceof OfficeRegistrator) {
+                        System.out.println("0 - add courses for Student");
+                        System.out.println("1 - Send work Messages");
+                        System.out.println("Type the appropriate number to take action: ");
+                        int selected = scanner.nextInt();
+                        scanner.nextLine();
+                        if (selected == 0) {
+                            System.out.println("Type the ID of the Student: ");
+                            while (true) {
+                                String id = scanner.nextLine();
+                                Student foundStudent = null;
+                                for (User user : Admin.userList) {
+                                    if (user.getUsername() == null) break;
+                                    if (user.getID().equals(id) && user instanceof Student) {
+                                        foundStudent = (Student) user;
+                                        break;
+                                    }
+                                }
+                                if (foundStudent != null) {
+                                    for (Map.Entry<Student, Boolean> entry : Data.requestedReg.entrySet()) {
+                                        if (entry.getKey().equals(foundStudent) && Boolean.FALSE.equals(entry.getValue())) {
+                                            System.out.println("The student is not approved for Registration. Type 'ok' to confirm: ");
+                                            String ok = scanner.nextLine();
+                                            if (ok.equals("ok")) {
+                                                Data.requestedReg.put(foundStudent, false);
+                                                Serialization.write(Data.requestedReg, "Database/RegisterRequests.txt");
+                                                System.out.println("The request is approved!");
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    int semester = 0;
+                                    semester = ((OfficeRegistrator) foundUser).setCourses(foundStudent, semester);
+                                    String courses = scanner.nextLine();
+                                    StringTokenizer tokenizer = new StringTokenizer(courses, ", ");
+                                    Vector<String> courseNames = new Vector();
+                                    while (tokenizer.hasMoreTokens()) courseNames.add(tokenizer.nextToken());
+                                    for (String courseTyped : courseNames) {
+                                        for (Course course : Data.courses) {
+                                            if (course.getCourseName().equals(courseTyped)) {
+                                                foundStudent.addtranscript(semester, course);
+                                            }
+                                        }
+                                    }
+                                    System.out.println(foundStudent.toString());
+                                    Serialization.write(Admin.userList, "Database/Users.txt");
+
+
+                                } else System.out.println("Student not found. Try again!");
+                            }
+                        } else if (selected == 1) {
+                            System.out.println("Choose who to send the message to: ");
+                            System.out.println("1 - Teacher");
+                            System.out.println("2 - Librarian");
+                            System.out.println("3 - Dean");
+                            System.out.println("4 - News Manager");
+
+                            int mess = scanner.nextInt();
+                            scanner.nextLine();
+
+                            if(mess == 1) {
+                                System.out.println("Type the ID of the Teacher you want to send: ");
+                                for(User u: Data.userList) {
+                                    if(u instanceof Teacher) {
+                                        System.out.println(u.getID() + " - " + u.getFirstName() + " " + u.getLastName());
+                                    }
+                                }
+                                String id = scanner.nextLine();
+                                for(User u: Data.userList) {
+                                    if(u.getID().equals(id)) {
+                                        Data.messageToTeacher = (Data.messageToTeacher == null) ? new HashMap<>() : Data.messageToTeacher;
+
+                                        HashMap<Student, HashMap<String, UrgencyLevel>> h1 = Data.complaints.computeIfAbsent((FacultyManager) us, k -> new HashMap<>());
+
+                                        HashMap<String, UrgencyLevel> hashMap = h1.computeIfAbsent((Student) u, k -> new HashMap<>());
+                                        hashMap.put(complaint, level);
+
+                                        System.out.println("Complaint is sent successfully!");
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    }
+                    else if (foundUser instanceof Librarian) {
+                        System.out.println("0 - View all books");
+                        System.out.println("1 - View requests");
+                        System.out.println("2 - Organize workshops");
+                        Storage.menuAdding(foundUser, 3);
+
+                        int selected = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (selected == 0) {
+
+                        } else if (selected == 1) {
+                            System.out.println(((Librarian) foundUser).getRequests());
+                            System.out.println("Type the ID of the certain user to confirm request: ");
+                            String st = scanner.nextLine();
+                            Vector<Book> reqBooks = new Vector<>();
+                            for (Map.Entry<Vector<String>, String> entry : Data.requestedBooks.entrySet()) {
+                                if (entry.getValue().equals(st)) {
+                                    Iterator<Map.Entry<Vector<String>, String>> iterator = Data.requestedBooks.entrySet().iterator();
+                                    while (iterator.hasNext()) {
+                                        Map.Entry<Vector<String>, String> entry1 = iterator.next();
+
+                                        if (entry1.getValue().equals(st)) {
+                                            Iterator<String> bookIterator = entry1.getKey().iterator();
+
+                                            while (bookIterator.hasNext()) {
+                                                String s = bookIterator.next();
+
+                                                Iterator<Book> libraryIterator = Data.books.iterator();
+
+                                                while (libraryIterator.hasNext()) {
+                                                    Book book = libraryIterator.next();
+
+                                                    if (s.equals(book.getName())) {
+                                                        if (Data.studentBooks == null) {
+                                                            Data.studentBooks = new HashMap<>();
+                                                        }
+
+                                                        reqBooks.add(book);
+                                                        libraryIterator.remove();  // Use iterator's remove to avoid ConcurrentModificationException
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                            iterator.remove();  // Use iterator's remove to avoid ConcurrentModificationException
+                                        }
+                                    }
                                     break;
                                 }
                             }
-                            if (foundStudent != null) {
-                                for (Map.Entry<Student, Boolean> entry : Data.requestedReg.entrySet()) {
-                                    if (entry.getKey().equals(foundStudent) && Boolean.FALSE.equals(entry.getValue())) {
-                                        System.out.println("The student is not approved for Registration. Type 'ok' to confirm: ");
-                                        String ok = scanner.nextLine();
-                                        if (ok.equals("ok")) {
-                                            Data.requestedReg.put(foundStudent, false);
-                                            Serialization.write(Data.requestedReg, "Database/RegisterRequests.txt");
-                                            System.out.println("The request is approved!");
+                            Data.studentBooks.put(st, reqBooks);
+                            Serialization.write(Data.studentBooks, "Database/StudentBooks.txt");
+                            Serialization.write(Data.books, "Database/LibraryBooks.txt");
+                            Serialization.write(Data.requestedBooks, "Database/LibrarianRequests.txt");
+                        } else if(selected == 2) {
+                            //TODO
+                        } else if (selected == 3) {
+                            Storage.researcherDef(foundUser);
+                        }
+
+
+                    }
+                    else if (foundUser instanceof Teacher) {
+                        System.out.println("0 - View info about Student");
+                        System.out.println("1 - Put marks");
+                        System.out.println("2 - view Schedule");
+                        System.out.println("3 - View courses taken");
+                        System.out.println("4 - Sent a complain about Student");
+                        Storage.menuAdding(foundUser, 5);// add next things
+
+                        int selected = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (selected == 0) {
+                            System.out.println("Write down the ID of the Student you want to get info:");
+                            String id = scanner.nextLine();
+                            boolean found = false;
+                            for (User u : Data.userList) {
+                                if (u.ID.equals(id)) {
+                                    System.out.println(u.toString());
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found) System.out.println("No student found with such ID");
+                        } else if (selected == 1) {
+                            Mark mark = new Mark();
+                            System.out.println("You are going to put marks for semester for the Student. Type the course Code you want to choose: ");
+                            for (Course c : ((Teacher) foundUser).coursesTaken) {
+                                System.out.println(c.getCourseCode() + " - " + c.getCourseName());
+                            }
+                            String code = scanner.nextLine();
+                            Double a;
+                            for (Course c : ((Teacher) foundUser).coursesTaken) {
+                                if (c.getCourseCode().equals(code)) {
+                                    System.out.println("You selected the subject " + c.getCourseName());
+                                    System.out.println("Write the Student ID to put marks");
+                                    String id = scanner.nextLine();
+                                    for (User u : Data.userList) {
+                                        if (u.ID.equals(id) && u instanceof Student) {
+                                            for (Course co : ((Student) u).getCourses()) {
+                                                if (code.equals(co.getCourseCode())) {
+                                                    for (Map.Entry<Integer, HashMap<Course, Mark>> entry : ((Student) u).transcript.entrySet()) {
+                                                        HashMap<Course, Mark> courseMap = entry.getValue();
+                                                        for (Map.Entry<Course, Mark> courseEntry : courseMap.entrySet()) {
+                                                            Course course = courseEntry.getKey();
+                                                            Mark studentMark = courseEntry.getValue() == null ? new Mark() : courseEntry.getValue();
+
+                                                            if (course.getCourseCode().equals(code)) {
+                                                                System.out.println("Choose for what you are going to set points: ");
+                                                                System.out.println("0 - First Attestation");
+                                                                System.out.println("1 - Second Attestation");
+                                                                System.out.println("2 - Final score");
+                                                                int cho = scanner.nextInt();
+                                                                scanner.nextLine();
+                                                                System.out.println("Write the first attestation point for " + u.getFirstName() + " " + u.getLastName() + " for subject " + co.getCourseName());
+                                                                if (cho == 0) {
+                                                                    System.out.println("Enter first attestation score:");
+                                                                    a = scanner.nextDouble();
+                                                                    mark = new Mark(a, studentMark.getSecondAttestation(), studentMark.getFinalScore());
+                                                                } else if (cho == 1) {
+                                                                    System.out.println("Enter second attestation score:");
+                                                                    a = scanner.nextDouble();
+                                                                    mark = new Mark(studentMark.getFirstAttestation(), a, studentMark.getFinalScore());
+                                                                } else if (cho == 2) {
+                                                                    System.out.println("Enter final score:");
+                                                                    a = scanner.nextDouble();
+                                                                    mark = new Mark(studentMark.getFirstAttestation(), studentMark.getSecondAttestation(), a);
+                                                                }
+
+                                                                courseMap.put(course, mark);
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            break;
+
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            Serialization.write(Data.userList, "Database/Users.txt");
+                        } else if (selected == 4) {
+                            System.out.println("You are going to sent complaint about Student to to a Dean. Type ID of a Student: ");
+                            String id = scanner.nextLine();
+                            for(User u: Data.userList) {
+                                if (u instanceof Student && u.getID().equals(id)) {
+                                    System.out.println("Choose the Urgency Level:");
+                                    System.out.println("1 - High");
+                                    System.out.println("2 - Medium");
+                                    System.out.println("3 - Low");
+                                    int urg = scanner.nextInt();
+                                    UrgencyLevel level = UrgencyLevel.LOW;
+                                    scanner.nextLine();
+                                    switch (urg) {
+                                        case 1:
+                                            level = UrgencyLevel.HIGH;
+                                            break;
+                                        case 2:
+                                            level = UrgencyLevel.MEDIUM;
+                                            break;
+                                        case 3:
+                                            level = UrgencyLevel.LOW;
+                                            break;
+                                        default:
+                                            System.out.println("Invalid urgency level. Defaulting to LOW.");
+                                            break;
+                                    }
+
+                                    System.out.println("Write complaint text!");
+                                    String complaint = scanner.nextLine();
+
+                                    for (User us : Data.userList) {
+                                        if (us instanceof FacultyManager && ((FacultyManager) us).getFaculty().equals(((Student) u).getFaculty())) {
+                                            Data.complaints = (Data.complaints == null) ? new HashMap<>() : Data.complaints;
+
+                                            HashMap<Student, HashMap<String, UrgencyLevel>> h1 = Data.complaints.computeIfAbsent((FacultyManager) us, k -> new HashMap<>());
+
+                                            HashMap<String, UrgencyLevel> hashMap = h1.computeIfAbsent((Student) u, k -> new HashMap<>());
+                                            hashMap.put(complaint, level);
+
+                                            System.out.println("Complaint is sent successfully!");
                                             break;
                                         }
                                     }
                                 }
-                                int semester = 0;
-                                semester = ((OfficeRegistrator) foundUser).setCourses(foundStudent, semester);
-                                String courses = scanner.nextLine();
-                                StringTokenizer tokenizer = new StringTokenizer(courses, ", ");
-                                Vector<String> courseNames = new Vector();
-                                while (tokenizer.hasMoreTokens()) courseNames.add(tokenizer.nextToken());
-                                for (String courseTyped : courseNames) {
-                                    for (Course course : Data.courses) {
-                                        if (course.getCourseName().equals(courseTyped)) {
-                                            foundStudent.addtranscript(semester, course);
-                                        }
-                                    }
-                                }
-                                System.out.println(foundStudent.toString());
-                                Serialization.write(Admin.userList, "Database/Users.txt");
 
-
-                            } else System.out.println("Student not found. Try again!");
+                            }
+                            Serialization.write(Data.complaints, "Database/TeacherComplaints.txt");
+                        } else if (selected == 5) {
+                            Storage.researcherDef(foundUser);
                         }
                     }
-                    break;
-                } else if (foundUser instanceof Librarian) {
-                    System.out.println("0 - View all books");
-                    System.out.println("1 - View requests");
-                    System.out.println("2 - Organize workshops");
+                    else if (foundUser instanceof FacultyManager) {
+                        System.out.println("1 - View complaints about Students");
 
+                        int selected = scanner.nextInt();
+                        scanner.nextLine();
 
-                    int selected = scanner.nextInt();
-                    scanner.nextLine();
-
-                    if (selected == 0) {
-
-                    } else if (selected == 1) {
-                        System.out.println(((Librarian) foundUser).getRequests());
-                        System.out.println("Type the ID of the certain user to confirm request: ");
-                        String st = scanner.nextLine();
-                        Vector<Book> reqBooks = new Vector<>();
-                        for (Map.Entry<Vector<String>, String> entry : Data.requestedBooks.entrySet()) {
-                            if (entry.getValue().equals(st)) {
-                                Iterator<Map.Entry<Vector<String>, String>> iterator = Data.requestedBooks.entrySet().iterator();
-                                while (iterator.hasNext()) {
-                                    Map.Entry<Vector<String>, String> entry1 = iterator.next();
-
-                                    if (entry1.getValue().equals(st)) {
-                                        Iterator<String> bookIterator = entry1.getKey().iterator();
-
-                                        while (bookIterator.hasNext()) {
-                                            String s = bookIterator.next();
-
-                                            Iterator<Book> libraryIterator = Data.books.iterator();
-
-                                            while (libraryIterator.hasNext()) {
-                                                Book book = libraryIterator.next();
-
-                                                if (s.equals(book.getName())) {
-                                                    if (Data.studentBooks == null) {
-                                                        Data.studentBooks = new HashMap<>();
-                                                    }
-
-                                                    reqBooks.add(book);
-                                                    libraryIterator.remove();  // Use iterator's remove to avoid ConcurrentModificationException
-                                                    break;
-                                                }
-                                            }
+                        if(selected == 1) {
+                            for(Map.Entry<FacultyManager, HashMap<Student, HashMap<String, UrgencyLevel>>> entry : Data.complaints.entrySet()) {
+                                if(entry.getKey().equals(foundUser)) {
+                                    for(Map.Entry<Student, HashMap<String, UrgencyLevel>> entry1 : entry.getValue().entrySet()) {
+                                        System.out.println();
+                                        System.out.println("Student " + entry1.getKey().getID() + ": " + entry1.getKey().getFirstName() + " " + entry1.getKey().getLastName());
+                                        for(Map.Entry<String, UrgencyLevel> entry2: entry1.getValue().entrySet()) {
+                                            System.out.println("Urgency level: " + entry2.getValue());
+                                            System.out.println("Complaint: \n" + entry2.getKey());
                                         }
-
-                                        iterator.remove();  // Use iterator's remove to avoid ConcurrentModificationException
+                                        System.out.println("_________________");
                                     }
                                 }
-                                break;
                             }
                         }
-                        Data.studentBooks.put(st, reqBooks);
-                        Serialization.write(Data.studentBooks, "Database/StudentBooks.txt");
-                        Serialization.write(Data.books, "Database/LibraryBooks.txt");
-                        Serialization.write(Data.requestedBooks, "Database/LibrarianRequests.txt");
                     }
-
-
-                } else if (foundUser instanceof Teacher) {
-                    System.out.println("0 - View info about Student");
-                    System.out.println("1 - Put marks");
-                    System.out.println("2 - view Schedule");
-                    System.out.println("3 - View courses taken");
-
-                    int selected = scanner.nextInt();
-                    scanner.nextLine();
-
-                    if (selected == 0) {
-                        System.out.println("Write down the ID of the Student you want to get info:");
-                        String id = scanner.nextLine();
-                        boolean found = false;
-                        for (User u : Data.userList) {
-                            if (u.ID.equals(id)) {
-                                System.out.println(u.toString());
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found) System.out.println("No student found with such ID");
-                    } else if (selected == 1) {
-                        Mark mark = new Mark();
-                        System.out.println("You are going to put marks for semester for the Student. Type the course Code you want to choose: ");
-                        for (Course c : ((Teacher) foundUser).coursesTaken) {
-                            System.out.println(c.getCourseCode() + " - " + c.getCourseName());
-                        }
-                        String code = scanner.nextLine();
-                        Double a;
-                        for (Course c : ((Teacher) foundUser).coursesTaken) {
-                            if (c.getCourseCode().equals(code)) {
-                                System.out.println("You selected the subject " + c.getCourseName());
-                                System.out.println("Write the Student ID to put marks");
-                                String id = scanner.nextLine();
-                                for (User u : Data.userList) {
-                                    if (u.ID.equals(id) && u instanceof Student) {
-                                        for (Course co : ((Student) u).getCourses()) {
-                                            if (code.equals(co.getCourseCode())) {
-                                                for (Map.Entry<Integer, HashMap<Course, Mark>> entry : ((Student) u).transcript.entrySet()) {
-                                                    HashMap<Course, Mark> courseMap = entry.getValue();
-                                                    for (Map.Entry<Course, Mark> courseEntry : courseMap.entrySet()) {
-                                                        Course course = courseEntry.getKey();
-                                                        Mark studentMark = courseEntry.getValue();
-                                                        if (course.getCourseCode().equals(code)) {
-                                                            System.out.println("Choose for what you are going to set points: ");
-                                                            System.out.println("0 - First Attestation");
-                                                            System.out.println("1 - Second Attestation");
-                                                            System.out.println("2 - Final score");
-                                                            int cho = scanner.nextInt();
-                                                            scanner.nextLine();
-                                                            System.out.println("Write the first attestation point for " + u.getFirstName() + " " + u.getLastName() + " for subject " + co.getCourseName());
-                                                            if (cho == 0) {
-                                                                System.out.println("Enter first attestation score:");
-                                                                a = scanner.nextDouble();
-                                                                mark = new Mark(a, studentMark.getSecondAttestation(), studentMark.getFinalScore());
-                                                            } else if (cho == 1) {
-                                                                System.out.println("Enter second attestation score:");
-                                                                a = scanner.nextDouble();
-                                                                mark = new Mark(studentMark.getFirstAttestation(), a, studentMark.getFinalScore());
-                                                            } else if (cho == 2) {
-                                                                System.out.println("Enter final score:");
-                                                                a = scanner.nextDouble();
-                                                                mark = new Mark(studentMark.getFirstAttestation(), studentMark.getSecondAttestation(), a);
-                                                            }
-
-                                                            courseMap.put(course, mark);
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        break;
-
-                                    }
-                                }
-                                break;
-                            }
-                        }
-                        Serialization.write(Data.userList, "Database/Users.txt");
-
+                    else {
+                        System.out.println("Incorrect uername or password. Try again:");
                     }
-                } else {
-                    System.out.println("Incorrect uername or password. Try again:");
+                    Serialization.write(Data.userList, "Database/Researchers.txt");
+                    Serialization.write(Data.userList, "Database/Users.txt");
                 }
+
+
             }
-
-
         }
     }
 }

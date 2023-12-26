@@ -2,7 +2,7 @@ package proj;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable, CanBeResearcher {
     private static final long serialVersionUID = -7570589153079397503L;
 
 
@@ -12,7 +12,7 @@ public class User implements Serializable {
     private String email;
     private String password;
     public String ID;
-
+    public boolean isResearcher = false;
 
     // Constructors
 
@@ -78,6 +78,11 @@ public class User implements Serializable {
 
     public String getID() {
         return this.ID;
+    }
+
+    @Override
+    public Degree getDegree() {
+        return null;
     }
 
     public void setID(String ID) {
