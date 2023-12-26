@@ -10,13 +10,15 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Admin admin = Admin.getInstance();
 
-        System.out.println("Select the system language(kz, en, rus):");
+        System.out.println("Select the system language(kz, en, ru):");
         String language = reader.readLine();
         Map <Integer, String> words = new HashMap<>();
         if (language.equals("en")) words = LanguageMessages.getEnMessage();
         else if (language.equals("kz")) words = LanguageMessages.getKzMessage();
         else if (language.equals("ru")) words = LanguageMessages.getRuMessage();
         Employee employee = new Employee();
+        Storage storage = new Storage();
+        storage.setLanguage(language);
         employee.setLanguage(language);
 
         // Устанавливаем выбранный язык в Admin
