@@ -16,6 +16,8 @@ public class Main {
         if (language.equals("en")) words = LanguageMessages.getEnMessage();
         else if (language.equals("kz")) words = LanguageMessages.getKzMessage();
         else if (language.equals("ru")) words = LanguageMessages.getRuMessage();
+        Employee employee = new Employee();
+        employee.setLanguage(language);
 
         // Устанавливаем выбранный язык в Admin
         admin.setLanguage(language);
