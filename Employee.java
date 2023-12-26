@@ -1,14 +1,36 @@
 package proj;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.Map;
 import java.util.Vector;
+import java.nio.Buffer;
+import java.io.*;
+import java.util.*;
 
 public class Employee extends User {
     private static final long serialVersionUID = 5958066297683139454L;
     private Date hireDate;
     private Integer workExperience;
     private Security security;
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private Message message;
+    private String language;
+    private static Employee instance;
+    private static Map<Integer, String> words;
+    public void setLanguage(String language) {
+        this.language = language;
+
+        // Инициализация слов на выбранном языке
+        if (language.equals("en")) {
+            words = LanguageMessages.getEnMessage();
+        } else if (language.equals("kz")) {
+            words = LanguageMessages.getKzMessage();
+        } else if (language.equals("ru")) {
+            words = LanguageMessages.getRuMessage();
+        }
+    }
 
     // Constructors
     public Employee(){}
@@ -39,8 +61,8 @@ public class Employee extends User {
 
     // Operations
     public static void updateEmployee() {
-        System.out.println("7 - Change Hire Date");
-        System.out.println("8 - Change Work Experience");
+        System.out.println(words.get(126));
+        System.out.println(words.get(127));
 
     }
     public boolean sendMessage() {
