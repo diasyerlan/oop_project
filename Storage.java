@@ -4,12 +4,13 @@ import proj.Exceptions.E;
 import proj.Exceptions.H_indexException;
 import proj.Exceptions.iterExceedException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Storage {
-
-    static Scanner scanner = new Scanner(System.in);
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public static void researcherDef(User foundUser) throws IOException {
         if (foundUser.isResearcher) {
             for (CanBeResearcher researcher : Data.researchers) {
@@ -25,8 +26,9 @@ public class Storage {
                         System.out.println("7 - View Supervisor");
                     }
 
-                    int s = scanner.nextInt();
-                    scanner.nextLine();
+                    String ss = reader.readLine();
+                    int s = Integer.parseInt(ss);
+                    reader.readLine();
                     if (Data.researchProjects == null)
                         Data.researchProjects = new LinkedHashMap<>();
                     if (s == 1) {
@@ -43,7 +45,7 @@ public class Storage {
                         System.out.println("7 - Sort by abstract length");
 
                         Vector<ResearchPaper> allPapers = Data.getAllResearchPapers(researcher);
-                        String n = scanner.nextLine();
+                        String n = reader.readLine();
                         switch (n) {
                             case "1" -> Researcher.printPapers(Comp.dateComparator, allPapers);
                             case "2" -> Researcher.printPapers(Comp.citationComparator, allPapers);
@@ -60,15 +62,16 @@ public class Storage {
                     } else if (s == 5) {
                         System.out.println("You are going to add Research Projects");
                         System.out.println("Write the Research Topic: ");
-                        String topic = scanner.nextLine();
+                        String topic = reader.readLine();
 
                         System.out.println("Write the Research Funding Source of the research project: ");
-                        String fundingSource = scanner.nextLine();
+                        String fundingSource = reader.readLine();
                         System.out.println("Write the duration of Research in months: ");
-                        int duration = scanner.nextInt();
-                        scanner.nextLine();
+                        String duratios = reader.readLine();
+                        int duration = Integer.parseInt(duratios);
+                        reader.readLine();
                         System.out.println("Write what Methodology you used: ");
-                        String methodology = scanner.nextLine();
+                        String methodology = reader.readLine();
                         while (true) {
                             boolean isFound = false;
                             int lastestNum = 0;
@@ -112,46 +115,48 @@ public class Storage {
                                 }
                             }
                         }
-                        int q = scanner.nextInt();
-                        scanner.nextLine();
+                        String qs = reader.readLine();
+                        int q = Integer.parseInt(qs);
+                        reader.readLine();
                         for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()) {
                             if (entry.getKey().getID().equals(researcher.getID())) {
                                 for (Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
                                     if (entry1.getKey().getProjectNumber() == q) {
                                         System.out.println("Now add descriptions for your Research Paper: ");
                                         System.out.println("Add Title:");
-                                        String title = scanner.nextLine();
+                                        String title = reader.readLine();
 
                                         System.out.println("Type an article(content):");
-                                        String article = scanner.nextLine();
+                                        String article = reader.readLine();
 
                                         System.out.println("Type authors by coma: ");
-                                        String author = scanner.nextLine();
+                                        String author = reader.readLine();
                                         StringTokenizer tokenizer = new StringTokenizer(author, ", ");
                                         Vector<String> authors = new Vector<>();
                                         while (tokenizer.hasMoreTokens())
                                             authors.add(tokenizer.nextToken());
 
                                         System.out.println("Write an abstract: ");
-                                        String abctract = scanner.nextLine();
+                                        String abctract = reader.readLine();
 
                                         System.out.println("Write citations: ");
-                                        String citation = scanner.nextLine();
+                                        String citation = reader.readLine();
                                         StringTokenizer tokenizer1 = new StringTokenizer(citation, ". ");
                                         Vector<String> citations = new Vector<>();
                                         while (tokenizer1.hasMoreTokens())
                                             citations.add(tokenizer1.nextToken());
 
                                         System.out.println("Write keywords: ");
-                                        String keyword = scanner.nextLine();
+                                        String keyword = reader.readLine();
                                         StringTokenizer tokenizer2 = new StringTokenizer(keyword, ", ");
                                         Vector<String> keywords = new Vector<>();
                                         while (tokenizer2.hasMoreTokens())
                                             keywords.add(tokenizer2.nextToken());
 
                                         System.out.println("Type year published: ");
-                                        int year = scanner.nextInt();
-                                        scanner.nextLine();
+                                        String yeard = reader.readLine();
+                                        int year = Integer.parseInt(yeard);
+                                        reader.readLine();
                                         Vector<ResearchPaper> vector = entry.getValue().computeIfAbsent(entry1.getKey(), k -> new Vector<>());
                                         vector.add(new ResearchPaper(title, article, authors, abctract, citations, keywords, year));
                                         System.out.println("Research Paper added successfully!");
@@ -185,8 +190,9 @@ public class Storage {
                             boolean success = false;
                             while(!success) {
                                 try {
-                                    int n = scanner.nextInt();
-                                    scanner.nextLine();
+                                    String ns = reader.readLine();
+                                    int n = Integer.parseInt(ns);
+                                    reader.readLine();
                                     E.validateIter(n, i);
                                     success = true;
                                     for (Map.Entry<Integer, CanBeResearcher> entry : temp.entrySet()) {
@@ -231,7 +237,7 @@ public class Storage {
         if (!foundUser.isResearcher) System.out.println(n + " - Become a Researcher");
         else System.out.println(n + " - Go to Researcher menu");
     }
-    public static <T> void messaging(Class<T> clazz, HashMap<T, Vector<String>> h) {
+    public static <T> void messaging(Class<T> clazz, HashMap<T, Vector<String>> h) throws IOException {
         for (User u : Data.userList) {
             if (clazz.isInstance(u)) {
                 System.out.println(u.getID() + " - " + u.getFirstName() + " " + u.getLastName());
@@ -239,13 +245,13 @@ public class Storage {
         }
 
         System.out.println("Write the user ID: ");
-        String id = scanner.nextLine();
+        String id = reader.readLine();
 
         for (User u : Data.userList) {
             if (u.getID().equals(id) && clazz.isInstance(u)) {
                 System.out.println("Write the message: ");
                 String info = u.getFirstName() + " " + u.getLastName() + ": ";
-                String message = scanner.nextLine();
+                String message = reader.readLine();
 
                 h = (h == null) ? new HashMap<>() : h;
 
@@ -255,6 +261,43 @@ public class Storage {
                 System.out.println("Message is sent successfully!");
                 break;
             }
+        }
+    }
+
+    public static void sendMessage() throws IOException {
+        System.out.println("Choose who to send the message to: ");
+        System.out.println("1 - Teacher");
+        System.out.println("2 - Librarian");
+        System.out.println("3 - Dean");
+        System.out.println("4 - Office Registrar");
+        System.out.println("4 - News Manager");
+
+        String messs = reader.readLine();
+        int mess = Integer.parseInt(messs);
+        reader.readLine();
+
+        if(mess == 1) {
+            System.out.println("Type the ID of the Teacher you want to send: ");
+            Storage.messaging(Teacher.class, Data.messageToTeacher);
+            Serialization.write(Data.messageToTeacher, "Database/MessageToTeacher.txt");
+        }
+        else if (mess == 2) {
+            System.out.println("Type the ID of the Librarian you want to send: ");
+            Storage.messaging(Librarian.class, Data.messageToLibrarian);
+            Serialization.write(Data.messageToLibrarian, "Database/MessageToLibrarian.txt");
+        }
+        else if (mess == 3) {
+            System.out.println("Type the ID of the Dean you want to send: ");
+            Storage.messaging(FacultyManager.class, Data.messageToDean);
+            Serialization.write(Data.messageToDean, "Database/MessageToDean.txt");
+        } else if (mess == 4) {
+            System.out.println("Type the ID of the Office Registrar you want to send: ");
+            Storage.messaging(OfficeRegistrator.class, Data.messageToOR);
+            Serialization.write(Data.messageToOR, "Database/MessageToOR.txt");
+        } else if (mess == 5) {
+            System.out.println("Type the ID of the Manager you want to send: ");
+            Storage.messaging(NewsManager.class, Data.messageToNewsManager);
+            Serialization.write(Data.messageToNewsManager, "Database/MessageToNewsManager.txt");
         }
     }
 }

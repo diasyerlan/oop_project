@@ -37,7 +37,7 @@ public class Data {
     public static HashMap<OfficeRegistrator, Vector<String>> messageToOR = Serialization.read("Database/MessageToOR.txt", "");
     public static HashMap<FacultyManager, Vector<String>> messageToDean = Serialization.read("Database/MessageToDean.txt", "");
     public static HashMap<NewsManager, Vector<String>> messageToNewsManager = Serialization.read("Database/MessageToNewsManager.txt", "");
-
+    public static HashMap<String, String> news = Serialization.read("Database/News.txt", "");
     Vector<Teacher> teachers = new Vector<>();
 
     // Constructor or method to initialize teachers

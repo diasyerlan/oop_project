@@ -1,10 +1,11 @@
 package proj;
 import java.io.*;
+import java.nio.Buffer;
 import java.util.*;
 
 public class Admin {
     private static Admin instance;
-    Scanner scanner = new Scanner(System.in);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public String username = "Admin";
     public String password = "12345";
     User newUser = new User();
@@ -34,29 +35,29 @@ public class Admin {
     }
 
 
-    public void commonQuestions() {
+    public void commonQuestions() throws IOException {
         System.out.println("First name: ");
-        firstname = scanner.nextLine();
+        firstname = reader.readLine();
 
         System.out.println("Last name: ");
-        lastname = scanner.nextLine();
+        lastname = reader.readLine();
 
         System.out.println("Username: ");
-        userName = scanner.nextLine();
+        userName = reader.readLine();
 
         System.out.println("Email: ");
-        email = scanner.nextLine();
+        email = reader.readLine();
 
         System.out.println("Password: ");
-        passWord = scanner.nextLine();
+        passWord = reader.readLine();
 
         System.out.println("ID number: ");
-        id = scanner.nextLine();
+        id = reader.readLine();
     }
 
-    public void commonEmployeeQuestions() {
+    public void commonEmployeeQuestions() throws IOException {
         System.out.println("Hire Date: (Write dd/mm/yy format)");
-        String date = scanner.nextLine();
+        String date = reader.readLine();
         StringTokenizer tokenizer = new StringTokenizer(date, "/");
         Vector<Integer> dates = new Vector();
         while (tokenizer.hasMoreTokens()) dates.add(Integer.parseInt(tokenizer.nextToken()));
@@ -64,8 +65,9 @@ public class Admin {
         hireDate = new Date(dates.get(0), dates.get(1), dates.get(2));
 
         System.out.println("Write down the work experience in years: ");
-        workExp = scanner.nextInt();
-        scanner.nextLine();
+        String workEsp = reader.readLine();
+        workExp = Integer.parseInt(workEsp);
+        reader.readLine();
 
     }
     // Operations
@@ -76,26 +78,27 @@ public class Admin {
         System.out.println("Whom do you want to add? Choose between these: Student, Teacher, Librarian, Cleaner, Security, Manager");
 
         while (true) {
-            String position = scanner.nextLine();
+            String position = reader.readLine();
             if (position.equals("Student")) {
 
                 commonQuestions();
                 System.out.println("Student Degree");
-                String deg = scanner.nextLine();
+                String deg = reader.readLine();
                 Degree degree = Degree.PHD;
                 if (deg.equals("Bachelor")) degree = Degree.BACHELOR;
                 else if (deg.equals("Master")) degree = Degree.MASTER;
 
                 System.out.println("GPA: ");
-                Double gpa = scanner.nextDouble();
+                String gpas = reader.readLine();
+                Double gpa = Double.parseDouble(gpas);
 
                 System.out.println("Course: ");
-                int course = scanner.nextInt();
-                scanner.nextLine();  // Consume the newline character
+                String courseS = reader.readLine();
+                int course = Integer.parseInt(courseS);
 
 
                 System.out.println("Faculty: ");
-                String facul = scanner.nextLine();
+                String facul = reader.readLine();
                 Faculty faculty = Faculty.BS;
                 switch (facul) {
                     case "FIT" -> faculty = Faculty.FIT;
@@ -107,10 +110,10 @@ public class Admin {
 
 
                 System.out.println("specialization: ");
-                String specialization = scanner.nextLine();
+                String specialization = reader.readLine();
 
                 System.out.println("Term: ");
-                String ter = scanner.nextLine();
+                String ter = reader.readLine();
                 Term term = Term.FALL;
                 switch (ter) {
                     case "Fall" -> term = Term.FALL;
@@ -118,10 +121,10 @@ public class Admin {
 
                 }
                 System.out.println("Phone Number: ");
-                String phoneNumber = scanner.nextLine();
+                String phoneNumber = reader.readLine();
 
                 System.out.println("Credit Card number: ");
-                String creditCard = scanner.nextLine();
+                String creditCard = reader.readLine();
 
                 newUser = new Student(firstname, lastname, userName, email, passWord, id, degree, gpa,
                         course, faculty, specialization, new Vector<Book>(), new Schedule(), new KaspiPay(), new StudentOrganization(), term, phoneNumber, creditCard);
@@ -130,7 +133,7 @@ public class Admin {
                 commonQuestions();
                 commonEmployeeQuestions();
                 System.out.println("Teacher type. Choose between these: (Professor, Assistant, Tutor, Lecturer, Assistant Professor)");
-                String teacherTyp = scanner.nextLine();
+                String teacherTyp = reader.readLine();
                 TeacherType teacherType = TeacherType.ASSISTANT;
                 switch (teacherTyp) {
                     case "Professor" -> teacherType = TeacherType.PROFESSOR;
@@ -141,7 +144,7 @@ public class Admin {
                 }
 
                 System.out.println("Faculty. Choose Faculty between these: (FIT, BS, KMA, SPE, ISE, SG)");
-                String facul = scanner.nextLine();
+                String facul = reader.readLine();
                 Faculty faculty = Faculty.BS;
                 switch (facul) {
                     case "FIT" -> faculty = Faculty.FIT;
@@ -153,7 +156,7 @@ public class Admin {
 
                 System.out.println("Set the courses taken: (Seperate by coma)");
                 Vector<Course> coursesSetting = new Vector<>();
-                String takenCourses = scanner.nextLine();
+                String takenCourses = reader.readLine();
                 StringTokenizer tokenizer = new StringTokenizer(takenCourses, ", ");
                 Vector<String> coursesTaken = new Vector();
                 while (tokenizer.hasMoreTokens()) coursesTaken.add(tokenizer.nextToken());
@@ -181,13 +184,14 @@ public class Admin {
                     System.out.println("1 - News Manager");
                     System.out.println("2 - Office Registrar");
                     System.out.println("3 - Faculty Manager");
-                    int variant = scanner.nextInt();
-                    scanner.nextLine();
+                    String varianst = reader.readLine();
+                    int variant = Integer.parseInt(varianst);
+                    reader.readLine();
                     if(variant == 1) newUser = new NewsManager(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                     else if(variant == 2) newUser = new OfficeRegistrator(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                     else {
                         System.out.println("Faculty. Choose Faculty between these: (FIT, BS, KMA, SPE, ISE, SG)");
-                        String facul = scanner.nextLine();
+                        String facul = reader.readLine();
                         Faculty faculty = Faculty.BS;
                         switch (facul) {
                             case "FIT" -> faculty = Faculty.FIT;
@@ -249,37 +253,38 @@ public class Admin {
             User.updateUser();
             if (toUpdate instanceof Student) Student.updateUser();
             else if (toUpdate instanceof Employee) Employee.updateEmployee();
-            int variant = scanner.nextInt();
-            scanner.nextLine();
+            String varianst = reader.readLine();
+            int variant = Integer.parseInt(varianst);
+            reader.readLine();
             if(variant == 1) {
                 System.out.println("Type the updated name: ");
-                String newName = scanner.nextLine();
+                String newName = reader.readLine();
                 toUpdate.setFirstName(newName);
                 System.out.println("The firstname of User changed successfully!");
             } else if (variant == 2) {
                 System.out.println("Type the updated lastname: ");
-                String newName = scanner.nextLine();
+                String newName = reader.readLine();
                 toUpdate.setLastName(newName);
                 System.out.println("The lastname of User changed successfully!");
             }
             else if (variant == 3) {
                 System.out.println("Type the updated username: ");
-                String newName = scanner.nextLine();
+                String newName = reader.readLine();
                 toUpdate.setUsername(newName);
                 System.out.println("The username of User changed successfully!");
             } else if (variant == 4) {
                 System.out.println("Type the updated email: ");
-                String newName = scanner.nextLine();
+                String newName = reader.readLine();
                 toUpdate.setEmail(newName);
                 System.out.println("The email of User changed successfully!");
             } else if (variant == 5) {
                 System.out.println("Type the updated password: ");
-                String newName = scanner.nextLine();
+                String newName = reader.readLine();
                 toUpdate.setPassword(newName);
                 System.out.println("The password of User changed successfully!");
             } else if (variant == 6) {
                 System.out.println("Type the updated ID: ");
-                String newName = scanner.nextLine();
+                String newName = reader.readLine();
                 toUpdate.setID(newName);
                 System.out.println("The ID of User changed successfully!");
             }
@@ -287,7 +292,7 @@ public class Admin {
                 Student.updateUser();
                 if (variant == 7) {
                     System.out.println("Type the updated Student Degree: ");
-                    String deg = scanner.nextLine();
+                    String deg = reader.readLine();
                     Degree degree = Degree.PHD;
                     if (deg.equals("Bachelor")) degree = Degree.BACHELOR;
                     else if (deg.equals("Master")) degree = Degree.MASTER;
@@ -296,20 +301,22 @@ public class Admin {
                 }
                 else if(variant == 8) {
                     System.out.println("Type the updated GPA: ");
-                    Double newGpa = scanner.nextDouble();
+                    String newGspa = reader.readLine();
+                    Double newGpa = Double.parseDouble(newGspa);
                     ((Student) toUpdate).setGpa(newGpa);
                     System.out.println("The GPA of Student changed successfully!");
                 }
                 else if(variant == 9) {
                     System.out.println("Type the updated Course: ");
-                    int newCourse = scanner.nextInt();
-                    scanner.nextInt();
+                    String newCoursse = reader.readLine();
+                    int newCourse = Integer.parseInt(newCoursse);
+                    reader.readLine();
                     ((Student) toUpdate).setCourse(newCourse);
                     System.out.println("The Course of Student changed successfully!");
                 }
                 else if(variant == 10) {
                     System.out.println("Type the updated Faculty: ");
-                    String newfac = scanner.nextLine();
+                    String newfac = reader.readLine();
                     Faculty faculty = Faculty.BS;
                     switch (newfac) {
                         case "FIT" -> faculty = Faculty.FIT;
@@ -322,12 +329,12 @@ public class Admin {
                     System.out.println("The Faculty of Student changed successfully!");
                 } else if(variant == 11) {
                     System.out.println("Type the updated Course: ");
-                    String newSpec = scanner.nextLine();
+                    String newSpec = reader.readLine();
                     ((Student) toUpdate).setSpecialization(newSpec);
                     System.out.println("The Specialization of Student changed successfully!");
                 } else if(variant == 12) {
                     System.out.println("Type the updated last Payment method. Choose between Kaspi, Halyk, Cash ");
-                    String newpay = scanner.nextLine();
+                    String newpay = reader.readLine();
                     new KaspiPay();
                     paymentStrategy pay = switch (newpay) {
                         case "Kaspi" -> new KaspiPay();
@@ -343,7 +350,7 @@ public class Admin {
                 Employee.updateUser();
                 if (variant == 7) {
                     System.out.println("Type the updated employee hire date. Format yy/mm/dd: ");
-                    String date = scanner.nextLine();
+                    String date = reader.readLine();
                     StringTokenizer tokenizer = new StringTokenizer(date, "/");
                     Vector<Integer> dates = new Vector();
                     while (tokenizer.hasMoreTokens()) dates.add(Integer.parseInt(tokenizer.nextToken()));
@@ -353,8 +360,9 @@ public class Admin {
                 }
                 else if(variant == 9) {
                     System.out.println("Type the updated work experience: ");
-                    int workExp = scanner.nextInt();
-                    scanner.nextLine();
+                    String workdExp = reader.readLine();
+                    int workExp = Integer.parseInt(workdExp);
+                    reader.readLine();
                     ((Employee) toUpdate).setWorkExperience(workExp);
                     System.out.println("The GPA of Student changed successfully!");
                 }
