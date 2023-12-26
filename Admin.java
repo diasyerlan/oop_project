@@ -93,14 +93,14 @@ public class Admin {
 
         while (true) {
             String position = reader.readLine();
-            if (position.equals("Student")) {
+            if (position.equals("Student") || position.equals("Студент") || position.equals("Студент")){
 
                 commonQuestions();
                 System.out.println(words.get(80));
                 String deg = reader.readLine();
                 Degree degree = Degree.PHD;
-                if (deg.equals(words.get(81))) degree = Degree.BACHELOR;
-                else if (deg.equals(words.get(82))) degree = Degree.MASTER;
+                if (deg.equals("Student") || deg.equals("Студент") ) degree = Degree.BACHELOR;
+                else if (deg.equals("Teacher") || deg.equals("Оқытушы") || deg.equals("Преподаватель")) degree = Degree.MASTER;
 
                 System.out.println(words.get(83));
                 String gpas = reader.readLine();
@@ -186,7 +186,7 @@ public class Admin {
                 Serialization.write(userList, "Database/Users.txt");
                 break;
 
-            } else if (position.equals("Librarian") || position.equals("Security") || position.equals("Cleaner") || position.equals("Manager")) {
+            } else if (position.equals("Librarian") || position.equals("Security") || position.equals("Cleaner") || position.equals("Manager") || position.equals("Кітапханашы") || position.equals("Тазаларшы")|| position.equals("Кузетши")|| position.equals("Менеджер") || position.equals("Преподаватель") || position.equals("Библиотекарь") || position.equals("Уборщик") || position.equals("Охранник"))  {
                 commonQuestions();
                 commonEmployeeQuestions();
                 if (position.equals("Librarian"))
