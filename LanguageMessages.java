@@ -132,6 +132,56 @@ public class LanguageMessages {
         enMessages.put(125, "The GPA of Student changed successfully!");
         enMessages.put(126, "7 - Change Hire Date");
         enMessages.put(127, "8 - Change Work Experience");
+        enMessages.put(128, " - Become a Researcher");
+        enMessages.put(129, " - Go to Researcher menu");
+        enMessages.put(130, "This is your researcher menu!\n1 - View all Research projects\n2 - View all Research papers\n3 - Print all Research papers\n4 - Calculate h-index\n5 - Add research project\n6 - Add research papers");
+        enMessages.put(131, "7 - View Supervisor");
+        enMessages.put(132, "1 - Sort by Publication Date\n2 - Sort by citations\n3 - Sort by article length\n4 - Sort by authors number\n5 - Sort by title alphabetically\n6 - Sort by keywords number\n7 - Sort by abstract length");
+        enMessages.put(133, "Your h-index is ");
+        enMessages.put(134, "You are going to add Research Projects");
+        enMessages.put(135, "Write the Research Topic: ");
+        enMessages.put(136, "Write the Research Funding Source of the research project: ");
+        enMessages.put(137, "Write the duration of Research in months: ");
+        enMessages.put(138, "Write what Methodology you used: ");
+        enMessages.put(139, "The project is added successfully!");
+        enMessages.put(140, "You are going to add research papers for your projects. Select for which project you want to add: ");
+        enMessages.put(141, "Now add descriptions for your Research Paper: ");
+        enMessages.put(142, "Add Title:");
+        enMessages.put(143, "Type an article(content):");
+        enMessages.put(144, "Type authors by coma: ");
+        enMessages.put(145, "Write an abstract: ");
+        enMessages.put(146, "Write citations: ");
+        enMessages.put(147, "Write keywords: ");
+        enMessages.put(148, "Type year published: ");
+        enMessages.put(149, "Research Paper added successfully!");
+        enMessages.put(150, "Your supervisor is ");
+        enMessages.put(151, "You do not have any Supervisors. Choose one: ");
+        enMessages.put(152, "Supervisor chosen successfully!");
+        enMessages.put(153, "Exception caught: ");
+        enMessages.put(154, "Congrats, you are a Researcher now!");
+        enMessages.put(156, "Write the user ID: ");
+        enMessages.put(157, "Write the message: ");
+        enMessages.put(158, "Message is sent successfully!");
+        enMessages.put(159, "Choose who to send the message to: \n1 - Teacher\n2 - Librarian\n3 - Dean\n4 - Office Registrar\n5 - News Manager");
+        enMessages.put(160, "Type the ID of the Teacher you want to send: ");
+        enMessages.put(161, "Type the ID of the Librarian you want to send: ");
+        enMessages.put(162, "Type the ID of the Dean you want to send: ");
+        enMessages.put(163, "Type the ID of the Office Registrar you want to send: ");
+        enMessages.put(164, "Type the ID of the Manager you want to send: ");
+        enMessages.put(165, "18 - Change Office Registrar Type");
+        enMessages.put(166, "19 - Change News Manager Type");
+        enMessages.put(167, "20 - Change Faculty Manager Type");
+        enMessages.put(168, "21 - Change Hire Date for Employee");
+        enMessages.put(169, "22 - Change Work Experience for Employee");
+        enMessages.put(170, "Выберите соответствующий номер, чтобы выполнить действие:");
+
+
+
+
+
+
+
+
 
 
 
@@ -143,24 +193,24 @@ public class LanguageMessages {
         kzMessages.put(1, "Виртуалды университеттік жүйеге қош келдіңіз! Тіркеліп кіріңіз:");
         kzMessages.put(2, "Пайдаланушы аты: ");
         kzMessages.put(3, "Құпия сөз: ");
-        kzMessages.put(4, "Қош келдіңіз, Админ! Сізге мүмкін болатын әрекеттер:\n0 - Барлық пайдаланушыларды көрсету\n1 - Пайдаланушы қосу\n2 - Пайдаланушыны алау\n3 - Пайдаланушыды жаңарту\nКөшірме нөмірін енгізіп әрекетті орындау үшін: ");
-        kzMessages.put(5, "Жою келетін пайдаланушынын ID-сын енгізіңіз:");
-        kzMessages.put(6, "Жаңарту келетін пайдаланушынын ID-сын енгізіңіз:");
-        kzMessages.put(7, "Қош келдіңіз! Сіз орындау мүмкін болатын әрекеттер: ");
-        kzMessages.put(8, "0 - Транскрипті көру\n1 - Курсқа тіркелу\n2 - Кестені көру\n3 - Кітаптарды кіріп алу\n4 - Кітаптарды библиотекадан кетіру\n5 - Алып кетілген кітаптарды көру\n6 - Қатысатын студенттік ұйымдарды көру\n7 - Студенттік төлем жасау");
+        kzMessages.put(4, "Қош келдіңіз, әкімші! Мына әрекеттерді орындауға болады:\n0 - Барлық пайдаланушыларды көрсету\n1 - Пайдаланушыны қосу\n2 - Пайдаланушыны жою\n3 - Пайдаланушыны жаңарту\nӘрекетті орындау үшін сәйкес нөмірді енгізіңіз: ");
+        kzMessages.put(5, "Жойғыңыз келетін пайдаланушының идентификаторын енгізіңіз");
+        kzMessages.put(6, "Жаңартқыңыз келетін пайдаланушының идентификаторын енгізіңіз:");
+        kzMessages.put(7, "Қош келдіңіз! Міне, орындай алатын әрекеттер: ");
+        kzMessages.put(8, "0 - Транскриптті көру\n1 - Курсқа тіркелу\n2 - Кестені қарау\n3 - Кітапханадан кітап алу\n4 - Кітапты кітапханаға қайтару\n5 - Алынған кітаптарды көру\n6 - Сіз қатысатын студенттік ұйымдарды көруn7 - Студенттік төлемді төлеу");
         kzMessages.put(9, "Әрекетті орындау үшін қосымша нөмірді енгізіңіз: ");
-        kzMessages.put(10, "Тіркелу сұрауысыніз Отдел регистрации-ге өтілген! Күтіп көйіңіз!");
+        kzMessages.put(10, "Тіркеу туралы өтінішіңіз Тіркеу бөліміне жіберілді! Күте тұрыңыз!");
         kzMessages.put(11, "Сіз курстарға тіркелгенсіз!");
-        kzMessages.put(12, "Тіркелу сұрауысыныз Отдел регистрации-ге жіберілді!");
-        kzMessages.put(13, "Библиотекадан алған кітаптардың атауларын енгізіңіз (тізімделгендер арқылы): ");
+        kzMessages.put(12, "Тіркеу туралы өтінішіңіз Тіркеу бөліміне жіберілді!");
+        kzMessages.put(13, "Кітапханадан алғыңыз келетін кітаптардың атын енгізіңіз (үтір арқылы):");
         kzMessages.put(14, "Сұрау сәтті жіберілді!");
-        kzMessages.put(15, "Библиотекадан кетіру келетін кітаптардың атауларын енгізіңіз (тізімделгендер арқылы): ");
+        kzMessages.put(15, "Кітапханаға қайтарғыңыз келетін кітаптардың атын енгізіңіз (үтір арқылы):");
         kzMessages.put(16, "Сәтті қайтарылды ");
-        kzMessages.put(17, "Сіздің библиотекадан кітап жоқ!");
+        kzMessages.put(17, "Сізде кітапханадан кітаптар жоқ!");
         kzMessages.put(18, "Библиотекадан алып кеткен кітаптар: ");
-        kzMessages.put(19, "Сіздің бір жоқтық ұйымыңыз жоқ. Олардан бірін таңдаңыз: ");
+        kzMessages.put(19, "Сіз ешбір студенттік ұйымның мүшесі емессіз. Олардың біреуін таңдаңыз:");
         kzMessages.put(20, "Құттықтаймыз! Сіз ұйымның мүшесі болдыңыз");
-        kzMessages.put(21, "Организация студенттермен толық!");
+        kzMessages.put(21, "Ұйым студенттерге толы!");
         kzMessages.put(22, "Сіз бұл ұйымның мүшесісі болдыңыз");
         kzMessages.put(23, "Сіз күнделікті студенттік төлем жасау үшін таңдауыз. Төлем мәнін таңдау:\n1 - Kaspi\n2 - Halyk\n3 - Таңы");
         kzMessages.put(24, "0 - Студенттік курстарды қосу\n1 - Жұмыс хабарламаларын жіберу\n2 - Жұмыс хабарламаларын көру");
@@ -169,7 +219,7 @@ public class LanguageMessages {
         kzMessages.put(27, "Студент тіркеуге рұқсат берілмеді. Растау үшін 'ok' деп енгізіңіз: ");
         kzMessages.put(28, "Сұрау расталды!");
         kzMessages.put(29, "Студент табылмады. Қайтадан көріңіз!");
-        kzMessages.put(30, "Сізге коллегаларыңыздан келген хабарлар: ");
+        kzMessages.put(30, "Міне, әріптестеріңізден алған хабарламалар:");
         kzMessages.put(31, "0 - Барлық кітаптарды көру\n1 - Сұрауларды көру\n2 - Жұмыс хабарламасын жіберу\n3 - Жұмыс хабарламаларын көру");
         kzMessages.put(32, "Сұрауды растау үшін белгілі пайдаланушының ID-сын енгізіңіз: ");
         kzMessages.put(33, "Сізге коллегаларыңыздан келген хабарлар: ");
@@ -217,13 +267,13 @@ public class LanguageMessages {
         kzMessages.put(75, "Жұмысқа орналасу күні: (dd/mm/yy форматында жазыңыз)");
         kzMessages.put(76, "Жылдық іс төлеуі: ");
         kzMessages.put(77, "Сіз жаңа пайдаланушыны жүйеге қосуды ойладыңыз. Пайдаланушыны түсінігін жазыңыз.");
-        kzMessages.put(78, "Кімді қосарысызды таңдаңыз? Бұлар арасында таңдау жасау: Студент, Оқытушы, Кітапханашы, Тазаларшы, Қауіпсіздік, Менеджер");
+        kzMessages.put(78, "Кімді қосарысызды таңдаңыз? Бұлар арасында таңдау жасау: Студент, Оқытушы, Кітапханашы, Тазаларшы, Кузетши, Менеджер");
         kzMessages.put(80, "Студент дәрежесі");
         kzMessages.put(83, "GPA: ");
         kzMessages.put(84, "Курс: ");
         kzMessages.put(85, "Факультет: ");
         kzMessages.put(86, "специализация: ");
-        kzMessages.put(87, "Термин: ");
+        kzMessages.put(87, "Семестр: ");
         kzMessages.put(88, "Телефон нөмірі: ");
         kzMessages.put(89, "Кредитті карта нөмірі: ");
         kzMessages.put(90, "Оқытушы түрі. Бұлардан таңдау: (Профессор, Ассистент, Тьютор, Лектор, Ассистент профессор)");
@@ -263,7 +313,44 @@ public class LanguageMessages {
         kzMessages.put(124, "Жұмыс төлектерін жаңарту үшін жазыңыз: ");
         kzMessages.put(125, "Студенттің жұмыс төлектері сәтті өзгертілді!");
         kzMessages.put(126, "7 - Жұмысқа орналасу күнін өзгерту");
-        kzMessages.put(127, "8 - Жұмыс төлектерін өзгерту");
+        kzMessages.put(127, "8 - Жұмыс төлемдерин өзгерту");
+        kzMessages.put(128, " - Исследователь болу");
+        kzMessages.put(129, " - Исследовательдік менюге өту");
+        kzMessages.put(130, "Бұл сіздікті исследовательдік менюіңіз!\n1 - Барлық изучение проекттерін көру\n2 - Барлық изучение қарапайымдарын көру\n3 - Барлық изучение қарапайымдарын басу\n4 - h-индексін есептеу\n5 - Изучение проектін қосу\n6 - Изучение қарапайымдарын қосу");
+        kzMessages.put(131, "7 - Рұқсатшыны көру");
+        kzMessages.put(132, "1 - Жариялану күні бойынша сұрыптау\n2 - Ситирование бойынша сұрыптау\n3 - Мақаланың ұзақтығы бойынша сұрыптау\n4 - Авторлардың саны бойынша сұрыптау\n5 - Тақырыпты алфавит бойынша сұрыптау\n6 - Кілт сөздердің саны бойынша сұрыптау\n7 - Аннотацияның ұзақтығы бойынша сұрыптау");
+        kzMessages.put(133, "Сіздік h-индекс: ");
+        kzMessages.put(134, "Сіз изучение проекттерін қосуға дайынсыз");
+        kzMessages.put(135, "Досының тақырыбын жазыңыз: ");
+        kzMessages.put(136, "Изучение проектінің қарапайымдылығын жазыңыз: ");
+        kzMessages.put(137, "Изучение уақытты айларда жазыңыз: ");
+        kzMessages.put(138, "Не бойынша Методологияны пайдаландыңыз: ");
+        kzMessages.put(139, "Проект сәтті қосылды!");
+        kzMessages.put(140, "Сіз изучение проекттеріне көмек көрсету үшін күнделікті изучение қосуға дайынсыз. Қай жоба үшін қосу келгендігін таңдаңыз: ");
+        kzMessages.put(141, "Қазір изучение қарапайымдары үшін сипаттамаларды қосыңыз: ");
+        kzMessages.put(142, "Тақырыпты қосу:");
+        kzMessages.put(143, "Мақаланы енгізіңіз:");
+        kzMessages.put(144, "Авторларды тыңдау:");
+        kzMessages.put(145, "Аннотацияны енгізіңіз:");
+        kzMessages.put(146, "Ситированиены енгізіңіз:");
+        kzMessages.put(147, "Кілт сөздерді енгізіңіз:");
+        kzMessages.put(148, "Жылдар бойынша енгізіңіз:");
+        kzMessages.put(149, "Изучение қарапайымда сәтті қосылды!");
+        kzMessages.put(150, "Сіздік Жетекші - ");
+        kzMessages.put(151, "Сізде Жетекші жоқ. Біреуді таңдау: ");
+        kzMessages.put(152, "Рұқсатшы сәтті таңдалды!");
+        kzMessages.put(153, "Исключение алынды: ");
+        kzMessages.put(154, "Құттықтаймыз, сіз қазақшаға айналдыңыз!");
+        kzMessages.put(156, "Пайдаланушының ID-сын енгізіңіз: ");
+        kzMessages.put(157, "Хабарламаны енгізіңіз: ");
+        kzMessages.put(158, "Хабарлама сәтті жіберілді!");
+        kzMessages.put(159, "Хабарламаны кімге жіберу келгенін таңдау: \n1 - Профессор\n2 - Китапханашы\n3 - Деканат\n4 - Офис регистратуры\n5 - Жаңалықтар менеджері");
+        kzMessages.put(160, "Профессорге жіберетін ID-ді енгізіңіз: ");
+        kzMessages.put(161, "Библиотекарге жіберетін ID-ді енгізіңіз: ");
+        kzMessages.put(162, "Деканге жіберетін ID-ді енгізіңіз: ");
+        kzMessages.put(163, "Офис регистратурына жіберетін ID-ді енгізіңіз: ");
+        kzMessages.put(164, "Жаңалықтар менеджеріне жіберетін ID-ді енгізіңіз: ");
+
 
 
 
@@ -395,6 +482,43 @@ public class LanguageMessages {
         ruMessages.put(125, "Опыт работы сотрудника изменен успешно!");
         ruMessages.put(126, "7 - Изменить дату приема на работу");
         ruMessages.put(127, "8 - Изменить трудовой стаж");
+        ruMessages.put(128, " - Стать исследователем");
+        ruMessages.put(129, " - Перейти в меню исследователя");
+        ruMessages.put(130, "Это ваше меню исследователя!\n1 - Просмотреть все исследовательские проекты\n2 - Просмотреть все исследовательские статьи\n3 - Распечатать все исследовательские статьи\n4 - Рассчитать h-индекс\n5 - Добавить исследовательский проект\n6 - Добавить исследовательские статьи");
+        ruMessages.put(131, "7 - Просмотреть руководителя");
+        ruMessages.put(132, "1 - Сортировать по дате публикации\n2 - Сортировать по цитатам\n3 - Сортировать по длине статьи\n4 - Сортировать по числу авторов\n5 - Сортировать по алфавиту заголовка\n6 - Сортировать по числу ключевых слов\n7 - Сортировать по длине аннотации");
+        ruMessages.put(133, "Ваш h-индекс: ");
+        ruMessages.put(134, "Вы собираетесь добавить исследовательские проекты");
+        ruMessages.put(135, "Напишите тему исследования: ");
+        ruMessages.put(136, "Напишите источник финансирования исследовательского проекта: ");
+        ruMessages.put(137, "Напишите продолжительность исследования в месяцах: ");
+        ruMessages.put(138, "Напишите, какую методологию вы использовали: ");
+        ruMessages.put(139, "Проект успешно добавлен!");
+        ruMessages.put(140, "Вы собираетесь добавить исследовательские статьи для ваших проектов. Выберите, для какого проекта вы хотите добавить: ");
+        ruMessages.put(141, "Теперь добавьте описания для вашей исследовательской статьи: ");
+        ruMessages.put(142, "Добавить заголовок:");
+        ruMessages.put(143, "Введите текст статьи:");
+        ruMessages.put(144, "Введите имена авторов через запятую: ");
+        ruMessages.put(145, "Напишите аннотацию: ");
+        ruMessages.put(146, "Напишите цитаты: ");
+        ruMessages.put(147, "Напишите ключевые слова: ");
+        ruMessages.put(148, "Введите год публикации: ");
+        ruMessages.put(149, "Исследовательская статья успешно добавлена!");
+        ruMessages.put(150, "Ваш руководитель - ");
+        ruMessages.put(151, "У вас нет руководителей. Выберите одного: ");
+        ruMessages.put(152, "Руководитель успешно выбран!");
+        ruMessages.put(153, "Поймано исключение: ");
+        ruMessages.put(154, "Поздравляю, теперь вы исследователь!");
+        ruMessages.put(156, "Напишите идентификатор пользователя: ");
+        ruMessages.put(157, "Напишите сообщение: ");
+        ruMessages.put(158, "Сообщение успешно отправлено!");
+        ruMessages.put(159, "Выберите, кому отправить сообщение: \n1 - Преподаватель\n2 - Библиотекарь\n3 - Декан\n4 - Сотрудник регистратуры\n5 - Менеджер по новостям");
+        ruMessages.put(160, "Введите идентификатор преподавателя, которому вы хотите отправить: ");
+        ruMessages.put(161, "Введите идентификатор библиотекаря, которому вы хотите отправить: ");
+        ruMessages.put(162, "Введите идентификатор декана, которому вы хотите отправить: ");
+        ruMessages.put(163, "Введите идентификатор сотрудника регистратуры, которому вы хотите отправить: ");
+        ruMessages.put(164, "Введите идентификатор менеджера, которому вы хотите отправить: ");
+
         // Add more Russian messages as needed
 
         messages.put("en", enMessages);
