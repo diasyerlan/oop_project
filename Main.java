@@ -17,6 +17,9 @@ public class Main {
         else if (language.equals("kz")) words = LanguageMessages.getKzMessage();
         else if (language.equals("ru")) words = LanguageMessages.getRuMessage();
 
+        // Устанавливаем выбранный язык в Admin
+        admin.setLanguage(language);
+
         System.out.println(words.get(1));
 
         while (true) {
@@ -146,9 +149,9 @@ public class Main {
                         System.out.println(words.get(16));
 
                     } else if (selected == 5) {
-                        if (Data.studentBooks.isEmpty()) System.out.println("You have no book from library!");
+                        if (Data.studentBooks.isEmpty()) System.out.println(words.get(17));
                         else {
-                            System.out.println("Here are the books you have taken from library: ");
+                            System.out.println(words.get(18));
                             for (Map.Entry<String, Vector<Book>> p : Data.studentBooks.entrySet()) {
                                 System.out.println(p.getKey());
                                 for (Book b : p.getValue()) {
@@ -159,7 +162,7 @@ public class Main {
                         }
                     } else if (selected == 6) {
                         if (Data.orgsOfStudent == null || Data.orgsOfStudent.isEmpty()) {
-                            System.out.println("You are not a member of any Student Organization. Select one of these: ");
+                            System.out.println(words.get(19));
                             for (StudentOrganization s : Data.studentOrganizations) {
                                 System.out.println(s.getNumber() + " - " + s.getOrganizationName());
                             }
@@ -170,13 +173,13 @@ public class Main {
                                     if (Data.orgsOfStudent == null) Data.orgsOfStudent = new HashMap<>();
                                     Data.orgsOfStudent.put((Student) foundUser, s);
                                     if (s.getOrganizationMembers().size() < 50) {
-                                        System.out.println("Congrats! You become member of Organization");
+                                        System.out.println(words.get(20));
                                         s.getOrganizationMembers().add((Student) foundUser);
                                         if (Data.OrganizationMembers == null)
                                             Data.OrganizationMembers = new HashMap<>();
                                         Data.OrganizationMembers.put(s, s.getOrganizationMembers());
                                     } else {
-                                        System.out.println("Organization is full of students!");
+                                        System.out.println(words.get(21));
                                     }
                                     break;
                                 }
@@ -185,17 +188,14 @@ public class Main {
                         } else {
                             for (Map.Entry<Student, StudentOrganization> entry : Data.orgsOfStudent.entrySet()) {
                                 if (entry.getKey().equals(foundUser)) {
-                                    System.out.println("You are already a member of this Organization");
+                                    System.out.println(words.get(22));
                                 }
                             }
                         }
                         Serialization.write(Data.OrganizationMembers, "Database/OrganizationMembers.txt");
                         Serialization.write(Data.orgsOfStudent, "Database/StudentOrganizations.txt");
                     } else if (selected == 7) {
-                        System.out.println("You are going to pay Student Fee for current semester. Choose method of Payment: ");
-                        System.out.println("1 - Kaspi");
-                        System.out.println("2 - Halyk");
-                        System.out.println("3 - Cash");
+                        System.out.println(words.get(23));
                         String payS = reader.readLine();
                         int pay = Integer.parseInt(payS);
                         int semester;
@@ -221,16 +221,14 @@ public class Main {
 
                 }
                 else if (foundUser instanceof OfficeRegistrator) {
-                    System.out.println("0 - add courses for Student");
-                    System.out.println("1 - Send work Messages");
-                    System.out.println("2 - View work Messages");
+                    System.out.println(words.get(24));
 
 
-                    System.out.println("Type the appropriate number to take action: ");
+                    System.out.println(words.get(25));
                     String selecte = reader.readLine();
                     int selected = Integer.parseInt(selecte);
                     if (selected == 0) {
-                        System.out.println("Type the ID of the Student: ");
+                        System.out.println(words.get(26));
                         while (true) {
                             String id = reader.readLine();
                             Student foundStudent = null;
@@ -244,12 +242,12 @@ public class Main {
                             if (foundStudent != null) {
                                 for (Map.Entry<Student, Boolean> entry : Data.requestedReg.entrySet()) {
                                     if (entry.getKey().equals(foundStudent) && Boolean.FALSE.equals(entry.getValue())) {
-                                        System.out.println("The student is not approved for Registration. Type 'ok' to confirm: ");
+                                        System.out.println(words.get(27));
                                         String ok = reader.readLine();
                                         if (ok.equals("ok")) {
                                             Data.requestedReg.put(foundStudent, false);
                                             Serialization.write(Data.requestedReg, "Database/RegisterRequests.txt");
-                                            System.out.println("The request is approved!");
+                                            System.out.println(words.get(28));
                                             break;
                                         }
                                     }
@@ -271,12 +269,12 @@ public class Main {
                                 Serialization.write(Admin.userList, "Database/Users.txt");
 
 
-                            } else System.out.println("Student not found. Try again!");
+                            } else System.out.println(words.get(29));
                         }
                     } else if (selected == 1) {
                         Storage.sendMessage();
                     } else if (selected == 2) {
-                        System.out.println("These are the messages you got from your colleagues: ");
+                        System.out.println(words.get(30));
                         for(Map.Entry<OfficeRegistrator, Vector<String>> entry : Data.messageToOR.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(String s : entry.getValue()) {
@@ -288,10 +286,7 @@ public class Main {
                     break;
                 }
                 else if (foundUser instanceof Librarian) {
-                    System.out.println("0 - View all books");
-                    System.out.println("1 - View requests");
-                    System.out.println("2 - Send work Message");
-                    System.out.println("3 - View work Messages");
+                    System.out.println(words.get(31));
                     Storage.menuAdding(foundUser, 4);
 
                     String selecte = reader.readLine();
@@ -301,7 +296,7 @@ public class Main {
 
                     } else if (selected == 1) {
                         System.out.println(((Librarian) foundUser).getRequests());
-                        System.out.println("Type the ID of the certain user to confirm request: ");
+                        System.out.println(words.get(32));
                         String st = reader.readLine();
                         Vector<Book> reqBooks = new Vector<>();
                         for (Map.Entry<Vector<String>, String> entry : Data.requestedBooks.entrySet()) {
@@ -346,7 +341,7 @@ public class Main {
                     } else if(selected == 2) {
                         Storage.sendMessage();
                     } else if (selected == 3) {
-                        System.out.println("These are the messages you got from your colleagues: ");
+                        System.out.println(words.get(33));
                         for(Map.Entry<Librarian, Vector<String>> entry : Data.messageToLibrarian.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(String s : entry.getValue()) {
@@ -362,20 +357,14 @@ public class Main {
 
                 }
                 else if (foundUser instanceof Teacher) {
-                    System.out.println("0 - View info about Student");
-                    System.out.println("1 - Put marks");
-                    System.out.println("2 - view Schedule");
-                    System.out.println("3 - View courses taken");
-                    System.out.println("4 - Sent a complain about Student");
-                    System.out.println("5 - Send work Messages");
-                    System.out.println("6 - View work Messages");
+                    System.out.println(words.get(34));
                     Storage.menuAdding(foundUser, 7);// add next things
 
                     String selecte = reader.readLine();
                     int selected = Integer.parseInt(selecte);
 
                     if (selected == 0) {
-                        System.out.println("Write down the ID of the Student you want to get info:");
+                        System.out.println(words.get(35));
                         String id = reader.readLine();
                         boolean found = false;
                         for (User u : Data.userList) {
@@ -385,11 +374,11 @@ public class Main {
                                 break;
                             }
                         }
-                        if (!found) System.out.println("No student found with such ID");
+                        if (!found) System.out.println(words.get(36));
                     }
                     else if (selected == 1) {
                         Mark mark = new Mark();
-                        System.out.println("You are going to put marks for semester for the Student. Type the course Code you want to choose: ");
+                        System.out.println(words.get(37));
                         for (Course c : ((Teacher) foundUser).coursesTaken) {
                             System.out.println(c.getCourseCode() + " - " + c.getCourseName());
                         }
@@ -397,8 +386,8 @@ public class Main {
                         Double a;
                         for (Course c : ((Teacher) foundUser).coursesTaken) {
                             if (c.getCourseCode().equals(code)) {
-                                System.out.println("You selected the subject " + c.getCourseName());
-                                System.out.println("Write the Student ID to put marks");
+                                System.out.println(words.get(38) + c.getCourseName());
+                                System.out.println(words.get(39));
                                 String id = reader.readLine();
                                 for (User u : Data.userList) {
                                     if (u.ID.equals(id) && u instanceof Student) {
@@ -411,26 +400,23 @@ public class Main {
                                                         Mark studentMark = courseEntry.getValue() == null ? new Mark() : courseEntry.getValue();
 
                                                         if (course.getCourseCode().equals(code)) {
-                                                            System.out.println("Choose for what you are going to set points: ");
-                                                            System.out.println("0 - First Attestation");
-                                                            System.out.println("1 - Second Attestation");
-                                                            System.out.println("2 - Final score");
+                                                            System.out.println(words.get(40));
                                                             String chos = reader.readLine();
                                                             int cho = Integer.parseInt(chos);
                                                             reader.readLine();
-                                                            System.out.println("Write the first attestation point for " + u.getFirstName() + " " + u.getLastName() + " for subject " + co.getCourseName());
+                                                            System.out.println(words.get(41) + u.getFirstName() + " " + u.getLastName() + words.get(42) + co.getCourseName());
                                                             if (cho == 0) {
-                                                                System.out.println("Enter first attestation score:");
+                                                                System.out.println(words.get(43));
                                                                 String as = reader.readLine();
                                                                 a = Double.parseDouble(as);
                                                                 mark = new Mark(a, studentMark.getSecondAttestation(), studentMark.getFinalScore());
                                                             } else if (cho == 1) {
-                                                                System.out.println("Enter second attestation score:");
+                                                                System.out.println(words.get(44));
                                                                 String as = reader.readLine();
                                                                 a = Double.parseDouble(as);
                                                                 mark = new Mark(studentMark.getFirstAttestation(), a, studentMark.getFinalScore());
                                                             } else if (cho == 2) {
-                                                                System.out.println("Enter final score:");
+                                                                System.out.println(words.get(45));
                                                                 String as = reader.readLine();
                                                                 a = Double.parseDouble(as);
                                                                 mark = new Mark(studentMark.getFirstAttestation(), studentMark.getSecondAttestation(), a);
@@ -453,14 +439,11 @@ public class Main {
                         Serialization.write(Data.userList, "Database/Users.txt");
                     }
                     else if (selected == 4) {
-                        System.out.println("You are going to sent complaint about Student to to a Dean. Type ID of a Student: ");
+                        System.out.println(words.get(46));
                         String id = reader.readLine();
                         for(User u: Data.userList) {
                             if (u instanceof Student && u.getID().equals(id)) {
-                                System.out.println("Choose the Urgency Level:");
-                                System.out.println("1 - High");
-                                System.out.println("2 - Medium");
-                                System.out.println("3 - Low");
+                                System.out.println(words.get(47));
                                 String urgs = reader.readLine();
                                 int urg = Integer.parseInt(urgs);
                                 UrgencyLevel level = UrgencyLevel.LOW;
@@ -476,11 +459,11 @@ public class Main {
                                         level = UrgencyLevel.LOW;
                                         break;
                                     default:
-                                        System.out.println("Invalid urgency level. Defaulting to LOW.");
+                                        System.out.println(words.get(48));
                                         break;
                                 }
 
-                                System.out.println("Write complaint text!");
+                                System.out.println(words.get(49));
                                 String complaint = reader.readLine();
 
                                 for (User us : Data.userList) {
@@ -492,7 +475,7 @@ public class Main {
                                         HashMap<String, UrgencyLevel> hashMap = h1.computeIfAbsent((Student) u, k -> new HashMap<>());
                                         hashMap.put(complaint, level);
 
-                                        System.out.println("Complaint is sent successfully!");
+                                        System.out.println(words.get(50));
                                         break;
                                     }
                                 }
@@ -505,7 +488,7 @@ public class Main {
                         Storage.sendMessage();
                     }
                     else if (selected == 6) {
-                        System.out.println("These are the messages you got from your colleagues: ");
+                        System.out.println(words.get(51));
                         for(Map.Entry<Teacher, Vector<String>> entry : Data.messageToTeacher.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(String s : entry.getValue()) {
@@ -518,9 +501,7 @@ public class Main {
                     }
                 }
                 else if (foundUser instanceof FacultyManager) {
-                    System.out.println("1 - View complaints about Students");
-                    System.out.println("2 - Send work Messages");
-                    System.out.println("3 - View work Messages");
+                    System.out.println(words.get(52));
 
                     String selecte = reader.readLine();
                     int selected = Integer.parseInt(selecte);
@@ -530,10 +511,10 @@ public class Main {
                             if(entry.getKey().equals(foundUser)) {
                                 for(Map.Entry<Student, HashMap<String, UrgencyLevel>> entry1 : entry.getValue().entrySet()) {
                                     System.out.println();
-                                    System.out.println("Student " + entry1.getKey().getID() + ": " + entry1.getKey().getFirstName() + " " + entry1.getKey().getLastName());
+                                    System.out.println(words.get(53) + entry1.getKey().getID() + ": " + entry1.getKey().getFirstName() + " " + entry1.getKey().getLastName());
                                     for(Map.Entry<String, UrgencyLevel> entry2: entry1.getValue().entrySet()) {
-                                        System.out.println("Urgency level: " + entry2.getValue());
-                                        System.out.println("Complaint: \n" + entry2.getKey());
+                                        System.out.println(words.get(54) + entry2.getValue());
+                                        System.out.println(words.get(55) + entry2.getKey());
                                     }
                                     System.out.println("_________________");
                                 }
@@ -542,7 +523,7 @@ public class Main {
                     } else if (selected == 2) {
                         Storage.sendMessage();
                     } else if (selected == 3) {
-                        System.out.println("These are the messages you got from your colleagues: ");
+                        System.out.println(words.get(56));
                         for(Map.Entry<FacultyManager, Vector<String>> entry : Data.messageToDean.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(String s : entry.getValue()) {
@@ -553,25 +534,20 @@ public class Main {
                     }
                 }
                 else if(foundUser instanceof NewsManager) {
-                    System.out.println("1 - Post a News");
-                    System.out.println("2 - Send work Messages");
-                    System.out.println("3 - View work Messages");
-
+                    System.out.println(words.get(57));
                     String selecte = reader.readLine();
                     int selected = Integer.parseInt(selecte);
 
                     if(selected == 1) {
-                        System.out.println("1 - to WSP");
-                        System.out.println("2 - to Istagram");
-                        System.out.println("3 - to Telegram");
+                        System.out.println(words.get(58));
 
                         selecte = reader.readLine();
                         int selec = Integer.parseInt(selecte);
 
-                        System.out.println("Write a news Header");
+                        System.out.println(words.get(59));
                         String h = reader.readLine();
 
-                        System.out.println("Write a news Article");
+                        System.out.println(words.get(60));
                         String a = reader.readLine();
 
                         if(Data.news == null) Data.news = new HashMap<>();
@@ -579,23 +555,23 @@ public class Main {
                         Data.news.put(h, a);
                         switch (selec) {
                             case 1:
-                                System.out.println("Published in WSP successfully!");
+                                System.out.println(words.get(61));
                                 break;
                             case 2:
-                                System.out.println("Published in Instagram successfully!");
+                                System.out.println(words.get(62));
                                 break;
                             case 3:
-                                System.out.println("Published in Telegram successfully!");
+                                System.out.println(words.get(63));
                                 break;
                             default:
-                                System.out.println("Invalid selection!"); // Необязательный блок default для обработки некорректных значений
+                                System.out.println(words.get(64)); // Необязательный блок default для обработки некорректных значений
                                 break;
                         }
 
                     } else if (selected == 2) {
                         Storage.sendMessage();
                     } else if (selected == 3) {
-                        System.out.println("These are the messages you got from your colleagues: ");
+                        System.out.println(words.get(65));
                         for(Map.Entry<FacultyManager, Vector<String>> entry : Data.messageToDean.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(String s : entry.getValue()) {
@@ -606,7 +582,7 @@ public class Main {
                     }
                 }
                 else {
-                    System.out.println("Incorrect uername or password. Try again:");
+                    System.out.println(words.get(66));
                 }
                 Serialization.write(Data.userList, "Database/Researchers.txt");
                 Serialization.write(Data.userList, "Database/Users.txt");
