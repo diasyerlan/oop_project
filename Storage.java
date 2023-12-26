@@ -231,4 +231,30 @@ public class Storage {
         if (!foundUser.isResearcher) System.out.println(n + " - Become a Researcher");
         else System.out.println(n + " - Go to Researcher menu");
     }
+    public static <T> void messaging(Class<T> clazz, HashMap<T, Vector<String>> h) {
+        for (User u : Data.userList) {
+            if (clazz.isInstance(u)) {
+                System.out.println(u.getID() + " - " + u.getFirstName() + " " + u.getLastName());
+            }
+        }
+
+        System.out.println("Write the user ID: ");
+        String id = scanner.nextLine();
+
+        for (User u : Data.userList) {
+            if (u.getID().equals(id) && clazz.isInstance(u)) {
+                System.out.println("Write the message: ");
+                String info = u.getFirstName() + " " + u.getLastName() + ": ";
+                String message = scanner.nextLine();
+
+                h = (h == null) ? new HashMap<>() : h;
+
+                Vector<String> messages = h.computeIfAbsent(clazz.cast(u), k -> new Vector<>());
+                messages.add(info + message);
+
+                System.out.println("Message is sent successfully!");
+                break;
+            }
+        }
+    }
 }

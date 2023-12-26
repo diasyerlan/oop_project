@@ -229,6 +229,9 @@ public class Main {
                     else if (foundUser instanceof OfficeRegistrator) {
                         System.out.println("0 - add courses for Student");
                         System.out.println("1 - Send work Messages");
+                        System.out.println("2 - View work Messages");
+
+
                         System.out.println("Type the appropriate number to take action: ");
                         int selected = scanner.nextInt();
                         scanner.nextLine();
@@ -288,23 +291,30 @@ public class Main {
 
                             if(mess == 1) {
                                 System.out.println("Type the ID of the Teacher you want to send: ");
-                                for(User u: Data.userList) {
-                                    if(u instanceof Teacher) {
-                                        System.out.println(u.getID() + " - " + u.getFirstName() + " " + u.getLastName());
-                                    }
-                                }
-                                String id = scanner.nextLine();
-                                for(User u: Data.userList) {
-                                    if(u.getID().equals(id)) {
-                                        Data.messageToTeacher = (Data.messageToTeacher == null) ? new HashMap<>() : Data.messageToTeacher;
+                                Storage.messaging(Teacher.class, Data.messageToTeacher);
+                                Serialization.write(Data.messageToTeacher, "Database/MessageToTeacher.txt");
+                            }
+                            else if (mess == 2) {
+                                System.out.println("Type the ID of the Librarian you want to send: ");
+                                Storage.messaging(Librarian.class, Data.messageToLibrarian);
+                                Serialization.write(Data.messageToLibrarian, "Database/MessageToLibrarian.txt");
+                            }
+                            else if (mess == 3) {
+                                System.out.println("Type the ID of the Dean you want to send: ");
+                                Storage.messaging(FacultyManager.class, Data.messageToDean);
+                                Serialization.write(Data.messageToDean, "Database/MessageToDean.txt");
+                            } else if (mess == 4) {
+                                System.out.println("Type the ID of the Manager you want to send: ");
+                                Storage.messaging(NewsManager.class, Data.messageToNewsManager);
+                                Serialization.write(Data.messageToNewsManager, "Database/MessageToNewsManager.txt");
+                            }
 
-                                        HashMap<Student, HashMap<String, UrgencyLevel>> h1 = Data.complaints.computeIfAbsent((FacultyManager) us, k -> new HashMap<>());
-
-                                        HashMap<String, UrgencyLevel> hashMap = h1.computeIfAbsent((Student) u, k -> new HashMap<>());
-                                        hashMap.put(complaint, level);
-
-                                        System.out.println("Complaint is sent successfully!");
-                                        break;
+                        } else if (selected == 2) {
+                            System.out.println("These are the messages you got from your colleagues: ");
+                            for(Map.Entry<OfficeRegistrator, Vector<String>> entry : Data.messageToOR.entrySet()) {
+                                if(entry.getKey().equals(foundUser)) {
+                                    for(String s : entry.getValue()) {
+                                        System.out.println(s);
                                     }
                                 }
                             }
@@ -380,7 +390,8 @@ public class Main {
                         System.out.println("2 - view Schedule");
                         System.out.println("3 - View courses taken");
                         System.out.println("4 - Sent a complain about Student");
-                        Storage.menuAdding(foundUser, 5);// add next things
+                        System.out.println("5 - View Messages");
+                        Storage.menuAdding(foundUser, 6);// add next things
 
                         int selected = scanner.nextInt();
                         scanner.nextLine();
@@ -505,6 +516,15 @@ public class Main {
                             }
                             Serialization.write(Data.complaints, "Database/TeacherComplaints.txt");
                         } else if (selected == 5) {
+                            System.out.println("These are the messages you got from your colleagues: ");
+                            for(Map.Entry<Teacher, Vector<String>> entry : Data.messageToTeacher.entrySet()) {
+                                if(entry.getKey().equals(foundUser)) {
+                                    for(String s : entry.getValue()) {
+                                        System.out.println(s);
+                                    }
+                                }
+                            }
+                        } else if (selected == 6) {
                             Storage.researcherDef(foundUser);
                         }
                     }

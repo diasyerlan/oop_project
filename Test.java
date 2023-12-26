@@ -89,6 +89,13 @@ public class Test {
 //                }
 //
 //        }
+
+        for(Map.Entry<Teacher, Vector<String>> entry : Data.messageToTeacher.entrySet()) {
+            Vector<String> v = entry.getValue();
+            for(String s : v) {
+                System.out.println(s);
+            }
+        }
     }
 
 }
