@@ -3,12 +3,27 @@ package proj;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Queue;
-
+/**
+ * The FacultyManager class represents a manager associated with a specific faculty in an educational institution.
+ * It extends the Manager class and includes additional attributes related to the faculty.
+ */
 public class FacultyManager extends Manager {
     private static final long serialVersionUID = -1475904321287980890L;
     private Faculty faculty;
     private Queue<Request> listOfRequestsFaculty;
-
+    /**
+     * Constructs a FacultyManager with the specified attributes.
+     *
+     * @param firstName      The first name of the faculty manager.
+     * @param lastName       The last name of the faculty manager.
+     * @param username       The username of the faculty manager.
+     * @param email          The email address of the faculty manager.
+     * @param password       The password of the faculty manager.
+     * @param ID             The ID of the faculty manager.
+     * @param hireDate       The date on which the faculty manager was hired.
+     * @param workExperience The work experience of the faculty manager in years.
+     * @param faculty        The faculty to which the manager is associated.
+     */
     // Constructors
     public FacultyManager(String firstName, String lastName, String username, String email,
                           String password, String ID, Date hireDate,
@@ -17,19 +32,36 @@ public class FacultyManager extends Manager {
         this.faculty = faculty;
     }
 
+    /**
+     * Gets the faculty to which the manager is associated.
+     *
+     * @return The faculty of the manager.
+     */
     // Getters and setters
     public Faculty getFaculty() {
         return this.faculty;
     }
-
+    /**
+     * Sets the faculty to which the manager is associated.
+     *
+     * @param faculty The new faculty to be set.
+     */
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
-
+    /**
+     * Gets the queue of requests specific to the faculty managed by the FacultyManager.
+     *
+     * @return The queue of faculty-specific requests.
+     */
     public Queue<Request> getListOfRequestsFaculty() {
         return this.listOfRequestsFaculty;
     }
-
+    /**
+     * Sets the queue of requests specific to the faculty managed by the FacultyManager.
+     *
+     * @param listOfRequestsFaculty The new queue of faculty-specific requests to be set.
+     */
     public void setListOfRequestsFaculty(Queue<Request> listOfRequestsFaculty) {
         this.listOfRequestsFaculty = listOfRequestsFaculty;
     }

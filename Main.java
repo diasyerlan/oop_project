@@ -8,6 +8,13 @@ import java.util.stream.Collectors;
 This class contains the code if the main interface
  */
 public class Main {
+    /**
+     * The main method where the program execution begins.
+     *
+     * @param args Command-line arguments (not used in this program).
+     * @throws IOException            If an I/O error occurs.
+     * @throws ClassNotFoundException If the class is not found during deserialization.
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Admin admin = Admin.getInstance();
@@ -23,11 +30,16 @@ public class Main {
         storage.setLanguage(language);
         employee.setLanguage(language);
 
-        // Устанавливаем выбранный язык в Admin
+
+        // Set the selected language in Admin
         admin.setLanguage(language);
 
         System.out.println(words.get(1));
-
+/**
+ * Infinite loop for user authentication and action selection.
+ * Reads user information and performs actions based on the user type (admin or student).
+ * Breaks out of the loop when the admin or student successfully authenticates.
+ */
         while (true) {
             Serialization.read("Database/Users.txt");
             System.out.print(words.get(2));
@@ -57,6 +69,13 @@ public class Main {
                 }
                 break;
             }
+            /**
+             * Helper method to find a user by username and password.
+             *
+             * @param username The username to search for.
+             * @param password The password to search for.
+             * @return The found user or null if not found.
+             */
             User foundUser = null;
             for (User user : Admin.userList) {
                 if (user.getUsername() == null) break;
@@ -124,7 +143,12 @@ public class Main {
                         Vector<String> booksNames = new Vector<>(Arrays.asList(substringsArray));
 
                         Iterator<Map.Entry<String, Vector<Book>>> iter = Data.studentBooks.entrySet().iterator();
-
+/**
+ * Helper method to handle student actions based on the selected option.
+ *
+ * @param selected  The selected option.
+ * @param foundUser The found student user.
+ */
                         while (iter.hasNext()) {
                             Map.Entry<String, Vector<Book>> studentBooksEntry = iter.next();
 
@@ -226,6 +250,11 @@ public class Main {
                     }
 
                 }
+                /**
+                 * Handles actions specific to an OfficeRegistrator user.
+                 * Reads and processes user input to perform actions such as approving student registration,
+                 * sending messages, and viewing messages.
+                 */
                 else if (foundUser instanceof OfficeRegistrator) {
                     System.out.println(words.get(24));
 
@@ -235,6 +264,12 @@ public class Main {
                     int selected = Integer.parseInt(selecte);
                     if (selected == 0) {
                         System.out.println(words.get(26));
+                        /**
+                         * Helper method to find a student by ID.
+                         *
+                         * @param id The ID of the student to search for.
+                         * @return The found student or null if not found.
+                         */
                         while (true) {
                             String id = reader.readLine();
                             Student foundStudent = null;
@@ -291,6 +326,11 @@ public class Main {
                     }
                     break;
                 }
+                /**
+                 * Handles actions specific to a Librarian user.
+                 * Displays the librarian menu, processes user input, and performs actions such as
+                 * managing book requests, sending messages, and accessing research functionalities.
+                 */
                 else if (foundUser instanceof Librarian) {
                     System.out.println(words.get(31));
                     Storage.menuAdding(foundUser, 4);
@@ -305,6 +345,7 @@ public class Main {
                         System.out.println(words.get(32));
                         String st = reader.readLine();
                         Vector<Book> reqBooks = new Vector<>();
+                        // Iterate over requested books to find matching request
                         for (Map.Entry<Vector<String>, String> entry : Data.requestedBooks.entrySet()) {
                             if (entry.getValue().equals(st)) {
                                 Iterator<Map.Entry<Vector<String>, String>> iterator = Data.requestedBooks.entrySet().iterator();
@@ -318,7 +359,7 @@ public class Main {
                                             String s = bookIterator.next();
 
                                             Iterator<Book> libraryIterator = Data.books.iterator();
-
+                                            // Iterate over library books to find requested book
                                             while (libraryIterator.hasNext()) {
                                                 Book book = libraryIterator.next();
 
@@ -340,6 +381,7 @@ public class Main {
                                 break;
                             }
                         }
+                        // Update data and save to files
                         Data.studentBooks.put(st, reqBooks);
                         Serialization.write(Data.studentBooks, "Database/StudentBooks.txt");
                         Serialization.write(Data.books, "Database/LibraryBooks.txt");
@@ -348,6 +390,7 @@ public class Main {
                         Storage.sendMessage();
                     } else if (selected == 3) {
                         System.out.println(words.get(33));
+                        // Display messages for the librarian
                         for(Map.Entry<Librarian, Vector<String>> entry : Data.messageToLibrarian.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(String s : entry.getValue()) {
@@ -356,20 +399,27 @@ public class Main {
                             }
                         }
                     }
+
                     else if (selected == 4) {
+                        // Access research functionalities
                         Storage.researcherDef(foundUser);
                     }
 
 
                 }
+                /**
+                 * Handles actions specific to a Teacher user.
+                 * Displays the teacher menu, processes user input, and performs actions such as
+                 * viewing student information, assigning marks for courses, and updating the user database.
+                 */
                 else if (foundUser instanceof Teacher) {
                     System.out.println(words.get(34));
                     Storage.menuAdding(foundUser, 7);// add next things
 
                     String selecte = reader.readLine();
                     int selected = Integer.parseInt(selecte);
-
                     if (selected == 0) {
+                        // View student information
                         System.out.println(words.get(35));
                         String id = reader.readLine();
                         boolean found = false;
@@ -383,6 +433,7 @@ public class Main {
                         if (!found) System.out.println(words.get(36));
                     }
                     else if (selected == 1) {
+                        // Assign marks for courses
                         Mark mark = new Mark();
                         System.out.println(words.get(37));
                         for (Course c : ((Teacher) foundUser).coursesTaken) {
@@ -443,6 +494,10 @@ public class Main {
                         }
                         Serialization.write(Data.userList, "Database/Users.txt");
                     }
+                    /**
+                     * Process actions when the user is a Teacher and selects option 4 from the menu.
+                     * Handles the submission of complaints by students to the faculty manager.
+                     */
                     else if (selected == 4) {
                         System.out.println(words.get(46));
                         String id = reader.readLine();
@@ -504,6 +559,9 @@ public class Main {
                         Storage.researcherDef(foundUser);
                     }
                 }
+                /**
+                 * Process actions when the user is a FacultyManager and selects various options from the menu.
+                 */
                 else if (foundUser instanceof FacultyManager) {
                     System.out.println(words.get(52));
 
@@ -511,6 +569,7 @@ public class Main {
                     int selected = Integer.parseInt(selecte);
 
                     if(selected == 1) {
+                        // Display complaints and urgency levels submitted by students
                         for(Map.Entry<FacultyManager, HashMap<Student, HashMap<String, UrgencyLevel>>> entry : Data.complaints.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
                                 for(Map.Entry<Student, HashMap<String, UrgencyLevel>> entry1 : entry.getValue().entrySet()) {
@@ -527,6 +586,7 @@ public class Main {
                     } else if (selected == 2) {
                         Storage.sendMessage();
                     } else if (selected == 3) {
+                        // Display messages sent to the dean
                         System.out.println(words.get(56));
                         for(Map.Entry<FacultyManager, Vector<String>> entry : Data.messageToDean.entrySet()) {
                             if(entry.getKey().equals(foundUser)) {
@@ -537,6 +597,9 @@ public class Main {
                         }
                     }
                 }
+                /**
+                 * Process actions when the user is a NewsManager and selects options from the menu.
+                 */
                 else if(foundUser instanceof NewsManager) {
                     System.out.println(words.get(57));
                     String selecte = reader.readLine();

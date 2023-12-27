@@ -15,28 +15,47 @@ public class Librarian extends Employee{
     }
 
 
-
+    /**
+     * Approves a request.
+     *
+     * @return true if the request is approved, false otherwise.
+     */
     public boolean ApproveRequest() {
 
         return false;
     }
-
+    /**
+     * Adds a book to the library.
+     */
     public void addBook() {
 
     }
+    /**
+     * Retrieves a book by its ID.
+     *
+     * @return the book associated with the specified ID.
+     */
 
     public Book getBookID() {
 
         return null;
     }
-
+    /**
+     * Calculates the hash code for the Librarian.
+     *
+     * @return the hash code value.
+     */
     public int hashcode() {
         return 0;
     };
 
 
 
-
+    /**
+     * Retrieves a string representation of the librarian's requests.
+     *
+     * @return a string containing information about the librarian's requests.
+     */
     public String getRequests() {
         System.out.println("Here are the requests: ");
         String respond = "";
@@ -51,7 +70,11 @@ public class Librarian extends Employee{
         }
         return respond;
     }
-
+    /**
+     * Retrieves a string representation of the Librarian.
+     *
+     * @return a formatted string containing information about the Librarian.
+     */
     public String toString() {
         return String.format("Librarian %s %s (ID: %s)%n" +
                         "  Hire Date: %s%n" +
@@ -59,6 +82,12 @@ public class Librarian extends Employee{
                 getFirstName(), getLastName(), getID(),
                 getHireDate(), getWorkExperience());
     }
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument, false otherwise.
+     */
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
