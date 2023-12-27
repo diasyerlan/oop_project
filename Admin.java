@@ -2,16 +2,29 @@ package proj;
 import java.io.*;
 import java.nio.Buffer;
 import java.util.*;
-
+/**
+ * The `Admin` class represents the administrator of the system.
+ * It provides functionality to manage user accounts and perform various operations.
+ */
 public class Admin {
+    // Singleton instance
     private static Admin instance;
+    // Language preference for the administrator
     private String language;
+
+    // Map to store language-specific messages
     private Map<Integer, String> words;
+    // BufferedReader for user input
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    /**
+     * Sets the language preference for the administrator and initializes language-specific messages.
+     *
+     * @param language The selected language ("en" for English, "kz" for Kazakh, "ru" for Russian).
+     */
     public void setLanguage(String language) {
         this.language = language;
 
-        // Инициализация слов на выбранном языке
+        // Initialize language-specific messages based on the selected language
         if (language.equals("en")) {
             words = LanguageMessages.getEnMessage();
         } else if (language.equals("kz")) {
@@ -20,6 +33,7 @@ public class Admin {
             words = LanguageMessages.getRuMessage();
         }
     }
+
     public String username = "Admin";
     public String password = "12345";
     User newUser = new User();
@@ -33,7 +47,12 @@ public class Admin {
     String firstname, lastname, userName, passWord, id, email;
     int day, month, year, workExp;
     Date hireDate;
-    // Singleton pattern to get the instance of Admin
+    /**
+     * Returns the singleton instance of the `Admin` class.
+     *
+     * @return The `Admin` instance.
+     * @throws IOException If an I/O error occurs.
+     */
     public static Admin getInstance() throws IOException {
         if (instance == null) {
             instance = new Admin();
@@ -41,14 +60,20 @@ public class Admin {
         return instance;
     }
 
-
+    /**
+     * Reads and displays details of all users.
+     */
     public void readAllUsers() {
         for(User user : userList) {
             System.out.println(user.toString());
         }
     }
 
-
+    /**
+     * Displays common questions for user details input.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     public void commonQuestions() throws IOException {
         System.out.println(words.get(69));
         firstname = reader.readLine();
@@ -68,7 +93,11 @@ public class Admin {
         System.out.println(words.get(74));
         id = reader.readLine();
     }
-
+    /**
+     * Displays common employee questions for additional details input.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     public void commonEmployeeQuestions() throws IOException {
         System.out.println(words.get(75));
         String date = reader.readLine();
@@ -85,7 +114,11 @@ public class Admin {
 
     }
     // Operations
-
+    /**
+     * Adds a new user to the system based on the selected position.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     public void addUser() throws IOException {
 
         System.out.println(words.get(77));
@@ -231,24 +264,46 @@ public class Admin {
         System.out.println(userList.lastElement().toString());
 
     }
-
+    /**
+     * Removes a user with the specified userID from the user list and updates the database.
+     *
+     * @param userID The ID of the user to be removed.
+     * @throws IOException            If an I/O error occurs while writing to the database.
+     * @throws ClassNotFoundException If the class of the serialized object cannot be found.
+     */
     public void removeUser(String userID) throws IOException, ClassNotFoundException {
         List<User> usersToRemove = new ArrayList<>();
-        for(User user : userList) {
+
+        // Iterate through the user list to find users with the specified ID
+        for (User user : userList) {
             String user_id = user.getID();
             if (user_id != null && user_id.equals(userID)) {
                 usersToRemove.add(user);
             }
         }
+
+        // Remove the identified users from the user list
         userList.removeAll(usersToRemove);
+
+        // Update the database with the modified user list
         Serialization.write(userList, "Database/Users.txt");
-        System.out.println(words.get(67) + userID + words.get(68) );
+
+        // Display a message indicating the successful removal of the user
+        System.out.println(words.get(67) + userID + words.get(68));
     }
 
 
-
+    /**
+     * Updates the information of a user with the specified userID.
+     *
+     * @param userID The ID of the user to be updated.
+     * @return True if the user is successfully updated, false otherwise.
+     * @throws IOException If an I/O error occurs while reading or writing to the database.
+     */
     public boolean updateUser(String userID) throws IOException {
         User toUpdate = null;
+        // Iterate through the user list to find the user with the specified ID
+
         for(User user: userList) {
             String user_id = user.getID();
             if (user_id != null && user_id.equals(userID)) {
@@ -261,12 +316,16 @@ public class Admin {
             return false;
         } else {
             System.out.println(toUpdate.toString());
+            // Update the user information based on user type
+
             User.updateUser();
             if (toUpdate instanceof Student) Student.updateUser();
             else if (toUpdate instanceof Employee) Employee.updateEmployee();
             String varianst = reader.readLine();
             int variant = Integer.parseInt(varianst);
             reader.readLine();
+            // Update the user information based on the chosen variant
+
             if(variant == 1) {
                 System.out.println(words.get(98));
                 String newName = reader.readLine();
@@ -300,6 +359,8 @@ public class Admin {
                 System.out.println(words.get(109));
             }
             if (toUpdate instanceof Student) {
+                // Update student-specific information based on the chosen variant
+
                 Student.updateUser();
                 if (variant == 7) {
                     System.out.println(words.get(110));
@@ -358,6 +419,8 @@ public class Admin {
                 }
 
             } else if (toUpdate instanceof Employee) {
+                // Update employee-specific information based on the chosen variant
+
                 Employee.updateUser();
                 if (variant == 7) {
                     System.out.println(words.get(122));
@@ -379,6 +442,8 @@ public class Admin {
                 }
             }
             Serialization.write(userList, "Database/Users.txt");
+            // Display the updated user information
+
             System.out.println(toUpdate.toString());
             return true;
         }
