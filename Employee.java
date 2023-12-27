@@ -14,7 +14,7 @@ public class Employee extends User {
     private Date hireDate;
     private Integer workExperience;
     private Security security;
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private Message message;
     private String language;
     private static Employee instance;

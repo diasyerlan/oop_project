@@ -110,8 +110,6 @@ public class Admin {
         System.out.println(words.get(76));
         String workEsp = reader.readLine();
         workExp = Integer.parseInt(workEsp);
-        reader.readLine();
-
     }
     // Operations
     /**
@@ -230,7 +228,6 @@ public class Admin {
                     System.out.println(words.get(93));
                     String varianst = reader.readLine();
                     int variant = Integer.parseInt(varianst);
-                    reader.readLine();
                     if(variant == 1) newUser = new NewsManager(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                     else if(variant == 2) newUser = new OfficeRegistrator(firstname, lastname, userName, email, passWord, id, hireDate, workExp);
                     else {
@@ -322,9 +319,7 @@ public class Admin {
             if (toUpdate instanceof Student) Student.updateUser();
             else if (toUpdate instanceof Employee) Employee.updateEmployee();
             String varianst = reader.readLine();
-            int variant = Integer.parseInt(varianst);
-            reader.readLine();
-            // Update the user information based on the chosen variant
+            int variant = Integer.parseInt(varianst);// Update the user information based on the chosen variant
 
             if(variant == 1) {
                 System.out.println(words.get(98));
@@ -382,7 +377,6 @@ public class Admin {
                     System.out.println(words.get(114));
                     String newCoursse = reader.readLine();
                     int newCourse = Integer.parseInt(newCoursse);
-                    reader.readLine();
                     ((Student) toUpdate).setCourse(newCourse);
                     System.out.println(words.get(115));
                 }
@@ -436,7 +430,6 @@ public class Admin {
                     System.out.println(words.get(124));
                     String workdExp = reader.readLine();
                     int workExp = Integer.parseInt(workdExp);
-                    reader.readLine();
                     ((Employee) toUpdate).setWorkExperience(workExp);
                     System.out.println(words.get(125));
                 }

@@ -409,7 +409,6 @@ public class Main {
                                                             System.out.println(words.get(40));
                                                             String chos = reader.readLine();
                                                             int cho = Integer.parseInt(chos);
-                                                            reader.readLine();
                                                             System.out.println(words.get(41) + u.getFirstName() + " " + u.getLastName() + words.get(42) + co.getCourseName());
                                                             if (cho == 0) {
                                                                 System.out.println(words.get(43));
@@ -453,7 +452,6 @@ public class Main {
                                 String urgs = reader.readLine();
                                 int urg = Integer.parseInt(urgs);
                                 UrgencyLevel level = UrgencyLevel.LOW;
-                                reader.readLine();
                                 switch (urg) {
                                     case 1:
                                         level = UrgencyLevel.HIGH;
@@ -587,11 +585,11 @@ public class Main {
                         }
                     }
                 }
-                else {
-                    System.out.println(words.get(66));
-                }
+
                 Serialization.write(Data.userList, "Database/Researchers.txt");
                 Serialization.write(Data.userList, "Database/Users.txt");
+            }else {
+                System.out.println(words.get(66));
             }
 
 

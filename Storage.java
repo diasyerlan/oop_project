@@ -36,7 +36,6 @@ public class Storage {
 
                     String ss = reader.readLine();
                     int s = Integer.parseInt(ss);
-                    reader.readLine();
                     if (Data.researchProjects == null)
                         Data.researchProjects = new LinkedHashMap<>();
                     if (s == 1) {
@@ -71,7 +70,6 @@ public class Storage {
                         System.out.println(words.get(137));
                         String duratios = reader.readLine();
                         int duration = Integer.parseInt(duratios);
-                        reader.readLine();
                         System.out.println(words.get(138));
                         String methodology = reader.readLine();
                         while (true) {
@@ -119,7 +117,6 @@ public class Storage {
                         }
                         String qs = reader.readLine();
                         int q = Integer.parseInt(qs);
-                        reader.readLine();
                         for (Map.Entry<CanBeResearcher, LinkedHashMap<ResearchProject, Vector<ResearchPaper>>> entry : Data.researchProjects.entrySet()) {
                             if (entry.getKey().getID().equals(researcher.getID())) {
                                 for (Map.Entry<ResearchProject, Vector<ResearchPaper>> entry1 : entry.getValue().entrySet()) {
@@ -158,7 +155,6 @@ public class Storage {
                                         System.out.println(words.get(148));
                                         String yeard = reader.readLine();
                                         int year = Integer.parseInt(yeard);
-                                        reader.readLine();
                                         Vector<ResearchPaper> vector = entry.getValue().computeIfAbsent(entry1.getKey(), k -> new Vector<>());
                                         vector.add(new ResearchPaper(title, article, authors, abctract, citations, keywords, year));
                                         System.out.println(words.get(149));
@@ -194,7 +190,6 @@ public class Storage {
                                 try {
                                     String ns = reader.readLine();
                                     int n = Integer.parseInt(ns);
-                                    reader.readLine();
                                     E.validateIter(n, i);
                                     success = true;
                                     for (Map.Entry<Integer, CanBeResearcher> entry : temp.entrySet()) {
@@ -271,7 +266,6 @@ public class Storage {
 
         String messs = reader.readLine();
         int mess = Integer.parseInt(messs);
-        reader.readLine();
 
         if(mess == 1) {
             System.out.println(words.get(160));
