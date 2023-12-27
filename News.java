@@ -10,6 +10,14 @@ public class News {
     private User user;
 
     // Constructors
+    /**
+     * Constructs a new `News` object with the specified post date, title, content, and user.
+     *
+     * @param postDate The date when the news was posted.
+     * @param title    The title of the news.
+     * @param content  The content or body of the news.
+     * @param user     The user who posted the news.
+     */
     public News(LocalDate postDate, String title, String content, User user) {
         this.postDate = postDate;
         this.title = title;
@@ -52,6 +60,11 @@ public class News {
 
     // Additional methods
 
+    /**
+     * Returns a string representation of the `News` object.
+     *
+     * @return A string representation including post date, title, content, and user information.
+     */
     @Override
     public String toString() {
         return "News{" +
