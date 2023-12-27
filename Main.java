@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
-
+/*
+This class contains the code if the main interface
+ */
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

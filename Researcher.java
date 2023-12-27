@@ -45,6 +45,11 @@ public class Researcher extends ResearcherDecorator implements Serializable {
 
     public void superviseStudents() {
     };
+
+    /**
+     * This function is used for printing all the research projects of the researcher in the console
+     * @param researcher The researcher object, of which research projects will be printed
+     */
     public static void printResearchProjects(CanBeResearcher researcher) {
         if (Data.researchProjects.isEmpty())
             System.out.println("No Research projects yet!");
