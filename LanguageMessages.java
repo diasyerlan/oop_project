@@ -6,6 +6,10 @@ import java.util.Map;
 public class LanguageMessages {
     private static final Map<String, Map<Integer, String>> messages = new HashMap<>();
 
+    /**
+     * creates messages with numbering for the corresponding Prints in English, Kazakh and Russian.
+     *
+     */
     static {
         Map<Integer, String> enMessages = new HashMap<>();
         enMessages.put(1, "Welcome to Virtual University System! Please sign in:");
@@ -37,7 +41,7 @@ public class LanguageMessages {
         enMessages.put(27, "The student is not approved for Registration. Type 'ok' to confirm: ");
         enMessages.put(28, "The request is approved!");
         enMessages.put(29, "Student not found. Try again!");
-        enMessages.put(30, "These are the messages you got from your colleagues: " );
+        enMessages.put(30, "These are the messages you got from your colleagues: ");
         enMessages.put(31, "0 - View all books\n1 - View requests\n2 - Send work Message\n3 - View work Messages");
         enMessages.put(32, "Type the ID of the certain user to confirm request: ");
         enMessages.put(33, "These are the messages you got from your colleagues: ");
@@ -97,7 +101,7 @@ public class LanguageMessages {
         enMessages.put(90, "Teacher type. Choose between these: (Professor, Assistant, Tutor, Lecturer, Assistant Professor)");
         enMessages.put(91, "Faculty. Choose Faculty between these: (FIT, BS, KMA, SPE, ISE, SG)");
         enMessages.put(92, "Set the courses taken: (Seperate by coma)");
-        enMessages.put(93, "Choose the type of Manager: \n1 - News Manager\n2 - Office Registrar\n3 - Faculty Manager" );
+        enMessages.put(93, "Choose the type of Manager: \n1 - News Manager\n2 - Office Registrar\n3 - Faculty Manager");
         enMessages.put(94, "Faculty. Choose Faculty between these: (FIT, BS, KMA, SPE, ISE, SG)");
         enMessages.put(95, "Wrong type of user! Try again: ");
         enMessages.put(96, "User added successfully!");
@@ -174,17 +178,6 @@ public class LanguageMessages {
         enMessages.put(168, "21 - Change Hire Date for Employee");
         enMessages.put(169, "22 - Change Work Experience for Employee");
         enMessages.put(170, "Выберите соответствующий номер, чтобы выполнить действие:");
-
-
-
-
-
-
-
-
-
-
-
 
 
         // Add more English messages as needed
@@ -279,7 +272,7 @@ public class LanguageMessages {
         kzMessages.put(90, "Оқытушы түрі. Бұлардан таңдау: (Профессор, Ассистент, Тьютор, Лектор, Ассистент профессор)");
         kzMessages.put(91, "Факультет. Бұлардан таңдау: (FIT, BS, KMA, SPE, ISE, SG)");
         kzMessages.put(92, "Алып жатқан курстарды таңдау: (Vergulei zhіeu) ");
-        kzMessages.put(93, "Менеджер түрін таңдаңыз: \n1 - Жаңалықтар менеджері\n2 - Офис тіркеушісі\n3 - Факультет менеджері" );
+        kzMessages.put(93, "Менеджер түрін таңдаңыз: \n1 - Жаңалықтар менеджері\n2 - Офис тіркеушісі\n3 - Факультет менеджері");
         kzMessages.put(94, "Факультет. Бұлардан таңдау: (FIT, BS, KMA, SPE, ISE, SG)");
         kzMessages.put(95, "Дұрыс пайдаланушы түрі емес! Қайталап көріңіз: ");
         kzMessages.put(96, "Пайдаланушы сәтті қосылды!");
@@ -316,7 +309,7 @@ public class LanguageMessages {
         kzMessages.put(127, "8 - Жұмыс төлемдерин өзгерту");
         kzMessages.put(128, " - Исследователь болу");
         kzMessages.put(129, " - Исследовательдік менюге өту");
-        kzMessages.put(130, "Бұл сіздікті исследовательдік менюіңіз!\n1 - Барлық изучение проекттерін көру\n2 - Барлық изучение қарапайымдарын көру\n3 - Барлық изучение қарапайымдарын басу\n4 - h-индексін есептеу\n5 - Изучение проектін қосу\n6 - Изучение қарапайымдарын қосу");
+        kzMessages.put(130, "Бұл сіздікті издеуши менюіңіз!\n1 - Барлық издеуши проекттерін көру\n2 - Барлық издеуши тизимин көру\n3 - Барлық издеуши тизимин басу\n4 - h-индексін есептеу\n5 - Издеуши проектін қосу\n6 - Издеуши тизимин қосу");
         kzMessages.put(131, "7 - Рұқсатшыны көру");
         kzMessages.put(132, "1 - Жариялану күні бойынша сұрыптау\n2 - Ситирование бойынша сұрыптау\n3 - Мақаланың ұзақтығы бойынша сұрыптау\n4 - Авторлардың саны бойынша сұрыптау\n5 - Тақырыпты алфавит бойынша сұрыптау\n6 - Кілт сөздердің саны бойынша сұрыптау\n7 - Аннотацияның ұзақтығы бойынша сұрыптау");
         kzMessages.put(133, "Сіздік h-индекс: ");
@@ -350,9 +343,6 @@ public class LanguageMessages {
         kzMessages.put(162, "Деканге жіберетін ID-ді енгізіңіз: ");
         kzMessages.put(163, "Офис регистратурына жіберетін ID-ді енгізіңіз: ");
         kzMessages.put(164, "Жаңалықтар менеджеріне жіберетін ID-ді енгізіңіз: ");
-
-
-
 
 
         // Add more Kazakh messages as needed
@@ -526,12 +516,29 @@ public class LanguageMessages {
         messages.put("ru", ruMessages);
     }
 
+    /**
+     * Provides access to English language messages.
+     *
+     * @return A map containing English language messages with integer keys.
+     */
     public static Map<Integer, String> getEnMessage() {
         return messages.get("en");
     }
+
+    /**
+     * Provides access to Kazakh language messages.
+     *
+     * @return A map containing Kazakh language messages with integer keys.
+     */
     public static Map<Integer, String> getKzMessage() {
         return messages.get("kz");
     }
+
+    /**
+     * Provides access to Russian language messages.
+     *
+     * @return A map containing Russian language messages with integer keys.
+     */
     public static Map<Integer, String> getRuMessage() {
         return messages.get("ru");
     }
