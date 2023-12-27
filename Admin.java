@@ -206,7 +206,7 @@ public class Admin {
                 Vector<String> coursesTaken = new Vector();
                 while (tokenizer.hasMoreTokens()) coursesTaken.add(tokenizer.nextToken());
                 for (String s : coursesTaken) {
-                    for (Course course : data.courses) {
+                    for (Course course : Data.courses) {
                         if (course.getCourseName().equals(s)) {
                             coursesSetting.add(course);
                         }

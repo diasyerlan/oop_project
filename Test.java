@@ -8,18 +8,19 @@ import java.util.Vector;
 public class Test {
     public static void main(String[] args) throws IOException {
 
-//        Vector<Course> universityCourses = new Vector<>();
-//        universityCourses.add(new Course("Computer Science", 4, "CSS101", 50));
-//        universityCourses.add(new Course("Mathematics", 3, "MAT201", 40));
-//        universityCourses.add(new Course("Physics", 4, "PHY301", 30));
-//        universityCourses.add(new Course("History", 3, "HIS101", 35));
-//        universityCourses.add(new Course("Chemistry", 4, "CHM201", 45));
-//        universityCourses.add(new Course("Literature", 3, "LIT301", 30));
-//        universityCourses.add(new Course("Economics", 4, "ECO101", 40));
-//        universityCourses.add(new Course("Psychology", 3, "PSY201", 35));
-//        universityCourses.add(new Course("Biology", 4, "BIO301", 40));
-//        universityCourses.add(new Course("Political Science", 3, "POLI101", 35));
-//        Serialization.write(universityCourses, "Courses.txt");
+        Vector<Course> universityCourses = new Vector<>();
+        universityCourses.add(new Course("Computer Science", 4, "CSS101", 50));
+        universityCourses.add(new Course("Mathematics", 3, "MAT201", 40));
+        universityCourses.add(new Course("Physics", 4, "PHY301", 30));
+        universityCourses.add(new Course("History", 3, "HIS101", 35));
+        universityCourses.add(new Course("Chemistry", 4, "CHM201", 45));
+        universityCourses.add(new Course("Literature", 3, "LIT301", 30));
+        universityCourses.add(new Course("Economics", 4, "ECO101", 40));
+        universityCourses.add(new Course("Psychology", 3, "PSY201", 35));
+        universityCourses.add(new Course("Biology", 4, "BIO301", 40));
+        universityCourses.add(new Course("Political Science", 3, "POLI101", 35));
+        universityCourses.add(new Course("OOP", 4, "OOP401", 50));
+        Serialization.write(universityCourses, "Database/Courses.txt");
 
 //        Vector<Book> books = new Vector<>();
 //        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 101, LocalDate.of(1925, 4, 10), "English"));
@@ -89,12 +90,12 @@ public class Test {
 //                }
 //
 //        }
-
+        Data.messageToTeacher = new HashMap<>();
+        //Data.messageToTeacher.put(new Teacher())
         for(Map.Entry<Teacher, Vector<String>> entry : Data.messageToTeacher.entrySet()) {
             Vector<String> v = entry.getValue();
-            for(String s : v) {
-                System.out.println(s);
-            }
+            v.add("HIII");
+            Serialization.write(Data.messageToTeacher, "Database/MessageToTeacher.txt");
         }
     }
 

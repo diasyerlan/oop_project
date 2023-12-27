@@ -88,6 +88,7 @@ public class Main {
             if (foundUser != null) {
                 System.out.println(words.get(7));
                 if (foundUser instanceof Student) {
+                    Serialization.read("Database/Users.txt");
                     System.out.println(words.get(8));
                     Storage.menuAdding(foundUser, 8);
 
@@ -312,7 +313,8 @@ public class Main {
 
                             } else System.out.println(words.get(29));
                         }
-                    } else if (selected == 1) {
+                    }
+                    else if (selected == 1) {
                         Storage.sendMessage();
                     } else if (selected == 2) {
                         System.out.println(words.get(30));

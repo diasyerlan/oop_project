@@ -58,7 +58,7 @@ public class Student extends User{
 
     public static void updateStudent() {
         System.out.println("7 - Change Student Degree");
-        System.out.println("8 - Change GPzA");
+        System.out.println("8 - Change GPA");
         System.out.println("9 - Change Course");
         System.out.println("10 - Change faculty");
         System.out.println("11 - Change Specialization");

@@ -250,14 +250,17 @@ public class Storage {
                 String info = u.getFirstName() + " " + u.getLastName() + ": ";
                 String message = reader.readLine();
 
-                h = (h == null) ? new HashMap<>() : h;
+                if(h == null) h = new HashMap<>();
 
                 Vector<String> messages = h.computeIfAbsent(clazz.cast(u), k -> new Vector<>());
                 messages.add(info + message);
 
                 System.out.println(words.get(158));
+                System.out.println("2");
                 break;
+
             }
+            System.out.println("1");
         }
     }
 
